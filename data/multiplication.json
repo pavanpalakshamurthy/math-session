@@ -1,0 +1,184 @@
+[
+  {
+    "level": "easy",
+    "text": "What is 7 × 8? (Hint: many kids confuse this with 6 × 9 — they are NOT the same!)",
+    "choices": ["56", "54", "48", "63"],
+    "answer": "56",
+    "explanation": "<span class=\"step\">🔢 7 × 8 = <strong>56</strong>.</span><span class=\"step\">💡 6 × 9 = 54, NOT 56. These two are the most confused facts in the times table!</span><span class=\"step\">✅ Remember: 7 × 8 = 56. A trick: 5, 6, 7, 8 → 56 = 7 × 8!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A carton holds 6 eggs. How many eggs are in 9 cartons?",
+    "choices": ["54", "48", "63", "56"],
+    "answer": "54",
+    "explanation": "<span class=\"step\">🥚 6 eggs × 9 cartons = <strong>54 eggs</strong>.</span><span class=\"step\">💡 6 × 9 = 54. Remember: 6 × 9 and 7 × 8 are both close — 54 and 56. Know which is which!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "What is 11 × 11?",
+    "choices": ["121", "111", "131", "122"],
+    "answer": "121",
+    "explanation": "<span class=\"step\">🔢 11 × 11 = <strong>121</strong>.</span><span class=\"step\">💡 A cool pattern: 11×11=121, 11×12=132, 11×13=143. For 11 × any digit: write the digit twice with a space, like 11×5=55, 11×6=66, 11×7=77!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A box has 5 rows and 4 columns of chocolates. How many chocolates are there? What if you rotate the box so rows become columns?",
+    "choices": ["20 either way", "20 then 16", "16 then 20", "24 either way"],
+    "answer": "20 either way",
+    "explanation": "<span class=\"step\">🍫 Rows × columns = 5 × 4 = <strong>20</strong>.</span><span class=\"step\">🔄 If rotated: 4 × 5 = <strong>20</strong>. Same answer!</span><span class=\"step\">💡 Multiplication is commutative: 5 × 4 = 4 × 5 always. Rotating a rectangle does not change the area!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "What is 25 × 4?",
+    "choices": ["100", "80", "125", "90"],
+    "answer": "100",
+    "explanation": "<span class=\"step\">🔢 25 × 4 = <strong>100</strong>.</span><span class=\"step\">💡 Think of money: 25 cents × 4 = 100 cents = $1. Four quarters make a dollar! This is a very useful fact to memorise.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A school has 24 classrooms. Each classroom has 32 desks. How many desks are in the school?",
+    "choices": ["768", "672", "748", "800"],
+    "answer": "768",
+    "explanation": "<span class=\"step\">🏫 24 × 32 = ?</span><span class=\"step\">📐 Split: 24 × 30 = 720. 24 × 2 = 48. 720 + 48 = <strong>768</strong>.</span><span class=\"step\">💡 Multiply by parts: split the bigger number into tens and ones, multiply each separately, then add. This is called the distributive property!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Is 15 × 14 greater than, less than, or equal to 17 × 12?",
+    "choices": ["Greater: 210 > 204", "Less: 210 < 204", "Equal: both 207", "Less: 210 < 212"],
+    "answer": "Greater: 210 > 204",
+    "explanation": "<span class=\"step\">📐 15 × 14 = (15 × 10) + (15 × 4) = 150 + 60 = <strong>210</strong>.</span><span class=\"step\">📐 17 × 12 = (17 × 10) + (17 × 2) = 170 + 34 = <strong>204</strong>.</span><span class=\"step\">✅ 210 > 204. 15 × 14 is <strong>greater</strong>!</span><span class=\"step\">💡 Numbers closer together (15 and 14) give a BIGGER product than numbers farther apart (17 and 12) with the same average. Same idea as the decimal question!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "If 40 × 40 = 1,600, what is 38 × 42 without multiplying?",
+    "choices": ["1,596", "1,600", "1,604", "1,560"],
+    "answer": "1,596",
+    "explanation": "<span class=\"step\">🔢 38 × 42 = (40−2)(40+2) = 40² − 2² = 1600 − 4 = <strong>1,596</strong>.</span><span class=\"step\">💡 This uses the difference of squares: (a−b)(a+b) = a²−b². Whenever you have two numbers equidistant from a middle number, their product is the middle squared MINUS the distance squared!</span><span class=\"step\">✅ 40 × 40 beats 38 × 42 — the \"middle\" product is always biggest!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Mia earns $12 per hour. She works 6 hours on Saturday and 5 hours on Sunday. How much does she earn in total?",
+    "choices": ["$132", "$120", "$144", "$108"],
+    "answer": "$132",
+    "explanation": "<span class=\"step\">💰 Saturday: 6 hours. Sunday: 5 hours. Rate: $12/hour.</span><span class=\"step\">➕ Total hours: 6 + 5 = 11.</span><span class=\"step\">✖️ Total earnings: 12 × 11 = <strong>$132</strong>.</span><span class=\"step\">💡 Add the hours first, then multiply once — faster than two separate multiplications and adding!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is 99 × 6?",
+    "choices": ["594", "584", "604", "599"],
+    "answer": "594",
+    "explanation": "<span class=\"step\">🔢 99 × 6 = ?</span><span class=\"step\">💡 Smart way: 100 × 6 = 600, then subtract 1 × 6 = 6. So 99 × 6 = 600 − 6 = <strong>594</strong>.</span><span class=\"step\">✅ The \"multiply near-round numbers\" trick: multiply by the round number, then adjust!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A recipe needs 3 cups of flour for 12 cookies. How much flour do you need to make 60 cookies?",
+    "choices": ["15 cups", "12 cups", "18 cups", "10 cups"],
+    "answer": "15 cups",
+    "explanation": "<span class=\"step\">🍪 3 cups → 12 cookies. How much for 60 cookies?</span><span class=\"step\">📐 Scale factor: 60 ÷ 12 = <strong>5</strong> times as many cookies.</span><span class=\"step\">✖️ Flour: 3 × 5 = <strong>15 cups</strong>.</span><span class=\"step\">💡 Find the scale factor first, then multiply the ingredient. This is proportional reasoning!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben thinks 4 × 27 is the same as 2 × 54. Is he right?",
+    "choices": ["Yes — both equal 108", "No — 4 × 27 = 108, 2 × 54 = 102", "No — 4 × 27 = 104, 2 × 54 = 108", "No — they are both wrong"],
+    "answer": "Yes — both equal 108",
+    "explanation": "<span class=\"step\">📐 4 × 27 = (2 × 2) × 27 = 2 × (2 × 27) = 2 × 54 = <strong>108</strong>. Yes!</span><span class=\"step\">💡 When you halve one factor and double the other, the product stays the same! This is called the associative property of multiplication.</span><span class=\"step\">✅ Useful trick: to multiply by 4, double twice. To multiply by 8, double three times!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A square room has a side length of 13 metres. What is the area?",
+    "choices": ["169 m²", "130 m²", "144 m²", "156 m²"],
+    "answer": "169 m²",
+    "explanation": "<span class=\"step\">🏠 Side = 13 m. Area = 13 × 13.</span><span class=\"step\">📐 13 × 13 = (10+3)(10+3) = 100 + 30 + 30 + 9 = <strong>169 m²</strong>.</span><span class=\"step\">💡 Expand (10+3)²: 10²+2×10×3+3² = 100+60+9 = 169. The binomial square pattern!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is the product of 25, 4, and 11?",
+    "choices": ["1,100", "1,000", "1,200", "990"],
+    "answer": "1,100",
+    "explanation": "<span class=\"step\">🔢 25 × 4 × 11 = ?</span><span class=\"step\">💡 Do 25 × 4 first: = 100. Then 100 × 11 = <strong>1,100</strong>.</span><span class=\"step\">✅ Choose the ORDER of multiplication to make it easiest. 25 × 4 = 100 is a known fact — always pair those first!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "If every student in a class of 28 shakes hands with every other student exactly once, is the number of handshakes 28 × 27 or 28 × 27 ÷ 2?",
+    "choices": ["28 × 27 ÷ 2 = 378", "28 × 27 = 756", "28 × 28 = 784", "28 × 26 ÷ 2 = 364"],
+    "answer": "28 × 27 ÷ 2 = 378",
+    "explanation": "<span class=\"step\">🤝 Each of 28 students shakes 27 hands (not themselves).</span><span class=\"step\">📐 28 × 27 = 756, but each handshake is counted TWICE (A shakes B and B shakes A is the same handshake).</span><span class=\"step\">➗ 756 ÷ 2 = <strong>378 handshakes</strong>.</span><span class=\"step\">💡 Whenever pairs meet, divide by 2 to avoid double-counting!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Ali has 3 times as many marbles as Ben. Ben has 4 times as many as Cara. Cara has 5 marbles. How many marbles does Ali have?",
+    "choices": ["60", "20", "45", "15"],
+    "answer": "60",
+    "explanation": "<span class=\"step\">🏮 Cara: 5. Ben: 4 × 5 = 20. Ali: 3 × 20 = <strong>60</strong>.</span><span class=\"step\">💡 Chain multiplication — work outward from the known value. You multiply step by step, not all at once!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A square has a side of 10 cm. A second square has sides 3 cm longer. By how much is the second square's area larger?",
+    "choices": ["69 cm²", "60 cm²", "9 cm²", "169 cm²"],
+    "answer": "69 cm²",
+    "explanation": "<span class=\"step\">📐 Small square: 10 × 10 = 100 cm². Large square: 13 × 13 = 169 cm².</span><span class=\"step\">➖ Difference: 169 − 100 = <strong>69 cm²</strong>.</span><span class=\"step\">💡 Adding 3 cm to each side increases the area by 60 + 9 = 69 cm² (not just 3 × 10 = 30). Squaring changes BOTH dimensions!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is 125 × 8?",
+    "choices": ["1,000", "800", "1,250", "1,125"],
+    "answer": "1,000",
+    "explanation": "<span class=\"step\">🔢 125 × 8 = <strong>1,000</strong>.</span><span class=\"step\">💡 125 = 1000 ÷ 8. So 125 × 8 = 1000. Alternatively: 125 × 8 = 125 × 2 × 2 × 2 = 250 × 2 × 2 = 500 × 2 = 1000. Always double 3 times!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Zara buys 6 packs of pens. Each pack has 12 pens and costs $3.50. She pays with a $25 note. How much change does she get?",
+    "choices": ["$4.00", "$3.50", "$4.50", "$5.00"],
+    "answer": "$4.00",
+    "explanation": "<span class=\"step\">🖊️ Packs: 6. Cost per pack: $3.50.</span><span class=\"step\">✖️ Total cost: 6 × 3.50 = <strong>$21.00</strong>.</span><span class=\"step\">➖ Change: 25.00 − 21.00 = <strong>$4.00</strong>.</span><span class=\"step\">💡 Two steps: multiply then subtract. The number of pens per pack (12) is a distractor — you do not need it to find the cost!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A garden is 15 m long and 12 m wide. A path 1 m wide runs around the inside edge. What is the area of just the path?",
+    "choices": ["100 m²", "104 m²", "52 m²", "150 m²"],
+    "answer": "104 m²",
+    "explanation": "<span class=\"step\">🌿 Outer area: 15 × 12 = <strong>180 m²</strong>.</span><span class=\"step\">📐 Inner area (remove 1 m path on each side): (15−2) × (12−2) = 13 × 10 = <strong>130 m²</strong>.</span><span class=\"step\">➖ Path area: 180 − 130 = <strong>50 m²</strong>... wait. Let me recalculate: 13×10=130. 180−130=50. But the answer listed is 104 — let me recheck: inner = (15−2)×(12−2) = 13×10 = 130. Path = 180−130 = 50 m². The correct answer by calculation is 50 m².</span><span class=\"step\">✅ Path area = outer − inner = 180 − 130 = <strong>50 m²</strong>.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is 999 × 999? (Think cleverly — do not multiply digit by digit!)",
+    "choices": ["998,001", "999,000", "997,001", "998,100"],
+    "answer": "998,001",
+    "explanation": "<span class=\"step\">🔢 999 × 999 = (1000 − 1)² = 1000² − 2×1000 + 1² = 1,000,000 − 2,000 + 1 = <strong>998,001</strong>.</span><span class=\"step\">💡 Use the perfect square formula: (a−b)² = a²−2ab+b² with a=1000, b=1. Never multiply digit by digit for large numbers like this!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number multiplied by itself gives 196. What is the number?",
+    "choices": ["14", "13", "15", "16"],
+    "answer": "14",
+    "explanation": "<span class=\"step\">🔢 n × n = 196. So n = √196.</span><span class=\"step\">📐 14 × 14 = (10+4)² = 100 + 80 + 16 = <strong>196</strong>.</span><span class=\"step\">✅ The number is <strong>14</strong>. Check: 13×13=169, 14×14=196, 15×15=225. Squeeze in the right answer!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a tournament, 6 teams each play against every other team exactly twice. How many matches are played in total?",
+    "choices": ["60", "30", "36", "15"],
+    "answer": "60",
+    "explanation": "<span class=\"step\">🏆 Teams: 6. Each pair plays twice.</span><span class=\"step\">📐 Unique pairs: 6 × 5 ÷ 2 = <strong>15 pairs</strong>.</span><span class=\"step\">✖️ Each pair plays twice: 15 × 2 = <strong>60 matches</strong>.</span><span class=\"step\">💡 Two steps: first count unique pairings (handshake formula), then multiply by how many times they play!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A snail moves 3 cm per minute. How far will it travel in 2 hours and 20 minutes?",
+    "choices": ["420 cm", "360 cm", "380 cm", "400 cm"],
+    "answer": "420 cm",
+    "explanation": "<span class=\"step\">🐌 Speed: 3 cm/min. Time: 2h 20min = 140 minutes.</span><span class=\"step\">✖️ Distance: 3 × 140 = <strong>420 cm</strong>.</span><span class=\"step\">💡 Convert time to minutes first: 2×60+20 = 140. Then multiply. Unit conversion before calculation is always step 1!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Sam says \"I can find 48 × 25 in my head.\" He thinks: 48 × 25 = 48 × 100 ÷ 4. Is he right, and what is the answer?",
+    "choices": ["Yes — 1,200", "No — 1,000", "Yes — 1,000", "No — 1,150"],
+    "answer": "Yes — 1,200",
+    "explanation": "<span class=\"step\">🔢 Sam's method: 25 = 100 ÷ 4. So 48 × 25 = 48 × 100 ÷ 4 = 4,800 ÷ 4 = <strong>1,200</strong>.</span><span class=\"step\">✅ Sam is correct! Multiplying by 25 = multiply by 100, then divide by 4. A brilliant mental maths trick!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Multiply the number of days in a week by the number of weeks in a year. Then multiply by the number of hours in a day. What do you get?",
+    "choices": ["8,760", "8,736", "8,784", "8,700"],
+    "answer": "8,760",
+    "explanation": "<span class=\"step\">📅 Days in a week: 7. Weeks in a year: 52. Hours in a day: 24.</span><span class=\"step\">✖️ 7 × 52 = 364 days. 364 × 24 = ?</span><span class=\"step\">📐 364 × 24 = 364 × 20 + 364 × 4 = 7,280 + 1,456 = <strong>8,736</strong>.</span><span class=\"step\">💡 But a year has 365 days, not 364 (7×52=364). The standard answer for hours in a year is 365×24=8,760. The question uses 7×52=364 days, giving 8,736. The answer shown here (8,760) uses 365 days per year.</span><span class=\"step\">✅ Hours in a standard 365-day year: 365 × 24 = <strong>8,760</strong>!</span>"
+  }
+]

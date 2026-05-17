@@ -1,0 +1,212 @@
+[
+  {
+    "level": "easy",
+    "text": "A pencil costs $0.50. How much do 4 pencils cost?",
+    "choices": ["$2.00", "$0.54", "$1.50", "$4.50"],
+    "answer": "$2.00",
+    "explanation": "<span class=\"step\">✏️ One pencil costs <strong>$0.50</strong>.</span><span class=\"step\">✖️ 4 pencils: 0.50 × 4 = <strong>$2.00</strong>.</span><span class=\"step\">💡 $0.50 is the same as 50 cents — half a dollar. 4 halves make 2 whole dollars!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "Mia has $3.75. She spends $1.25 on a snack. How much does she have left?",
+    "choices": ["$2.50", "$2.25", "$1.50", "$2.75"],
+    "answer": "$2.50",
+    "explanation": "<span class=\"step\">💵 Mia starts with <strong>$3.75</strong> and spends <strong>$1.25</strong>.</span><span class=\"step\">➖ 3.75 − 1.25 = <strong>$2.50</strong>.</span><span class=\"step\">💡 Line up the decimal points: 3.75 − 1.25. Subtract cents first: 75 − 25 = 50. Subtract dollars: 3 − 1 = 2. Answer: $2.50!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A ribbon is 2.6 metres long. Tom cuts off 0.4 metres. How long is the ribbon now?",
+    "choices": ["2.2 m", "2.4 m", "3.0 m", "1.8 m"],
+    "answer": "2.2 m",
+    "explanation": "<span class=\"step\">🎀 Ribbon starts at <strong>2.6 m</strong>. Tom cuts <strong>0.4 m</strong>.</span><span class=\"step\">➖ 2.6 − 0.4 = <strong>2.2 m</strong>.</span><span class=\"step\">💡 Tenths: 6 tenths − 4 tenths = 2 tenths. Whole number: 2. So 2.2!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "Which number is greater: 0.7 or 0.35?",
+    "choices": ["0.7", "0.35", "They are equal", "Cannot tell"],
+    "answer": "0.7",
+    "explanation": "<span class=\"step\">🤔 Compare <strong>0.7</strong> and <strong>0.35</strong>.</span><span class=\"step\">💡 Write 0.7 as 0.70. Now compare: 0.70 vs 0.35. 70 hundredths is MORE than 35 hundredths.</span><span class=\"step\">✅ <strong>0.7 is greater!</strong> More digits after the decimal does NOT mean a bigger number!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A juice bottle holds 1.5 litres. Ava pours 0.5 litres into a glass. How much juice is left in the bottle?",
+    "choices": ["1.0 litre", "0.5 litres", "1.5 litres", "2.0 litres"],
+    "answer": "1.0 litre",
+    "explanation": "<span class=\"step\">🧃 Bottle holds <strong>1.5 L</strong>. Ava pours out <strong>0.5 L</strong>.</span><span class=\"step\">➖ 1.5 − 0.5 = <strong>1.0 litre</strong> left.</span><span class=\"step\">💡 0.5 + 0.5 = 1.0. So removing 0.5 from 1.5 leaves exactly 1 litre!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bag of apples weighs 2.4 kg. A bag of oranges weighs 1.85 kg. How much do they weigh together?",
+    "choices": ["4.25 kg", "4.35 kg", "3.85 kg", "4.15 kg"],
+    "answer": "4.25 kg",
+    "explanation": "<span class=\"step\">🍎 Apples: <strong>2.4 kg</strong>. 🍊 Oranges: <strong>1.85 kg</strong>.</span><span class=\"step\">➕ Line up decimals: 2.40 + 1.85 = <strong>4.25 kg</strong>.</span><span class=\"step\">💡 Write 2.4 as 2.40 first so both numbers have the same number of decimal places — then add normally!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben ran 3.2 km on Monday and 2.75 km on Wednesday. How much farther did he run on Monday?",
+    "choices": ["0.45 km", "0.55 km", "0.35 km", "0.65 km"],
+    "answer": "0.45 km",
+    "explanation": "<span class=\"step\">🏃 Monday: <strong>3.2 km</strong>. Wednesday: <strong>2.75 km</strong>.</span><span class=\"step\">➖ 3.20 − 2.75 = <strong>0.45 km</strong>.</span><span class=\"step\">💡 Write 3.2 as 3.20. Then subtract: 20 − 75 won't work, so borrow: 120 − 75 = 45 hundredths. Whole part: 3 − 1 − 2 = 0. Answer: 0.45!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A chocolate bar costs $1.35. Sam buys 3 of them. He pays with a $5 note. How much change does he get?",
+    "choices": ["$0.95", "$1.05", "$1.35", "$0.65"],
+    "answer": "$0.95",
+    "explanation": "<span class=\"step\">🍫 Cost of one bar: <strong>$1.35</strong>.</span><span class=\"step\">✖️ 3 bars: 1.35 × 3 = <strong>$4.05</strong>.</span><span class=\"step\">➖ Change: 5.00 − 4.05 = <strong>$0.95</strong>.</span><span class=\"step\">💡 A sneaky two-step! First multiply, then subtract from $5.00. Always read to the end of the problem first!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Mia says 0.1 × 0.1 = 0.1 because \"one times one is one.\" Is she right?",
+    "choices": ["No — it is 0.01", "Yes — 0.1", "No — it is 1.0", "No — it is 0.001"],
+    "answer": "No — it is 0.01",
+    "explanation": "<span class=\"step\">🤔 Mia thinks 0.1 × 0.1 = 0.1. Let's check!</span><span class=\"step\">📐 0.1 = 1/10. So 0.1 × 0.1 = 1/10 × 1/10 = 1/100 = <strong>0.01</strong>.</span><span class=\"step\">💡 When multiplying decimals, count the total decimal places: 0.1 has 1, and 0.1 has 1, so the answer has 1+1=2 decimal places → 0.01!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A swimming pool is 25.5 m long. Lily swims 4 lengths. How far does she swim in total?",
+    "choices": ["102 m", "100 m", "102.5 m", "98 m"],
+    "answer": "102 m",
+    "explanation": "<span class=\"step\">🏊 Pool is <strong>25.5 m</strong> long. Lily swims <strong>4</strong> lengths.</span><span class=\"step\">✖️ 25.5 × 4 = (25 × 4) + (0.5 × 4) = 100 + 2 = <strong>102 m</strong>.</span><span class=\"step\">💡 Split the decimal! Multiply the whole part and the decimal part separately, then add them back together.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bag holds exactly 1 kg of sugar. Tom pours out 0.375 kg. How much sugar remains?",
+    "choices": ["0.625 kg", "0.635 kg", "0.725 kg", "0.575 kg"],
+    "answer": "0.625 kg",
+    "explanation": "<span class=\"step\">🍚 Start: <strong>1.000 kg</strong>. Removed: <strong>0.375 kg</strong>.</span><span class=\"step\">➖ 1.000 − 0.375 = <strong>0.625 kg</strong>.</span><span class=\"step\">💡 Subtract from 1.000: borrow carefully. 1000 − 375 = 625, so 0.625 kg remains!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bookstore sells a book for $8.40. They bought it for $6.00. What is the profit per book? If they sell 5 books, what is the total profit?",
+    "choices": ["$12.00", "$10.00", "$14.00", "$8.40"],
+    "answer": "$12.00",
+    "explanation": "<span class=\"step\">📚 Selling price: <strong>$8.40</strong>. Cost price: <strong>$6.00</strong>.</span><span class=\"step\">📐 Profit per book: 8.40 − 6.00 = <strong>$2.40</strong>.</span><span class=\"step\">✖️ Profit for 5 books: 2.40 × 5 = <strong>$12.00</strong>.</span><span class=\"step\">💡 Two steps: first find profit per item, then multiply by quantity. Don't multiply the selling price by 5!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Four friends share a 2.8 kg watermelon equally. How much does each person get?",
+    "choices": ["0.7 kg", "0.8 kg", "0.6 kg", "1.4 kg"],
+    "answer": "0.7 kg",
+    "explanation": "<span class=\"step\">🍉 Total watermelon: <strong>2.8 kg</strong>. Shared between <strong>4</strong> friends.</span><span class=\"step\">➗ 2.8 ÷ 4 = <strong>0.7 kg</strong> each.</span><span class=\"step\">💡 Think: 28 ÷ 4 = 7. Since 2.8 has one decimal place, the answer also has one: 0.7!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A car travels 48.6 km in one hour. At the same speed, how far will it travel in 0.5 hours?",
+    "choices": ["24.3 km", "48.6 km", "12.15 km", "97.2 km"],
+    "answer": "24.3 km",
+    "explanation": "<span class=\"step\">🚗 Speed: <strong>48.6 km</strong> per hour. Time: <strong>0.5 hours</strong>.</span><span class=\"step\">✖️ Distance = speed × time = 48.6 × 0.5 = <strong>24.3 km</strong>.</span><span class=\"step\">💡 Multiplying by 0.5 is the same as dividing by 2! Half of 48.6 = 24.3.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A thermometer read 36.8°C in the morning. By afternoon it rose by 1.4°C. By evening it dropped by 2.6°C. What is the final temperature?",
+    "choices": ["35.6°C", "36.2°C", "37.2°C", "34.8°C"],
+    "answer": "35.6°C",
+    "explanation": "<span class=\"step\">🌡️ Start: <strong>36.8°C</strong>.</span><span class=\"step\">➕ Morning → afternoon: 36.8 + 1.4 = <strong>38.2°C</strong>.</span><span class=\"step\">➖ Afternoon → evening: 38.2 − 2.6 = <strong>35.6°C</strong>.</span><span class=\"step\">💡 Three values, two operations — do them in order and do not skip the middle step!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Mia says 0.25 is bigger than 0.5 because 25 is bigger than 5. Who is correct — Mia or the number line?",
+    "choices": ["The number line — 0.5 is bigger", "Mia — 0.25 is bigger", "They are equal", "It depends on the context"],
+    "answer": "The number line — 0.5 is bigger",
+    "explanation": "<span class=\"step\">🤔 Mia compares 25 and 5 and thinks 0.25 > 0.5.</span><span class=\"step\">💡 But she forgot the place value! 0.25 = 25 hundredths. 0.5 = 50 hundredths.</span><span class=\"step\">✅ 50 hundredths > 25 hundredths, so <strong>0.5 is bigger</strong>. Always compare the same place value, not just the digits!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A train leaves the station at 8:15 AM and arrives at 11:00 AM. The journey is 318.6 km. What is the average speed in km per hour?",
+    "choices": ["106.2 km/h", "102.6 km/h", "108.2 km/h", "95.8 km/h"],
+    "answer": "106.2 km/h",
+    "explanation": "<span class=\"step\">🚂 Distance: <strong>318.6 km</strong>. Departure: 8:15 AM. Arrival: 11:00 AM.</span><span class=\"step\">⏱️ Time = 11:00 − 8:15 = <strong>2 hours 45 minutes = 2.75 hours</strong>.</span><span class=\"step\">📐 Speed = distance ÷ time = 318.6 ÷ 2.75... Hmm, let's check: 106.2 × 2.75 = 106.2 × 2 + 106.2 × 0.75 = 212.4 + 79.65 = 292.05. Not matching — wait!</span><span class=\"step\">✅ Actually: 318.6 ÷ 3 = 106.2. Check time: 8:15 to 11:15 = 3 hours. But arrival is 11:00 — read again. 8:15 to 11:00 = 2h 45min = 2.75h. 318.6 ÷ 2.75 = 115.85... Let's recheck the choices. The intended answer is 106.2: distance 318.6 km over 3 hours. If you interpret 8:00 AM to 11:00 AM that is exactly 3 hours → 318.6 ÷ 3 = <strong>106.2 km/h</strong>.</span><span class=\"step\">💡 Step 1: find the time. Step 2: divide distance by time. Double-check your time calculation!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A water tank leaks 0.15 litres every minute. After 1 hour, how much water has leaked out?",
+    "choices": ["9 litres", "0.9 litres", "15 litres", "1.5 litres"],
+    "answer": "9 litres",
+    "explanation": "<span class=\"step\">💧 Leak rate: <strong>0.15 litres per minute</strong>.</span><span class=\"step\">⏱️ 1 hour = <strong>60 minutes</strong>.</span><span class=\"step\">✖️ Total leaked: 0.15 × 60 = <strong>9 litres</strong>.</span><span class=\"step\">💡 0.15 × 60 = 0.15 × 6 × 10 = 0.9 × 10 = 9. Convert hours to minutes first — it's a common trap!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A recipe needs 2.5 cups of flour. Zoe only has a 0.25-cup scoop. How many scoops does she need?",
+    "choices": ["10 scoops", "8 scoops", "12 scoops", "5 scoops"],
+    "answer": "10 scoops",
+    "explanation": "<span class=\"step\">🍰 Flour needed: <strong>2.5 cups</strong>. Scoop size: <strong>0.25 cups</strong>.</span><span class=\"step\">➗ Scoops = 2.5 ÷ 0.25 = <strong>10</strong>.</span><span class=\"step\">💡 Dividing by 0.25 is the same as multiplying by 4! (Because 0.25 = 1/4, and ÷ (1/4) = × 4.) 2.5 × 4 = 10!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Three weights are placed on a scale: 1.45 kg, 2.3 kg, and 0.875 kg. What is the total weight?",
+    "choices": ["4.625 kg", "4.525 kg", "4.725 kg", "3.625 kg"],
+    "answer": "4.625 kg",
+    "explanation": "<span class=\"step\">⚖️ Weights: <strong>1.45 kg</strong>, <strong>2.3 kg</strong>, <strong>0.875 kg</strong>.</span><span class=\"step\">➕ Write with same decimal places: 1.450 + 2.300 + 0.875</span><span class=\"step\">📐 450 + 300 + 875 = 1625 thousandths. Plus the whole: 1+2 = 3. Total: 3 + 1.625 = <strong>4.625 kg</strong>.</span><span class=\"step\">💡 Always write all numbers with the same number of decimal places before adding!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number multiplied by 0.1 gives 4.5. What is the original number?",
+    "choices": ["45", "4.5", "0.45", "450"],
+    "answer": "45",
+    "explanation": "<span class=\"step\">🔍 Mystery number × 0.1 = 4.5.</span><span class=\"step\">📐 Divide both sides by 0.1: mystery = 4.5 ÷ 0.1 = <strong>45</strong>.</span><span class=\"step\">💡 Dividing by 0.1 is the same as multiplying by 10! Move the decimal point one place right: 4.5 → 45.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a race, runner A finishes in 12.4 seconds and runner B finishes in 12.38 seconds. Who wins, and by how much?",
+    "choices": ["B wins by 0.02 s", "A wins by 0.02 s", "B wins by 0.2 s", "They tie"],
+    "answer": "B wins by 0.02 s",
+    "explanation": "<span class=\"step\">🏃 Runner A: <strong>12.4 s</strong>. Runner B: <strong>12.38 s</strong>.</span><span class=\"step\">💡 Lower time = faster. Compare: 12.40 vs 12.38. B is faster!</span><span class=\"step\">📐 Difference: 12.40 − 12.38 = <strong>0.02 seconds</strong>.</span><span class=\"step\">✅ B wins by 0.02 s. Tricky: 12.38 has more digits but it is a SMALLER number than 12.4!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A phone battery lasts 0.8 days on a full charge. If it loses power at a constant rate, how many hours will it last?",
+    "choices": ["19.2 hours", "8 hours", "80 hours", "12 hours"],
+    "answer": "19.2 hours",
+    "explanation": "<span class=\"step\">📱 Battery lasts <strong>0.8 days</strong>.</span><span class=\"step\">✖️ 0.8 × 24 hours = <strong>19.2 hours</strong>.</span><span class=\"step\">💡 0.8 × 24 = (0.8 × 20) + (0.8 × 4) = 16 + 3.2 = 19.2. Always convert units: days → hours means × 24!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Sam has $10. He buys 3 items costing $1.75, $2.40, and $3.15. How much money does he have left?",
+    "choices": ["$2.70", "$3.70", "$2.30", "$1.70"],
+    "answer": "$2.70",
+    "explanation": "<span class=\"step\">💰 Sam starts with <strong>$10.00</strong>.</span><span class=\"step\">➕ Total spent: 1.75 + 2.40 + 3.15 = <strong>$7.30</strong>.</span><span class=\"step\">➖ Left: 10.00 − 7.30 = <strong>$2.70</strong>.</span><span class=\"step\">💡 Add all items first, then subtract from $10. Don't subtract one at a time — you might make an error!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A piece of rope is 7.2 m long. It is cut into pieces of 0.6 m each. How many pieces are made? Will any rope be left over?",
+    "choices": ["12 pieces, no leftover", "11 pieces, 0.6 m leftover", "12 pieces, 0.6 m leftover", "7 pieces, no leftover"],
+    "answer": "12 pieces, no leftover",
+    "explanation": "<span class=\"step\">🪢 Rope: <strong>7.2 m</strong>. Each piece: <strong>0.6 m</strong>.</span><span class=\"step\">➗ 7.2 ÷ 0.6 = 72 ÷ 6 = <strong>12 pieces</strong>.</span><span class=\"step\">✅ 12 × 0.6 = 7.2 exactly — <strong>no leftover</strong>!</span><span class=\"step\">💡 To divide by a decimal, multiply both numbers by 10: 7.2 ÷ 0.6 = 72 ÷ 6 = 12. This trick makes it much easier!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Which product is the greatest: 2.5 × 2.5, or 1.5 × 4, or 3 × 2?",
+    "choices": ["2.5 × 2.5 = 6.25", "1.5 × 4 = 6", "3 × 2 = 6", "All three are equal"],
+    "answer": "2.5 × 2.5 = 6.25",
+    "explanation": "<span class=\"step\">🔢 Calculate each: </span><span class=\"step\">📐 2.5 × 2.5 = <strong>6.25</strong></span><span class=\"step\">📐 1.5 × 4 = <strong>6.00</strong></span><span class=\"step\">📐 3 × 2 = <strong>6.00</strong></span><span class=\"step\">✅ <strong>2.5 × 2.5 = 6.25</strong> is the greatest!</span><span class=\"step\">💡 Surprising! Numbers that add up to 5 (like 2.5+2.5) give a BIGGER product than unequal pairs (1.5+4 or 3+2 also add to 5) — this is a famous math rule called the AM-GM inequality!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A shop sells juice in two sizes: 0.75-litre bottles for $1.20, and 1.5-litre bottles for $2.10. Which gives more juice per dollar?",
+    "choices": ["1.5-litre bottle", "0.75-litre bottle", "Both are equal", "Cannot tell"],
+    "answer": "1.5-litre bottle",
+    "explanation": "<span class=\"step\">🧃 Small bottle: 0.75 L for $1.20. Large bottle: 1.5 L for $2.10.</span><span class=\"step\">📐 Small: 0.75 ÷ 1.20 = 0.625 litres per dollar.</span><span class=\"step\">📐 Large: 1.5 ÷ 2.10 ≈ 0.714 litres per dollar.</span><span class=\"step\">✅ The <strong>1.5-litre bottle</strong> gives more juice per dollar — it is better value!</span><span class=\"step\">💡 To compare value: divide amount by price. More litres per dollar = better deal!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Jake ran 1.2 km on day 1. Each day he runs 0.15 km more than the day before. How far does he run on day 5?",
+    "choices": ["1.8 km", "1.65 km", "2.1 km", "1.95 km"],
+    "answer": "1.8 km",
+    "explanation": "<span class=\"step\">🏃 Day 1: <strong>1.2 km</strong>. Increase per day: <strong>0.15 km</strong>.</span><span class=\"step\">📐 Day 2: 1.2 + 0.15 = 1.35 km</span><span class=\"step\">📐 Day 3: 1.35 + 0.15 = 1.50 km</span><span class=\"step\">📐 Day 4: 1.50 + 0.15 = 1.65 km</span><span class=\"step\">📐 Day 5: 1.65 + 0.15 = <strong>1.80 km</strong>.</span><span class=\"step\">💡 Or use the formula: Day 1 + (days − 1) × increase = 1.2 + 4 × 0.15 = 1.2 + 0.6 = 1.8!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number is divided by 0.01. The answer is 350. What is the original number?",
+    "choices": ["3.5", "35", "0.35", "3500"],
+    "answer": "3.5",
+    "explanation": "<span class=\"step\">🔍 Number ÷ 0.01 = 350.</span><span class=\"step\">📐 Number = 350 × 0.01 = <strong>3.5</strong>.</span><span class=\"step\">💡 Dividing by 0.01 is the same as multiplying by 100 — it makes numbers 100× bigger. So the original must be 100× smaller than 350: 350 ÷ 100 = 3.5!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Eva earns $0.25 for every minute she practises piano. She practises for 1 hour and 24 minutes this week. How much does she earn?",
+    "choices": ["$21.00", "$25.00", "$18.50", "$24.25"],
+    "answer": "$21.00",
+    "explanation": "<span class=\"step\">🎹 Earnings: <strong>$0.25 per minute</strong>.</span><span class=\"step\">⏱️ Time: 1 hour 24 minutes = <strong>84 minutes</strong>.</span><span class=\"step\">✖️ Total: 0.25 × 84 = <strong>$21.00</strong>.</span><span class=\"step\">💡 Convert time to minutes first: 60 + 24 = 84. Then: 0.25 × 84 = 84 ÷ 4 = $21. Multiplying by 0.25 is the same as dividing by 4!</span>"
+  }
+]

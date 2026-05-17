@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+  Math Champions — Quiz Template
+  A single template for ALL subjects. The subject is chosen via the URL:
+    quiz.html?subject=addition
+    quiz.html?subject=subtraction
+    quiz.html?subject=multiplication
+    quiz.html?subject=division
+    quiz.html?subject=fractions
+    quiz.html?subject=decimals
+    quiz.html?subject=percentages
+
+  NOTE: This page uses fetch() to load question data.
+  For local testing you must serve over HTTP, not file://.
+  Run:  python3 -m http.server
+  Then: http://localhost:8000/quiz.html?subject=addition
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Champions</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<header class="quiz-header">
+  <a class="home-link" href="index.html">← All Quizzes</a>
+  <h1 id="quiz-title">🏆 Math Champions</h1>
+  <p id="quiz-subtitle">Loading…</p>
+  <div class="scoreboard">
+    <span>✅ Correct: <span id="score-correct">0</span></span>
+    <span>❌ Wrong: <span id="score-wrong">0</span></span>
+    <span>📋 Done: <span id="score-done">0</span> / <span id="score-total">30</span></span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <div class="progress-label" id="progress-label">Loading…</div>
+  <button class="progress-btn" onclick="showProgressPanel()">📊 My Progress</button>
+</header>
+
+<main class="quiz-main" id="main"></main>
+
+<script src="js/quiz.js"></script>
+</body>
+</html>

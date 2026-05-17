@@ -1,0 +1,314 @@
+[
+  {
+    "level": "easy",
+    "text": "Sam has 80 marbles. He loses 35 in a game. How many does he have left? (Many kids say 55 — think again!)",
+    "choices": [
+      "45",
+      "55",
+      "35",
+      "40"
+    ],
+    "answer": "45",
+    "explanation": "<span class=\"step\">🎯 80 − 35 = ?</span><span class=\"step\">📐 80 − 35: 80 − 30 = 50, then 50 − 5 = <strong>45</strong>.</span><span class=\"step\">💡 The common wrong answer is 55 — that comes from doing 80 − 25. Always double-check your subtraction!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A jar has 100 sweets. 64 are eaten. How many are left?",
+    "choices": [
+      "36",
+      "46",
+      "34",
+      "26"
+    ],
+    "answer": "36",
+    "explanation": "<span class=\"step\">🍬 100 − 64 = ?</span><span class=\"step\">📐 100 − 64 = 100 − 60 − 4 = 40 − 4 = <strong>36</strong>.</span><span class=\"step\">💡 Subtracting from 100 is easy: the answer is always the \"complement\". 64 + 36 = 100!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A rope is 50 cm long. A piece of 18 cm is cut off. How long is the remaining rope?",
+    "choices": [
+      "32 cm",
+      "28 cm",
+      "38 cm",
+      "22 cm"
+    ],
+    "answer": "32 cm",
+    "explanation": "<span class=\"step\">🪢 50 − 18 = ?</span><span class=\"step\">📐 50 − 18: 50 − 20 = 30, but we subtracted 2 too many, so add back 2: 30 + 2 = <strong>32 cm</strong>.</span><span class=\"step\">💡 Round the number you subtract to the nearest 10, then correct the difference!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "There are 75 birds in a tree. 75 fly away. How many birds are left in the tree?",
+    "choices": [
+      "0",
+      "75",
+      "1",
+      "150"
+    ],
+    "answer": "0",
+    "explanation": "<span class=\"step\">🐦 75 − 75 = <strong>0</strong>.</span><span class=\"step\">💡 Any number minus itself always equals zero! If all the birds fly away, none remain.</span><span class=\"step\">✅ This seems obvious, but the trick is not to overthink it — the answer really is 0!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A library has 200 books. 73 are borrowed. How many are still on the shelves?",
+    "choices": [
+      "127",
+      "137",
+      "123",
+      "117"
+    ],
+    "answer": "127",
+    "explanation": "<span class=\"step\">📚 200 − 73 = ?</span><span class=\"step\">📐 200 − 73: 200 − 70 = 130. 130 − 3 = <strong>127</strong>.</span><span class=\"step\">💡 Subtract in parts: tens first, then ones. This avoids messy borrowing!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A tank holds 500 litres. 175 litres are used on Monday and 148 litres on Tuesday. How much is left?",
+    "choices": [
+      "177 litres",
+      "185 litres",
+      "197 litres",
+      "167 litres"
+    ],
+    "answer": "177 litres",
+    "explanation": "<span class=\"step\">🪣 Start: 500 L. Monday: −175. Tuesday: −148.</span><span class=\"step\">➕ Total used: 175 + 148 = <strong>323 litres</strong>.</span><span class=\"step\">➖ Left: 500 − 323 = <strong>177 litres</strong>.</span><span class=\"step\">💡 Add the amounts used first, then subtract once from 500. One big subtraction is easier than two!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "In an election, 450 people could vote. Candidate A got 248 votes, Candidate B got 189 votes, and 13 people did not vote. Does every vote and non-vote account for all 450 people?",
+    "choices": [
+      "Yes — 248+189+13 = 450",
+      "No — 13 people are missing",
+      "No — there are 452 total",
+      "Yes — but only if you ignore spoiled ballots"
+    ],
+    "answer": "Yes — 248+189+13 = 450",
+    "explanation": "<span class=\"step\">🗳️ A: 248. B: 189. Did not vote: 13.</span><span class=\"step\">➕ 248 + 189 = 437. 437 + 13 = <strong>450</strong>.</span><span class=\"step\">✅ Every person is accounted for: 248 + 189 + 13 = 450 exactly!</span><span class=\"step\">💡 Check by subtracting: 450 − 248 = 202. 202 − 189 = 13. The 13 non-voters fill the gap perfectly!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Zoe has $50. She spends half of it on Monday. Then she spends half of what remains on Tuesday. How much does she have left?",
+    "choices": [
+      "$12.50",
+      "$10",
+      "$25",
+      "$5"
+    ],
+    "answer": "$12.50",
+    "explanation": "<span class=\"step\">💰 Start: $50.</span><span class=\"step\">➖ Monday: spend half → 50 ÷ 2 = $25 left.</span><span class=\"step\">➖ Tuesday: spend half of $25 → 25 ÷ 2 = <strong>$12.50</strong> left.</span><span class=\"step\">💡 \"Half of what remains\" — this is a chain. You must do step 1 BEFORE step 2. Spending half twice is NOT the same as spending all of it!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A factory made 1,000 toys. 234 were defective and thrown away. Of the remaining toys, 312 were sold. How many are left in the warehouse?",
+    "choices": [
+      "454",
+      "466",
+      "544",
+      "456"
+    ],
+    "answer": "454",
+    "explanation": "<span class=\"step\">🏭 Start: 1,000.</span><span class=\"step\">➖ Defective: 1,000 − 234 = <strong>766</strong> remaining.</span><span class=\"step\">➖ Sold: 766 − 312 = <strong>454</strong> in warehouse.</span><span class=\"step\">💡 Two subtractions in order. Never subtract 234 + 312 from 1000 unless you check: 546 ≠ 454. Always go step by step!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is 1000 − 1?",
+    "choices": [
+      "999",
+      "989",
+      "1001",
+      "900"
+    ],
+    "answer": "999",
+    "explanation": "<span class=\"step\">🔢 1000 − 1 = <strong>999</strong>.</span><span class=\"step\">💡 Simple, but many kids write 989 by accident when borrowing. 1000 − 1: the last digit becomes 9, and all borrowing cascades: 1000 → 0999+1 → 999.</span><span class=\"step\">✅ Check: 999 + 1 = 1000. Correct!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A school collected 850 cans for charity. Class A brought 275, Class B brought 310. How many did all other classes bring together?",
+    "choices": [
+      "265",
+      "285",
+      "275",
+      "260"
+    ],
+    "answer": "265",
+    "explanation": "<span class=\"step\">🥫 Total: 850. Class A: 275. Class B: 310.</span><span class=\"step\">➕ A + B = 275 + 310 = <strong>585</strong>.</span><span class=\"step\">➖ Others: 850 − 585 = <strong>265</strong>.</span><span class=\"step\">💡 Add the known groups first, then subtract the total from the grand total.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben starts with some money. He spends $135 and has $298 left. How much did he start with?",
+    "choices": [
+      "$433",
+      "$163",
+      "$423",
+      "$443"
+    ],
+    "answer": "$433",
+    "explanation": "<span class=\"step\">💵 ? − 135 = 298.</span><span class=\"step\">📐 Start = 298 + 135 = <strong>$433</strong>.</span><span class=\"step\">💡 Subtraction and addition are opposites! To find the starting amount, ADD what was spent back to what is left.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A number is 348 less than 1,000. What is the number? Then subtract 152 from it. What do you get?",
+    "choices": [
+      "500",
+      "652",
+      "348",
+      "600"
+    ],
+    "answer": "500",
+    "explanation": "<span class=\"step\">🔢 Step 1: 1000 − 348 = <strong>652</strong>.</span><span class=\"step\">➖ Step 2: 652 − 152 = <strong>500</strong>.</span><span class=\"step\">💡 Two operations in sequence — never skip the middle step! 652 − 152: 600 − 100 = 500, 52 − 52 = 0. Answer: 500!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Maya counts backwards from 500 in steps of 7. What is the 5th number she says?",
+    "choices": [
+      "465",
+      "468",
+      "472",
+      "460"
+    ],
+    "answer": "465",
+    "explanation": "<span class=\"step\">🔢 Start: 500. Subtract 7 each step.</span><span class=\"step\">📐 1st: 493. 2nd: 486. 3rd: 479. 4th: 472. 5th: <strong>465</strong>.</span><span class=\"step\">💡 Or: 500 − (5 × 7) = 500 − 35 = 465. Multiplying the step size is faster than subtracting 5 times!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bookshelf had 120 books. Ali removed some, and now there are 84. How many did he remove? If he then puts back 15, how many books are on the shelf?",
+    "choices": [
+      "99",
+      "51",
+      "69",
+      "84"
+    ],
+    "answer": "99",
+    "explanation": "<span class=\"step\">📚 Removed: 120 − 84 = <strong>36 books</strong>.</span><span class=\"step\">➕ After putting back 15: 84 + 15 = <strong>99 books</strong>.</span><span class=\"step\">💡 The question asks how many are on the shelf after putting books back, NOT how many were removed. Read the last sentence carefully!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "The population of a town was 12,450. Over three years: 1,230 people left, 870 were born, and 560 people moved in. What is the population now?",
+    "choices": [
+      "12,650",
+      "12,590",
+      "12,450",
+      "12,700"
+    ],
+    "answer": "12,650",
+    "explanation": "<span class=\"step\">🏘️ Start: 12,450.</span><span class=\"step\">➖ Left: 12,450 − 1,230 = 11,220.</span><span class=\"step\">➕ Born: 11,220 + 870 = 12,090.</span><span class=\"step\">➕ Moved in: 12,090 + 560 = <strong>12,650</strong>.</span><span class=\"step\">💡 Track each change in order — some add to the population, some subtract. Never lump them together without checking the direction!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is the difference between the largest 3-digit number and the smallest 3-digit number?",
+    "choices": [
+      "899",
+      "900",
+      "898",
+      "990"
+    ],
+    "answer": "899",
+    "explanation": "<span class=\"step\">🔢 Largest 3-digit number: <strong>999</strong>. Smallest: <strong>100</strong>.</span><span class=\"step\">➖ 999 − 100 = <strong>899</strong>.</span><span class=\"step\">💡 \"Largest 3-digit\" = 999. \"Smallest 3-digit\" = 100 (not 0 or 1 — those are 1-digit). The difference is 899!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A swimming pool holds 8,000 litres. It leaks 45 litres per hour. After one full day, how much water is left?",
+    "choices": [
+      "6,920 litres",
+      "7,000 litres",
+      "6,900 litres",
+      "7,920 litres"
+    ],
+    "answer": "6,920 litres",
+    "explanation": "<span class=\"step\">💧 Pool: 8,000 L. Leak: 45 L/hour. Time: 24 hours.</span><span class=\"step\">✖️ Leaked: 45 × 24 = 1,080 litres.</span><span class=\"step\">➖ Left: 8,000 − 1,080 = <strong>6,920 litres</strong>.</span><span class=\"step\">💡 First find the total leaked (multiply), THEN subtract from the full amount. Two steps, not one!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Ali had some money. He spent $248, then earned $175, then spent $312. He now has $415. How much did he start with?",
+    "choices": [
+      "$800",
+      "$750",
+      "$900",
+      "$850"
+    ],
+    "answer": "$800",
+    "explanation": "<span class=\"step\">💰 Work backwards: he ends with $415.</span><span class=\"step\">➕ Before last spend ($312): 415 + 312 = <strong>$727</strong>.</span><span class=\"step\">➖ Before earning ($175): 727 − 175 = <strong>$552</strong>.</span><span class=\"step\">➕ Before first spend ($248): 552 + 248 = <strong>$800</strong>.</span><span class=\"step\">💡 Work backwards and REVERSE each operation: spending becomes adding, earning becomes subtracting!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "There are 5,000 items in a warehouse. 1,347 are red, 2,189 are blue, and the rest are green. How many are green?",
+    "choices": [
+      "464",
+      "474",
+      "564",
+      "446"
+    ],
+    "answer": "464",
+    "explanation": "<span class=\"step\">📦 Total: 5,000. Red: 1,347. Blue: 2,189.</span><span class=\"step\">➕ Red + Blue = 1,347 + 2,189 = <strong>3,536</strong>.</span><span class=\"step\">➖ Green: 5,000 − 3,536 = <strong>464</strong>.</span><span class=\"step\">💡 Add the known quantities, then subtract from the total. A common mistake: calculating 5000−1347 first, then −2189 separately (which works but is trickier).</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number decreased by 175 is 489. What is the number? Now decrease THAT answer by 213. What do you get?",
+    "choices": [
+      "451",
+      "664",
+      "277",
+      "501"
+    ],
+    "answer": "451",
+    "explanation": "<span class=\"step\">🔢 Step 1: ? − 175 = 489 → ? = 489 + 175 = <strong>664</strong>.</span><span class=\"step\">➖ Step 2: 664 − 213 = <strong>451</strong>.</span><span class=\"step\">💡 To reverse a subtraction, you ADD. Then apply the second subtraction to your new number — two clean steps!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "On a number line, if you start at 1,000 and make 8 jumps of 75 to the left, where do you land?",
+    "choices": [
+      "400",
+      "425",
+      "500",
+      "375"
+    ],
+    "answer": "400",
+    "explanation": "<span class=\"step\">📐 Start: 1,000. Each jump: −75. Number of jumps: 8.</span><span class=\"step\">✖️ Total distance: 75 × 8 = <strong>600</strong>.</span><span class=\"step\">➖ Landing point: 1,000 − 600 = <strong>400</strong>.</span><span class=\"step\">💡 Multiplying the jump size × number of jumps is far faster than subtracting 75 eight times!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "The sum of two numbers is 1,250. One number is 487. What is the other number? Now subtract 193 from the smaller of the two numbers.",
+    "choices": [
+      "570",
+      "763",
+      "950",
+      "680"
+    ],
+    "answer": "570",
+    "explanation": "<span class=\"step\">🔢 Sum = 1,250. One number = 487. Other = 1,250 − 487 = <strong>763</strong>.</span><span class=\"step\">🔍 Smaller number: 487 (since 487 < 763).</span><span class=\"step\">➖ Subtract 193 from the OTHER number (763): 763 − 193 = <strong>570</strong>.</span><span class=\"step\">✅ Answer: <strong>570</strong>.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A baker baked 500 cookies. She sold some on day 1 and had 347 left. On day 2 she baked 200 more, then sold 275. How many cookies does she have now?",
+    "choices": [
+      "272",
+      "285",
+      "300",
+      "247"
+    ],
+    "answer": "272",
+    "explanation": "<span class=\"step\">🍪 Start: 500. After day 1 sales: <strong>347 left</strong>.</span><span class=\"step\">➕ Baked 200 more: 347 + 200 = <strong>547</strong>.</span><span class=\"step\">➖ Sold 275: 547 − 275 = <strong>272</strong>.</span><span class=\"step\">💡 Careful: she had 347 left (not 500) when she baked more. Always use the CURRENT amount, not the starting amount!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is 10,000 − 3,456 − 2,544?",
+    "choices": [
+      "4,000",
+      "4,100",
+      "3,900",
+      "5,000"
+    ],
+    "answer": "4,000",
+    "explanation": "<span class=\"step\">🔢 10,000 − 3,456 − 2,544.</span><span class=\"step\">💡 Spot the pair: 3,456 + 2,544 = 6,000 (check: 456 + 544 = 1,000 ✓, 3+2=5, total 6,000).</span><span class=\"step\">➖ 10,000 − 6,000 = <strong>4,000</strong>.</span><span class=\"step\">✅ Adding the subtractors first turns two hard subtractions into one easy one!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Cara has a ribbon 3 metres long. She cuts off pieces of 45 cm, 75 cm, and 80 cm. How much ribbon remains? (Be careful with units!)",
+    "choices": [
+      "100 cm",
+      "200 cm",
+      "150 cm",
+      "50 cm"
+    ],
+    "answer": "100 cm",
+    "explanation": "<span class=\"step\">🎀 Total ribbon: 3 m = <strong>300 cm</strong>.</span><span class=\"step\">➕ Total cut: 45 + 75 + 80 = <strong>200 cm</strong>.</span><span class=\"step\">➖ Remaining: 300 − 200 = <strong>100 cm</strong>.</span><span class=\"step\">💡 The trap: mixing metres and centimetres. Always convert to the same unit FIRST — then solve!</span>"
+  }
+]

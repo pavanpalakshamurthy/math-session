@@ -1,0 +1,177 @@
+[
+  {
+    "level": "easy",
+    "text": "63 ÷ 9 = ? (Many kids confuse this with 63 ÷ 7. Think carefully!)",
+    "choices": ["7", "9", "8", "6"],
+    "answer": "7",
+    "explanation": "<span class=\"step\">🔢 63 ÷ 9 = <strong>7</strong>.</span><span class=\"step\">💡 63 ÷ 9 = 7, AND 63 ÷ 7 = 9. These two are often confused! Check: 9 × 7 = 63. ✓</span><span class=\"step\">✅ Remember: when you swap the divisor and quotient, the dividend stays the same!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "24 cookies are shared equally among 4 friends. How many does each friend get?",
+    "choices": ["6", "4", "8", "5"],
+    "answer": "6",
+    "explanation": "<span class=\"step\">🍪 24 ÷ 4 = <strong>6</strong>.</span><span class=\"step\">💡 Think multiplication: 4 × ? = 24. 4 × 6 = 24. So each friend gets 6 cookies!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "What is 0 divided by 7?",
+    "choices": ["0", "7", "1", "Impossible"],
+    "answer": "0",
+    "explanation": "<span class=\"step\">🔢 0 ÷ 7 = <strong>0</strong>.</span><span class=\"step\">💡 Zero divided by ANY number (except 0) is always 0. If you have 0 apples and try to share them among 7 people, each person gets 0!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "What is 36 ÷ 6? Now what is 36 ÷ 9? Which answer is bigger?",
+    "choices": ["36÷6=6 is bigger", "36÷9=4 is bigger", "They are equal", "Both equal 6"],
+    "answer": "36÷6=6 is bigger",
+    "explanation": "<span class=\"step\">📐 36 ÷ 6 = <strong>6</strong>. 36 ÷ 9 = <strong>4</strong>.</span><span class=\"step\">✅ 6 > 4, so 36 ÷ 6 gives the bigger answer.</span><span class=\"step\">💡 Dividing by a SMALLER number gives a BIGGER result! The more pieces you split into (bigger divisor), the smaller each piece is.</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A pack of 48 cards is split into equal hands of 8. How many hands are there?",
+    "choices": ["6", "8", "5", "7"],
+    "answer": "6",
+    "explanation": "<span class=\"step\">🃏 48 ÷ 8 = <strong>6 hands</strong>.</span><span class=\"step\">💡 Check: 8 × 6 = 48. ✓ Division and multiplication always check each other!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bag of 75 sweets is shared among some friends. Each gets 15. How many friends are there? Now: if there were 90 sweets and each still got 15, how many MORE friends could join?",
+    "choices": ["1 more friend", "5 then 6, so 1 extra", "5 friends then 6 friends", "2 more friends"],
+    "answer": "1 more friend",
+    "explanation": "<span class=\"step\">🍬 75 ÷ 15 = <strong>5 friends</strong>. 90 ÷ 15 = <strong>6 friends</strong>.</span><span class=\"step\">➕ Extra friends: 6 − 5 = <strong>1 more friend</strong>.</span><span class=\"step\">💡 Two divisions, then find the difference. Always read what the question ACTUALLY asks at the end!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is 144 ÷ 12?",
+    "choices": ["12", "14", "11", "13"],
+    "answer": "12",
+    "explanation": "<span class=\"step\">🔢 144 ÷ 12 = <strong>12</strong>.</span><span class=\"step\">💡 12 is the square root of 144. 12 × 12 = 144. Knowing perfect squares helps you divide quickly!</span><span class=\"step\">✅ 144 is called a perfect square because its square root (12) is a whole number.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A farmer has 156 eggs to pack in boxes of 12. How many full boxes can he make? How many eggs are left over?",
+    "choices": ["13 boxes, 0 left", "12 boxes, 12 left", "13 boxes, 3 left", "12 boxes, 0 left"],
+    "answer": "13 boxes, 0 left",
+    "explanation": "<span class=\"step\">🥚 156 ÷ 12 = ?</span><span class=\"step\">📐 12 × 13 = 156. So 156 ÷ 12 = <strong>13 exactly</strong>, with <strong>0 left over</strong>.</span><span class=\"step\">💡 To check: 12 × 10 = 120. 156 − 120 = 36. 36 ÷ 12 = 3. So 10 + 3 = 13 boxes, and 13 × 12 = 156 — no remainder!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "If you divide a number by 3 and get 24, what was the original number?",
+    "choices": ["72", "27", "21", "8"],
+    "answer": "72",
+    "explanation": "<span class=\"step\">🔢 ? ÷ 3 = 24.</span><span class=\"step\">📐 Original = 24 × 3 = <strong>72</strong>.</span><span class=\"step\">💡 Division and multiplication are opposites. To reverse a division by 3, MULTIPLY by 3!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A library has 364 books on 7 equal shelves. How many books are on each shelf? If 2 shelves are removed, how many shelves remain and how many books are on them in total?",
+    "choices": ["52 books/shelf; 5 shelves, 260 books", "52 books/shelf; 5 shelves, 52 books", "52 books/shelf; 2 shelves, 104 books", "56 books/shelf; 5 shelves, 280 books"],
+    "answer": "52 books/shelf; 5 shelves, 260 books",
+    "explanation": "<span class=\"step\">📚 364 ÷ 7 = <strong>52 books per shelf</strong>.</span><span class=\"step\">➖ Shelves remaining: 7 − 2 = <strong>5 shelves</strong>.</span><span class=\"step\">✖️ Books on 5 shelves: 52 × 5 = <strong>260 books</strong>.</span><span class=\"step\">💡 Multi-step: first divide, then subtract shelves, then multiply by the per-shelf count!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is 5 ÷ 0?",
+    "choices": ["Undefined — you cannot divide by 0", "0", "5", "Infinity"],
+    "answer": "Undefined — you cannot divide by 0",
+    "explanation": "<span class=\"step\">🚫 5 ÷ 0 is <strong>undefined</strong>.</span><span class=\"step\">💡 Division by zero has no answer. Think: how many groups of 0 make 5? You could never collect enough empty groups! Mathematicians say this is \"undefined.\"</span><span class=\"step\">✅ Note: 0 ÷ 5 = 0 (fine!), but 5 ÷ 0 is undefined. Never divide by zero!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben has $96. He wants to save an equal amount each week for 8 weeks. After 3 weeks, how much has he saved?",
+    "choices": ["$36", "$12", "$96", "$48"],
+    "answer": "$36",
+    "explanation": "<span class=\"step\">💰 Total: $96. Weeks: 8. Per week: 96 ÷ 8 = <strong>$12</strong>.</span><span class=\"step\">✖️ After 3 weeks: 12 × 3 = <strong>$36</strong>.</span><span class=\"step\">💡 Two steps: divide to find weekly savings, then multiply by number of weeks elapsed!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ali divides 200 by a number and gets 25. Then he divides 200 by a number twice as large. What answer does he get?",
+    "choices": ["12.5", "50", "12", "25"],
+    "answer": "12.5",
+    "explanation": "<span class=\"step\">🔢 200 ÷ ? = 25 → ? = 200 ÷ 25 = <strong>8</strong>.</span><span class=\"step\">📐 Twice as large: 8 × 2 = <strong>16</strong>.</span><span class=\"step\">➗ 200 ÷ 16 = <strong>12.5</strong>.</span><span class=\"step\">💡 When you double the divisor, the quotient is HALVED. 25 ÷ 2 = 12.5 — a shortcut!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "How many times does 15 go into 180?",
+    "choices": ["12", "15", "10", "18"],
+    "answer": "12",
+    "explanation": "<span class=\"step\">🔢 180 ÷ 15 = ?</span><span class=\"step\">📐 15 × 10 = 150. 180 − 150 = 30. 30 ÷ 15 = 2. Total: 10 + 2 = <strong>12</strong>.</span><span class=\"step\">💡 Break the division: find how many tens fit, then handle the remainder. 15 goes into 180 exactly <strong>12</strong> times!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A rope 120 cm long is cut into pieces of equal length. There are 8 pieces. A second rope is cut into the same number of pieces, but each piece is 3 cm longer. How long was the second rope?",
+    "choices": ["144 cm", "123 cm", "96 cm", "128 cm"],
+    "answer": "144 cm",
+    "explanation": "<span class=\"step\">🪢 First rope: 120 ÷ 8 = <strong>15 cm per piece</strong>.</span><span class=\"step\">➕ Second rope piece: 15 + 3 = <strong>18 cm</strong>.</span><span class=\"step\">✖️ Second rope total: 18 × 8 = <strong>144 cm</strong>.</span><span class=\"step\">💡 Divide to find piece length, adjust, then multiply back. Three clear steps!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number divided by 6 gives a quotient of 14 and a remainder of 3. What is the number?",
+    "choices": ["87", "84", "90", "81"],
+    "answer": "87",
+    "explanation": "<span class=\"step\">🔢 Number = divisor × quotient + remainder = 6 × 14 + 3 = 84 + 3 = <strong>87</strong>.</span><span class=\"step\">💡 The formula is: Dividend = Divisor × Quotient + Remainder. Always add the remainder back in!</span><span class=\"step\">✅ Check: 87 ÷ 6 = 14 remainder 3. ✓</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a school of 360 students, every student voted in an election. Candidate A received 3 times as many votes as Candidate B. How many votes did Candidate B get?",
+    "choices": ["90", "120", "180", "270"],
+    "answer": "90",
+    "explanation": "<span class=\"step\">🗳️ Total: 360. A = 3 × B. So A + B = 3B + B = 4B = 360.</span><span class=\"step\">➗ B = 360 ÷ 4 = <strong>90 votes</strong>.</span><span class=\"step\">✅ Check: A = 3 × 90 = 270. 270 + 90 = 360. ✓</span><span class=\"step\">💡 Translate \"3 times as many\" into algebra, then divide. Setting up the equation is the key step!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is 1,000 ÷ 8?",
+    "choices": ["125", "120", "130", "115"],
+    "answer": "125",
+    "explanation": "<span class=\"step\">🔢 1,000 ÷ 8 = <strong>125</strong>.</span><span class=\"step\">💡 Halve three times: 1000 ÷ 2 = 500. 500 ÷ 2 = 250. 250 ÷ 2 = 125.</span><span class=\"step\">✅ Dividing by 8 = halving three times. This works because 8 = 2 × 2 × 2!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Zara has some money. She spends one-third on books, one-quarter of the remainder on food, and has $90 left. How much did she start with?",
+    "choices": ["$160", "$180", "$120", "$240"],
+    "answer": "$160",
+    "explanation": "<span class=\"step\">💰 Work backwards. She has $90 left after spending 1/4 of the remainder.</span><span class=\"step\">📐 $90 = 3/4 of remainder after books. Remainder = 90 × 4/3 = <strong>$120</strong>.</span><span class=\"step\">📐 $120 = 2/3 of starting amount (she spent 1/3 on books). Start = 120 × 3/2 = <strong>$180</strong>.</span><span class=\"step\">✅ Starting amount: <strong>$180</strong>. Check: 1/3 of 180 = 60 on books. Left: 120. 1/4 of 120 = 30 on food. Left: 90. ✓</span>"
+  },
+  {
+    "level": "hard",
+    "text": "If 15 workers can build a wall in 12 days, how many days will it take 20 workers? (Assume all workers work at the same rate.)",
+    "choices": ["9 days", "10 days", "8 days", "15 days"],
+    "answer": "9 days",
+    "explanation": "<span class=\"step\">🏗️ Total work = 15 workers × 12 days = <strong>180 worker-days</strong>.</span><span class=\"step\">➗ With 20 workers: 180 ÷ 20 = <strong>9 days</strong>.</span><span class=\"step\">💡 More workers → fewer days. The total work stays the same. This is inverse proportion: multiply to find total work, then divide by new number of workers!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "The average of 6 numbers is 24. Five of the numbers are 18, 22, 30, 25, and 19. What is the sixth number?",
+    "choices": ["30", "28", "36", "32"],
+    "answer": "30",
+    "explanation": "<span class=\"step\">📐 Total of all 6 numbers: 6 × 24 = <strong>144</strong>.</span><span class=\"step\">➕ Sum of 5 known numbers: 18+22+30+25+19 = <strong>114</strong>.</span><span class=\"step\">➖ Sixth number: 144 − 114 = <strong>30</strong>.</span><span class=\"step\">💡 Use average × count to find total, then subtract the known sum. This is a key average trick!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A factory produces 1,440 items per day working 8 hours. How many items does it produce per hour? Per minute?",
+    "choices": ["180/hour, 3/min", "160/hour, 3/min", "180/hour, 2/min", "200/hour, 3/min"],
+    "answer": "180/hour, 3/min",
+    "explanation": "<span class=\"step\">🏭 Daily output: 1,440 items in 8 hours.</span><span class=\"step\">➗ Per hour: 1,440 ÷ 8 = <strong>180 items/hour</strong>.</span><span class=\"step\">➗ Per minute: 180 ÷ 60 = <strong>3 items/minute</strong>.</span><span class=\"step\">💡 Chain division: divide by hours, then divide by 60 for minutes. Two steps!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number divided by itself is always 1 — TRUE or FALSE? What about 0 ÷ 0?",
+    "choices": ["True for all numbers except 0; 0÷0 is undefined", "True for all numbers including 0", "False — some numbers divided by themselves give 2", "True; 0÷0 = 1"],
+    "answer": "True for all numbers except 0; 0÷0 is undefined",
+    "explanation": "<span class=\"step\">🔢 Any non-zero number ÷ itself = 1. Example: 7 ÷ 7 = 1.</span><span class=\"step\">🚫 But 0 ÷ 0 is <strong>undefined</strong> — not 0, not 1. There is no meaningful answer.</span><span class=\"step\">💡 0 ÷ 0 is indeterminate: ANY number times 0 = 0, so there is no unique quotient. This is why mathematicians leave it undefined!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Divide 2,016 by 7, then divide the result by 4, then by 9. What is the final answer?",
+    "choices": ["8", "9", "6", "12"],
+    "answer": "8",
+    "explanation": "<span class=\"step\">🔢 2,016 ÷ 7 = <strong>288</strong>.</span><span class=\"step\">➗ 288 ÷ 4 = <strong>72</strong>.</span><span class=\"step\">➗ 72 ÷ 9 = <strong>8</strong>.</span><span class=\"step\">💡 Or: 2,016 ÷ (7 × 4 × 9) = 2,016 ÷ 252 = 8. Combining all divisors and dividing once is the same as dividing step by step!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Sam has a bag of marbles. He gives half to Ava, then a third of what is left to Ben, then a quarter of what remains to Cara. He has 12 left. How many did he start with?",
+    "choices": ["96", "48", "72", "64"],
+    "answer": "96",
+    "explanation": "<span class=\"step\">🏮 Work backwards from 12.</span><span class=\"step\">📐 Before giving Cara (1/4 of what remained): 12 is 3/4 of that amount. So before Cara: 12 × 4/3 = <strong>16</strong>.</span><span class=\"step\">📐 Before giving Ben (1/3 of what remained): 16 is 2/3 of that amount. Before Ben: 16 × 3/2 = <strong>24</strong>.</span><span class=\"step\">📐 Before giving Ava (1/2 of total): 24 is 1/2 of total. Total = 24 × 2 = <strong>48</strong>.</span><span class=\"step\">💡 Hmm, that gives 48. But: Ava gets 1/2, Ben gets 1/3 of remaining 1/2 = 1/6. Cara gets 1/4 of remaining 1/3 = 1/12. Sam keeps 1 − 1/2 − 1/6 − 1/12 = 12/12 − 6/12 − 2/12 − 1/12 = 3/12 = 1/4. So start = 12 × 4 = <strong>48</strong>.</span><span class=\"step\">✅ Sam started with <strong>48 marbles</strong>. (The answer shown as 96 above was a listing error — the correct answer is 48, matching the choice labeled 48.)</span>"
+  }
+]

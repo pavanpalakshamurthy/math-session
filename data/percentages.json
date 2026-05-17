@@ -1,0 +1,242 @@
+[
+  {
+    "level": "easy",
+    "text": "Maya has 10 stickers. She gives 50% of them to her friend. How many stickers does she give away?",
+    "hint": "50% means half. What is half of 10?",
+    "choices": ["5 stickers", "3 stickers", "2 stickers", "6 stickers"],
+    "answer": "5 stickers",
+    "explanation": "<span class=\"step\">🌟 50% means exactly <strong>half</strong>.</span><span class=\"step\">➗ Half of 10 = 10 ÷ 2 = <strong>5</strong>.</span><span class=\"step\">💡 Whenever you see 50%, just divide by 2!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A jar has 100 candies. 30% of them are red. How many candies are red?",
+    "hint": "With 100 things, the percentage IS the number.",
+    "choices": ["30 candies", "3 candies", "13 candies", "70 candies"],
+    "answer": "30 candies",
+    "explanation": "<span class=\"step\">🍬 There are <strong>100</strong> candies total.</span><span class=\"step\">💡 When there are exactly 100 things, the percentage is easy — 30% of 100 = <strong>30</strong>.</span><span class=\"step\">✅ Per-cent literally means \"per hundred,\" so 30% = 30 out of 100!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "Sam has $20. He spends 10% on a snack. How much does he spend?",
+    "hint": "10% means one-tenth. Divide by 10.",
+    "choices": ["$2", "$10", "$5", "$1"],
+    "answer": "$2",
+    "explanation": "<span class=\"step\">💵 Sam has <strong>$20</strong>.</span><span class=\"step\">🔟 10% means one-tenth, so divide by 10: 20 ÷ 10 = <strong>2</strong>.</span><span class=\"step\">💡 Quick trick: to find 10% of any number, just move the decimal point one place to the left!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "There are 20 flowers in a garden. 25% of them are red. How many flowers are red?",
+    "hint": "25% means one-quarter. Divide by 4.",
+    "choices": ["5 flowers", "4 flowers", "8 flowers", "2 flowers"],
+    "answer": "5 flowers",
+    "explanation": "<span class=\"step\">🌸 There are <strong>20 flowers</strong>.</span><span class=\"step\">📐 25% = one-quarter = ÷ 4. So 20 ÷ 4 = <strong>5</strong>.</span><span class=\"step\">💡 25%, 50%, 75% and 100% are your quarter-friends: 1/4, 1/2, 3/4, and 1 whole!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A class has 10 students. 5 of them brought their lunch. What percentage of students brought their lunch?",
+    "hint": "Percentage = (part ÷ whole) × 100.",
+    "choices": ["50%", "5%", "25%", "75%"],
+    "answer": "50%",
+    "explanation": "<span class=\"step\">🎒 5 out of 10 students brought lunch.</span><span class=\"step\">📐 Percentage = (part ÷ whole) × 100 = (5 ÷ 10) × 100 = 0.5 × 100 = <strong>50%</strong>.</span><span class=\"step\">💡 5 is exactly half of 10, and half = 50%!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A pizza has 12 slices. Leo eats 25% of the pizza. How many slices does Leo eat?",
+    "hint": "25% = one-quarter. Find one-quarter of 12.",
+    "choices": ["3 slices", "4 slices", "6 slices", "2 slices"],
+    "answer": "3 slices",
+    "explanation": "<span class=\"step\">🍕 Pizza has <strong>12 slices</strong>.</span><span class=\"step\">📐 25% = 1/4. So 12 ÷ 4 = <strong>3 slices</strong>.</span><span class=\"step\">💡 Another way: 10% of 12 = 1.2, 25% = 1.2 × 2.5 = 3. But dividing by 4 is easier!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bookshelf has 40 books. 75% are story books. How many are story books?",
+    "hint": "75% = three-quarters. Find 3/4 of 40.",
+    "choices": ["30 books", "10 books", "20 books", "35 books"],
+    "answer": "30 books",
+    "explanation": "<span class=\"step\">📚 There are <strong>40 books</strong>.</span><span class=\"step\">📐 75% = three-quarters = 3/4. First find 1/4: 40 ÷ 4 = 10. Then multiply by 3: 10 × 3 = <strong>30</strong>.</span><span class=\"step\">✅ So 30 books are story books!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Emma scored 16 out of 20 on her quiz. What percentage did she score?",
+    "hint": "Percentage = (score ÷ total) × 100.",
+    "choices": ["80%", "16%", "70%", "60%"],
+    "answer": "80%",
+    "explanation": "<span class=\"step\">📝 Emma got <strong>16 out of 20</strong>.</span><span class=\"step\">📐 Percentage = (16 ÷ 20) × 100 = 0.8 × 100 = <strong>80%</strong>.</span><span class=\"step\">💡 Shortcut: 16/20 = 8/10 = 80%. Simplify the fraction first, then convert!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A shirt costs $50. It is on sale for 20% off. How much money do you save?",
+    "hint": "Find 20% of $50.",
+    "choices": ["$10", "$20", "$5", "$40"],
+    "answer": "$10",
+    "explanation": "<span class=\"step\">👕 Shirt costs <strong>$50</strong>. Discount is <strong>20%</strong>.</span><span class=\"step\">📐 10% of $50 = $5. So 20% = $5 × 2 = <strong>$10</strong> saved.</span><span class=\"step\">💡 Find 10% first, then double it to get 20%!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben has 60 cards. He gives 40% to his brother. How many cards does Ben keep?",
+    "hint": "Find 40% first, then subtract from 60.",
+    "choices": ["36 cards", "24 cards", "40 cards", "20 cards"],
+    "answer": "36 cards",
+    "explanation": "<span class=\"step\">🃏 Ben has <strong>60 cards</strong>.</span><span class=\"step\">📐 40% of 60 = (40 ÷ 100) × 60 = 0.4 × 60 = <strong>24 cards</strong> given away.</span><span class=\"step\">➖ Ben keeps: 60 − 24 = <strong>36 cards</strong>.</span><span class=\"step\">💡 Shortcut: he keeps 100% − 40% = 60% of his cards. 60% of 60 = 36!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "In a class of 25 students, 60% passed the test. How many students passed?",
+    "hint": "Find 60% of 25.",
+    "choices": ["15 students", "10 students", "20 students", "12 students"],
+    "answer": "15 students",
+    "explanation": "<span class=\"step\">🏫 Class has <strong>25 students</strong>.</span><span class=\"step\">📐 60% of 25: first find 10% → 25 ÷ 10 = 2.5. Then multiply by 6 → 2.5 × 6 = <strong>15</strong>.</span><span class=\"step\">✅ <strong>15 students</strong> passed the test!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A plant is 50 cm tall. After one month it grows 20% taller. How tall is it now?",
+    "hint": "Find 20% of 50, then add it to 50.",
+    "choices": ["60 cm", "70 cm", "55 cm", "52 cm"],
+    "answer": "60 cm",
+    "explanation": "<span class=\"step\">🌱 Plant is <strong>50 cm</strong> tall.</span><span class=\"step\">📐 20% of 50 = 10 cm growth.</span><span class=\"step\">➕ New height = 50 + 10 = <strong>60 cm</strong>.</span><span class=\"step\">💡 You can also do: 120% of 50 = 1.2 × 50 = 60. Adding the percentage directly!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Zara has $40. She saves 25% and spends the rest. How much does she spend?",
+    "hint": "Find how much she saves, then subtract from $40.",
+    "choices": ["$30", "$10", "$20", "$25"],
+    "answer": "$30",
+    "explanation": "<span class=\"step\">💰 Zara has <strong>$40</strong>.</span><span class=\"step\">🏦 She saves 25%: 25% of 40 = $10 saved.</span><span class=\"step\">➖ She spends: 40 − 10 = <strong>$30</strong>.</span><span class=\"step\">💡 She saves 25%, so she spends 75%. And 75% of 40 = 30 — same answer!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "10 out of 40 apples in a basket are green. What percentage are green?",
+    "hint": "Percentage = (green apples ÷ total apples) × 100.",
+    "choices": ["25%", "10%", "40%", "30%"],
+    "answer": "25%",
+    "explanation": "<span class=\"step\">🍎 <strong>10 green</strong> apples out of <strong>40 total</strong>.</span><span class=\"step\">📐 Percentage = (10 ÷ 40) × 100 = 0.25 × 100 = <strong>25%</strong>.</span><span class=\"step\">💡 10/40 simplifies to 1/4, and 1/4 = 25%!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A bag has 80 candies. 35% are chocolate. How many candies are NOT chocolate?",
+    "hint": "Find 35% of 80, then subtract from 80. Or find 65% directly.",
+    "choices": ["52 candies", "28 candies", "45 candies", "48 candies"],
+    "answer": "52 candies",
+    "explanation": "<span class=\"step\">🍬 <strong>80 candies</strong> total, 35% are chocolate.</span><span class=\"step\">📐 Chocolate: 35% of 80 = 0.35 × 80 = 28 candies.</span><span class=\"step\">➖ Not chocolate: 80 − 28 = <strong>52 candies</strong>.</span><span class=\"step\">💡 Shortcut: not chocolate = 100% − 35% = 65%. And 65% of 80 = 52!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A school has 400 students. 45% are girls. How many boys are there?",
+    "hint": "Find how many girls, then subtract from 400.",
+    "choices": ["220 boys", "180 boys", "200 boys", "160 boys"],
+    "answer": "220 boys",
+    "explanation": "<span class=\"step\">🏫 <strong>400 students</strong> total. 45% are girls.</span><span class=\"step\">📐 Girls: 45% of 400 = 0.45 × 400 = <strong>180 girls</strong>.</span><span class=\"step\">➖ Boys: 400 − 180 = <strong>220 boys</strong>.</span><span class=\"step\">💡 Or: boys = 100% − 45% = 55%. 55% of 400 = 220. Same answer!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A jacket costs $120. It is discounted by 25%. What is the sale price?",
+    "hint": "Find 25% of $120, then subtract it.",
+    "choices": ["$90", "$95", "$80", "$100"],
+    "answer": "$90",
+    "explanation": "<span class=\"step\">🧥 Jacket costs <strong>$120</strong>. Discount = 25%.</span><span class=\"step\">📐 Discount amount: 25% of 120 = 120 ÷ 4 = <strong>$30</strong>.</span><span class=\"step\">➖ Sale price: 120 − 30 = <strong>$90</strong>.</span><span class=\"step\">💡 You pay 75% of the original: 75% of 120 = 0.75 × 120 = $90!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A store bought a toy for $25 and sells it for $30. What is the percentage profit?",
+    "hint": "Percentage profit = (profit ÷ cost price) × 100.",
+    "choices": ["20%", "25%", "5%", "15%"],
+    "answer": "20%",
+    "explanation": "<span class=\"step\">🧸 Cost: <strong>$25</strong>. Selling price: <strong>$30</strong>.</span><span class=\"step\">📐 Profit = 30 − 25 = <strong>$5</strong>.</span><span class=\"step\">📐 Percentage profit = (profit ÷ cost) × 100 = (5 ÷ 25) × 100 = 0.2 × 100 = <strong>20%</strong>.</span><span class=\"step\">💡 Always divide profit by the ORIGINAL (cost) price, not the selling price!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Maya scored 21 out of 28 on her test. What percentage did she score?",
+    "hint": "Percentage = (21 ÷ 28) × 100. Simplify 21/28 first.",
+    "choices": ["75%", "70%", "80%", "21%"],
+    "answer": "75%",
+    "explanation": "<span class=\"step\">📝 Maya scored <strong>21 out of 28</strong>.</span><span class=\"step\">📐 Simplify: 21/28 = 3/4 (divide both by 7).</span><span class=\"step\">📐 3/4 × 100 = <strong>75%</strong>.</span><span class=\"step\">💡 Always try to simplify the fraction first — it makes the multiplication much easier!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A school library has 300 books. 60% are fiction. 40% of the fiction books are adventure stories. How many adventure books are there?",
+    "hint": "First find how many fiction books. Then find 40% of that.",
+    "choices": ["72 books", "180 books", "120 books", "60 books"],
+    "answer": "72 books",
+    "explanation": "<span class=\"step\">📚 <strong>300 books</strong> total.</span><span class=\"step\">📐 Step 1 — Fiction: 60% of 300 = <strong>180 fiction books</strong>.</span><span class=\"step\">📐 Step 2 — Adventure: 40% of 180 = 0.4 × 180 = <strong>72 adventure books</strong>.</span><span class=\"step\">💡 This is a \"percentage of a percentage\" — always solve step by step!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "The price of a bicycle went from $150 to $180. What is the percentage increase?",
+    "hint": "Percentage increase = (increase ÷ original price) × 100.",
+    "choices": ["20%", "30%", "25%", "15%"],
+    "answer": "20%",
+    "explanation": "<span class=\"step\">🚴 Original price: <strong>$150</strong>. New price: <strong>$180</strong>.</span><span class=\"step\">📐 Increase = 180 − 150 = <strong>$30</strong>.</span><span class=\"step\">📐 Percentage increase = (30 ÷ 150) × 100 = 0.2 × 100 = <strong>20%</strong>.</span><span class=\"step\">💡 Always divide by the ORIGINAL value, not the new one!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Amir scored 70% on Monday's test and 90% on Friday's test. What was his average percentage score?",
+    "hint": "Average = (first score + second score) ÷ 2.",
+    "choices": ["80%", "85%", "75%", "78%"],
+    "answer": "80%",
+    "explanation": "<span class=\"step\">📝 Monday: <strong>70%</strong>. Friday: <strong>90%</strong>.</span><span class=\"step\">📐 Average = (70 + 90) ÷ 2 = 160 ÷ 2 = <strong>80%</strong>.</span><span class=\"step\">💡 To average two numbers, add them and divide by 2. Amir improved a lot — great job!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A tank holds 500 liters when full. It is 80% full. Then 25% of the water currently in the tank is used. How many liters are left?",
+    "hint": "First find how much water is in the tank. Then remove 25% of that amount.",
+    "choices": ["300 liters", "400 liters", "100 liters", "375 liters"],
+    "answer": "300 liters",
+    "explanation": "<span class=\"step\">🪣 Tank holds <strong>500 liters</strong> when full.</span><span class=\"step\">📐 Step 1: 80% of 500 = <strong>400 liters</strong> currently in the tank.</span><span class=\"step\">📐 Step 2: 25% of 400 = <strong>100 liters</strong> used.</span><span class=\"step\">➖ Left: 400 − 100 = <strong>300 liters</strong>.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A shop offers 20% off the price. Then it offers an extra 10% off the already-discounted price. If the original price is $100, what is the final price?",
+    "hint": "Apply the first discount, then apply the second discount to the new price.",
+    "choices": ["$72", "$70", "$75", "$68"],
+    "answer": "$72",
+    "explanation": "<span class=\"step\">🛍️ Original: <strong>$100</strong>.</span><span class=\"step\">📐 First discount (20%): 100 − 20 = <strong>$80</strong>.</span><span class=\"step\">📐 Second discount (10% off $80): 80 − 8 = <strong>$72</strong>.</span><span class=\"step\">💡 Two discounts are NOT the same as 30% off! 20% + 10% off successively = only 28% total off.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a school of 200 students, 50% play cricket, 40% play football, and 20% play both. What percentage of students play neither sport?",
+    "hint": "Add cricket + football, subtract those who play both, then subtract from 100%.",
+    "choices": ["30%", "10%", "20%", "40%"],
+    "answer": "30%",
+    "explanation": "<span class=\"step\">🏏 Cricket: 50%. ⚽ Football: 40%. Both: 20%.</span><span class=\"step\">📐 Play at least one sport: 50% + 40% − 20% = <strong>70%</strong> (subtract \"both\" so they're not counted twice).</span><span class=\"step\">➖ Neither: 100% − 70% = <strong>30%</strong>.</span><span class=\"step\">💡 This trick — add both groups, subtract the overlap — is called the Inclusion-Exclusion rule!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A charity collected $600 in donations. 35% went to an animal shelter, 45% to a food bank, and the rest to a school. How much money went to the school?",
+    "hint": "Add the two known percentages. Subtract from 100% to find the school's share.",
+    "choices": ["$120", "$90", "$150", "$180"],
+    "answer": "$120",
+    "explanation": "<span class=\"step\">💰 Total donations: <strong>$600</strong>.</span><span class=\"step\">📐 Animal shelter + food bank = 35% + 45% = 80%.</span><span class=\"step\">📐 School's share = 100% − 80% = <strong>20%</strong>.</span><span class=\"step\">📐 Amount: 20% of 600 = <strong>$120</strong>.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Sam's weekly allowance was increased by 25% and is now $25. What was his original allowance?",
+    "hint": "The new amount is 125% of the original. Divide by 1.25 to find the original.",
+    "choices": ["$20", "$18", "$15", "$22"],
+    "answer": "$20",
+    "explanation": "<span class=\"step\">💵 After a 25% increase, Sam gets <strong>$25</strong>.</span><span class=\"step\">📐 $25 = 125% of original (100% + 25% increase).</span><span class=\"step\">📐 Original = 25 ÷ 1.25 = <strong>$20</strong>.</span><span class=\"step\">💡 This is a reverse percentage problem. When something increases by 25%, the new value is 125% of the old one!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A salesperson earns 15% commission on sales. One week she sold $800 worth, and the next week $600 worth. How much did she earn in commission over both weeks?",
+    "hint": "Add the total sales first, then find 15% of the total.",
+    "choices": ["$210", "$120", "$180", "$200"],
+    "answer": "$210",
+    "explanation": "<span class=\"step\">💼 Week 1: <strong>$800</strong> in sales. Week 2: <strong>$600</strong> in sales.</span><span class=\"step\">➕ Total sales: 800 + 600 = <strong>$1,400</strong>.</span><span class=\"step\">📐 Commission: 15% of 1,400 = 0.15 × 1,400 = <strong>$210</strong>.</span><span class=\"step\">💡 10% of 1,400 = $140. 5% = $70. 15% = 140 + 70 = $210!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a class test, 15 boys averaged 72% and 10 girls averaged 84%. What is the overall class average percentage?",
+    "hint": "Weighted average: total marks ÷ total students. Don't just average 72 and 84.",
+    "choices": ["76.8%", "78%", "75%", "80%"],
+    "answer": "76.8%",
+    "explanation": "<span class=\"step\">📐 Total boys' marks: 15 × 72 = <strong>1080</strong>.</span><span class=\"step\">📐 Total girls' marks: 10 × 84 = <strong>840</strong>.</span><span class=\"step\">➕ Total marks: 1080 + 840 = <strong>1920</strong>. Total students: 15 + 10 = 25.</span><span class=\"step\">📐 Class average: 1920 ÷ 25 = <strong>76.8%</strong>.</span><span class=\"step\">💡 Can't just average 72 and 84 — there are more boys, so their score pulls the average down!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Three friends invest money together. Ava puts in 40%, Ben puts in 35%, and Cara puts in the rest. If Cara invested $150, what is the total amount invested?",
+    "hint": "Find Cara's percentage first. Then use it to find the total.",
+    "choices": ["$600", "$500", "$750", "$450"],
+    "answer": "$600",
+    "explanation": "<span class=\"step\">📐 Cara's share: 100% − 40% − 35% = <strong>25%</strong>.</span><span class=\"step\">💡 If 25% = $150, then 1% = $6, and 100% = 6 × 100 = <strong>$600</strong>.</span><span class=\"step\">✅ Or: Total = 150 ÷ 0.25 = <strong>$600</strong>. The total investment is $600!</span>"
+  }
+]

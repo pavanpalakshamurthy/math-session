@@ -1,0 +1,170 @@
+[
+  {
+    "id": "addition",
+    "label": "Addition",
+    "icon": "➕",
+    "primaryColor": "#ea580c",
+    "gradient": [
+      "#ea580c",
+      "#e11d48"
+    ],
+    "hoverBorder": "#fdba74",
+    "storageKey": "mathChampions_add",
+    "ctaColor": "#ea580c",
+    "subtitle": "Clever sums, patterns, and tricky totals that fool fast thinkers.",
+    "topics": [
+      "Complement pairs & shortcuts",
+      "Multi-step word problems",
+      "Patterns & sequences"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 11
+    }
+  },
+  {
+    "id": "subtraction",
+    "label": "Subtraction",
+    "icon": "➖",
+    "primaryColor": "#7c3aed",
+    "gradient": [
+      "#7c3aed",
+      "#db2777"
+    ],
+    "hoverBorder": "#d8b4fe",
+    "storageKey": "mathChampions_sub",
+    "ctaColor": "#7c3aed",
+    "subtitle": "Watch out for traps — borrowing, chain problems, and reverse puzzles.",
+    "topics": [
+      "Working backwards",
+      "Multi-step subtraction",
+      "Mixed units & conversions"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 11
+    }
+  },
+  {
+    "id": "multiplication",
+    "label": "Multiplication",
+    "icon": "✖️",
+    "primaryColor": "#2563eb",
+    "gradient": [
+      "#2563eb",
+      "#7c3aed"
+    ],
+    "hoverBorder": "#93c5fd",
+    "storageKey": "mathChampions_mul",
+    "ctaColor": "#2563eb",
+    "subtitle": "Surprising products, clever tricks, and real-world multiplying.",
+    "topics": [
+      "Times table traps",
+      "Smart multiplication strategies",
+      "Area, rates & scaling"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 11
+    }
+  },
+  {
+    "id": "division",
+    "label": "Division",
+    "icon": "➗",
+    "primaryColor": "#0891b2",
+    "gradient": [
+      "#0891b2",
+      "#059669"
+    ],
+    "hoverBorder": "#67e8f9",
+    "storageKey": "mathChampions_div",
+    "ctaColor": "#0891b2",
+    "subtitle": "Remainders, reverse problems, and the mystery of dividing by zero.",
+    "topics": [
+      "Remainders & exact division",
+      "Inverse & proportional problems",
+      "Multi-step chain division"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 10
+    }
+  },
+  {
+    "id": "fractions",
+    "label": "Fractions & LCM",
+    "icon": "½",
+    "primaryColor": "#4f46e5",
+    "gradient": [
+      "#4f46e5",
+      "#7c3aed"
+    ],
+    "hoverBorder": "#a5b4fc",
+    "storageKey": "mathChampions",
+    "ctaColor": "#4f46e5",
+    "subtitle": "Sharing, comparing, and finding common ground with fractions.",
+    "topics": [
+      "Parts of a whole",
+      "Adding & subtracting fractions",
+      "Least Common Multiple"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 15
+    }
+  },
+  {
+    "id": "decimals",
+    "label": "Decimals",
+    "icon": "🔢",
+    "primaryColor": "#059669",
+    "gradient": [
+      "#059669",
+      "#0891b2"
+    ],
+    "hoverBorder": "#6ee7b7",
+    "storageKey": "mathChampions_dec",
+    "ctaColor": "#059669",
+    "subtitle": "Place value, comparing, and tricky decimal operations.",
+    "topics": [
+      "Comparing decimals",
+      "Adding & subtracting decimals",
+      "Multiplying & dividing decimals"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 15
+    }
+  },
+  {
+    "id": "percentages",
+    "label": "Percentages",
+    "icon": "💯",
+    "primaryColor": "#0ea5e9",
+    "gradient": [
+      "#0ea5e9",
+      "#6366f1"
+    ],
+    "hoverBorder": "#7dd3fc",
+    "storageKey": "mathChampions_pct",
+    "ctaColor": "#0ea5e9",
+    "subtitle": "Discounts, scores, and real-world percentage problems.",
+    "topics": [
+      "Finding percentages",
+      "Percentage increase & decrease",
+      "Profit, commission & reverse %"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 10,
+      "hard": 15
+    }
+  }
+]

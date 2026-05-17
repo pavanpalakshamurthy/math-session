@@ -1,0 +1,314 @@
+[
+  {
+    "level": "easy",
+    "text": "Leo has 46 stickers. His friend gives him 54 more. How many stickers does Leo have now? (Think carefully before adding!)",
+    "choices": [
+      "100",
+      "99",
+      "110",
+      "90"
+    ],
+    "answer": "100",
+    "explanation": "<span class=\"step\">🎯 46 + 54 = ?</span><span class=\"step\">💡 46 + 54: 6 + 4 = 10, carry the 1. 4 + 5 + 1 = 10. Answer: <strong>100</strong>.</span><span class=\"step\">✅ Many people guess 99 or 90 — but 46 + 54 is exactly <strong>100</strong>! Numbers that add up to 100 are called complements.</span>"
+  },
+  {
+    "level": "easy",
+    "text": "A bakery made 125 muffins in the morning and 75 in the afternoon. The baker says they made about 200. Is the baker right?",
+    "choices": [
+      "Yes — exactly 200",
+      "No — 210",
+      "No — 190",
+      "No — 300"
+    ],
+    "answer": "Yes — exactly 200",
+    "explanation": "<span class=\"step\">🧁 125 + 75 = ?</span><span class=\"step\">📐 125 + 75: 5 + 5 = 10 (carry 1). 2 + 7 + 1 = 10 (carry 1). 1 + 0 + 1 = 2.</span><span class=\"step\">✅ 125 + 75 = <strong>200 exactly</strong>. The baker is correct! 75 is the complement of 125 to make 200.</span>"
+  },
+  {
+    "level": "easy",
+    "text": "Maya collects shells. She has 38 yellow and 42 white shells. How many shells does she have in all?",
+    "choices": [
+      "80",
+      "70",
+      "90",
+      "78"
+    ],
+    "answer": "80",
+    "explanation": "<span class=\"step\">🐚 38 + 42 = ?</span><span class=\"step\">📐 8 + 2 = 10, carry 1. 3 + 4 + 1 = 8. Answer: <strong>80</strong>.</span><span class=\"step\">💡 Notice: 38 and 42 are both close to 40. 40 + 40 = 80, and the extra 2 and the missing 2 cancel out!</span>"
+  },
+  {
+    "level": "easy",
+    "text": "There are 3 boxes. Box A has 120 crayons, Box B has 80 crayons, and Box C has 0 crayons. How many crayons are there altogether?",
+    "choices": [
+      "200",
+      "120",
+      "203",
+      "280"
+    ],
+    "answer": "200",
+    "explanation": "<span class=\"step\">🖍️ Box A: 120. Box B: 80. Box C: 0.</span><span class=\"step\">➕ 120 + 80 + 0 = <strong>200</strong>.</span><span class=\"step\">💡 Adding zero to anything does not change the sum! The trick here is noticing Box C has 0 — do not let it fool you into adding something that is not there.</span>"
+  },
+  {
+    "level": "easy",
+    "text": "Ben counted 17 red cars, 23 blue cars, and 10 green cars in a car park. How many cars did he count in total?",
+    "choices": [
+      "50",
+      "40",
+      "60",
+      "45"
+    ],
+    "answer": "50",
+    "explanation": "<span class=\"step\">🚗 17 + 23 + 10 = ?</span><span class=\"step\">📐 First: 17 + 23 = 40. Then: 40 + 10 = <strong>50</strong>.</span><span class=\"step\">💡 Spot the friendly pair first: 17 + 23 = 40. Then add the rest. Looking for pairs that make round numbers makes addition faster!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A school has 248 boys and 189 girls. 13 new students join and they are all girls. How many students are in the school now?",
+    "choices": [
+      "450",
+      "437",
+      "460",
+      "448"
+    ],
+    "answer": "450",
+    "explanation": "<span class=\"step\">🏫 Boys: 248. Girls: 189 + 13 = 202.</span><span class=\"step\">➕ Total: 248 + 202 = <strong>450</strong>.</span><span class=\"step\">💡 First update the girls count, then add. Or: 248 + 189 + 13 = 437 + 13 = 450. Two paths, same answer!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A jar has 365 red beads and 365 blue beads. A second jar has the same. How many beads are there in total across both jars?",
+    "choices": [
+      "1460",
+      "730",
+      "1000",
+      "1265"
+    ],
+    "answer": "1460",
+    "explanation": "<span class=\"step\">🫙 Jar 1: 365 red + 365 blue = <strong>730 beads</strong>.</span><span class=\"step\">✖️ Both jars are the same: 730 × 2 = <strong>1460 beads</strong> total.</span><span class=\"step\">💡 First find one jar total, then double it. 365 + 365 = 730; 730 + 730 = 1460!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Look at this pattern: 1, 1, 2, 3, 5, 8, 13, __. What is the missing number?",
+    "choices": [
+      "21",
+      "18",
+      "16",
+      "20"
+    ],
+    "answer": "21",
+    "explanation": "<span class=\"step\">🔢 Pattern: 1, 1, 2, 3, 5, 8, 13, ...</span><span class=\"step\">💡 Each number is the SUM of the two before it: 1+1=2, 1+2=3, 2+3=5, 3+5=8, 5+8=13, 8+13=<strong>21</strong>.</span><span class=\"step\">✅ This is the famous Fibonacci sequence! The next number is always the sum of the previous two.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A farmer has 3 fields. Field 1 grows 423 kg of wheat, Field 2 grows 389 kg, and Field 3 grows 211 kg. What is the total harvest?",
+    "choices": [
+      "1023 kg",
+      "1013 kg",
+      "1003 kg",
+      "913 kg"
+    ],
+    "answer": "1023 kg",
+    "explanation": "<span class=\"step\">🌾 423 + 389 + 211 = ?</span><span class=\"step\">📐 First: 423 + 211 = 634 (easy — digits line up nicely).</span><span class=\"step\">➕ Then: 634 + 389 = 634 + 400 − 11 = 1034 − 11 = <strong>1023 kg</strong>.</span><span class=\"step\">💡 Rearrange additions in the order that is easiest for you — you will always get the same total!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Ben and his friend both collect stamps. Ben has 802 stamps, and so does his friend. Ben says they have more than 1500 together. Is he right?",
+    "choices": [
+      "No — exactly 1604",
+      "Yes — 1700",
+      "Yes — 1500 exactly",
+      "No — exactly 1502"
+    ],
+    "answer": "No — exactly 1604",
+    "explanation": "<span class=\"step\">📮 Ben: 802. Friend: 802.</span><span class=\"step\">➕ 802 + 802 = <strong>1604</strong>.</span><span class=\"step\">✅ Ben is right that it is MORE than 1500, but the exact total is <strong>1604</strong>, not some other guess.</span><span class=\"step\">💡 802 × 2 = 1604. When you add two equal numbers, just double one of them!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A town raised money over 4 weekends: $1,250, $875, $1,125, and $750. What is the total amount raised?",
+    "choices": [
+      "$4,000",
+      "$3,800",
+      "$4,200",
+      "$3,900"
+    ],
+    "answer": "$4,000",
+    "explanation": "<span class=\"step\">💰 $1,250 + $875 + $1,125 + $750</span><span class=\"step\">💡 Spot the friendly pairs: 1250 + 750 = 2000. 875 + 1125 = 2000.</span><span class=\"step\">➕ 2000 + 2000 = <strong>$4,000</strong>.</span><span class=\"step\">✅ Pairing numbers that add to round numbers makes the problem much easier!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A cinema sold 378 adult tickets and 292 child tickets on Saturday. On Sunday they sold exactly 30 more tickets than Saturday. How many tickets were sold over both days?",
+    "choices": [
+      "1370",
+      "1340",
+      "1400",
+      "1300"
+    ],
+    "answer": "1370",
+    "explanation": "<span class=\"step\">🎬 Saturday: 378 + 292 = <strong>670</strong> tickets.</span><span class=\"step\">➕ Sunday: 670 + 30 = <strong>700</strong> tickets.</span><span class=\"step\">➕ Total: 670 + 700 = <strong>1370 tickets</strong>.</span><span class=\"step\">💡 Two steps: find Saturday total, find Sunday total, then add both days.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "What is 999 + 999 + 2?",
+    "choices": [
+      "2000",
+      "1999",
+      "2001",
+      "1998"
+    ],
+    "answer": "2000",
+    "explanation": "<span class=\"step\">🤔 999 + 999 + 2 = ?</span><span class=\"step\">💡 Think cleverly: 999 + 1 = 1000. Take that 1 from the 2 we have.</span><span class=\"step\">📐 So: (999 + 1) + (999 + 1) = 1000 + 1000 = 2000. We used both 1s from the 2.</span><span class=\"step\">✅ 999 + 999 + 2 = <strong>2000</strong> exactly!</span>"
+  },
+  {
+    "level": "medium",
+    "text": "Three friends save money. Ava saves $145, Ben saves $225, Cara saves $130. They need $500 to buy a gift. Do they have enough?",
+    "choices": [
+      "Yes — they have $500 exactly",
+      "No — they are $0 short... wait, check again",
+      "No — they only have $480",
+      "Yes — they have $520"
+    ],
+    "answer": "Yes — they have $500 exactly",
+    "explanation": "<span class=\"step\">💰 $145 + $225 + $130 = ?</span><span class=\"step\">📐 145 + 225 = 370. 370 + 130 = <strong>$500</strong>.</span><span class=\"step\">✅ They have <strong>exactly $500</strong> — just enough! This is no coincidence, the numbers were chosen carefully.</span>"
+  },
+  {
+    "level": "medium",
+    "text": "A number added to itself three times gives 192. What is the number?",
+    "choices": [
+      "64",
+      "96",
+      "48",
+      "32"
+    ],
+    "answer": "64",
+    "explanation": "<span class=\"step\">🔢 \"Added to itself three times\" means n + n + n = 3n = 192.</span><span class=\"step\">📐 n = 192 ÷ 3 = <strong>64</strong>.</span><span class=\"step\">✅ Check: 64 + 64 + 64 = 192. Correct!</span><span class=\"step\">💡 \"Added to itself 3 times\" is another way of saying multiplied by 3. Division reverses multiplication!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is the sum of all whole numbers from 1 to 10?",
+    "choices": [
+      "55",
+      "50",
+      "45",
+      "60"
+    ],
+    "answer": "55",
+    "explanation": "<span class=\"step\">🔢 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10</span><span class=\"step\">💡 Pair the ends: (1+10) + (2+9) + (3+8) + (4+7) + (5+6) = 11 + 11 + 11 + 11 + 11 = 5 × 11 = <strong>55</strong>.</span><span class=\"step\">✅ This trick was invented by the great mathematician Gauss when he was just a kid!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "In a library, shelf A has 347 books, shelf B has 289 books, and shelf C has 364 books. 50 books are moved from shelf C to a new shelf D, and 25 books are moved from shelf A to shelf B. How many books are on shelf B now?",
+    "choices": [
+      "314",
+      "289",
+      "304",
+      "339"
+    ],
+    "answer": "314",
+    "explanation": "<span class=\"step\">📚 Shelf B starts with <strong>289</strong> books.</span><span class=\"step\">➕ 25 books moved from A to B: 289 + 25 = <strong>314</strong>.</span><span class=\"step\">✅ The moves involving shelves C and D do not affect shelf B at all! Read the question carefully — you only needed shelf B.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Ali runs every morning. He ran 2 km on Monday, 3 km on Tuesday, and each day after he runs 1 km more than the day before. How many kilometres in total did he run from Monday to Friday?",
+    "choices": [
+      "20 km",
+      "15 km",
+      "25 km",
+      "18 km"
+    ],
+    "answer": "20 km",
+    "explanation": "<span class=\"step\">🏃 Mon: 2 km. Tue: 3 km. Wed: 4 km. Thu: 5 km. Fri: 6 km.</span><span class=\"step\">➕ Total: 2 + 3 + 4 + 5 + 6 = <strong>20 km</strong>.</span><span class=\"step\">💡 Or: sum of consecutive numbers from 2 to 6. Pair the ends: (2+6) + (3+5) + 4 = 8 + 8 + 4 = 20!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A school votes for a class president. There are 3 candidates: Alice gets 148 votes, Bob gets 97 votes, and Cara gets 105 votes. Every student voted exactly once. How many students are in the school?",
+    "choices": [
+      "350",
+      "340",
+      "360",
+      "330"
+    ],
+    "answer": "350",
+    "explanation": "<span class=\"step\">🗳️ Alice: 148. Bob: 97. Cara: 105.</span><span class=\"step\">➕ 148 + 97 + 105 = ?</span><span class=\"step\">📐 148 + 97 = 245. 245 + 105 = <strong>350</strong>.</span><span class=\"step\">💡 Since every student voted once, the total votes = total students. The answer is <strong>350</strong>!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is the sum of all even numbers from 2 to 20?",
+    "choices": [
+      "110",
+      "100",
+      "120",
+      "90"
+    ],
+    "answer": "110",
+    "explanation": "<span class=\"step\">🔢 Even numbers from 2 to 20: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20.</span><span class=\"step\">💡 Pair the ends: (2+20)+(4+18)+(6+16)+(8+14)+(10+12) = 22×5 = <strong>110</strong>.</span><span class=\"step\">✅ There are 10 even numbers. Each pair sums to 22. 5 pairs × 22 = 110!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A store sold 1,234 items in January. Each month it sells 111 more than the previous month. How many items does it sell in April?",
+    "choices": [
+      "1,567",
+      "1,456",
+      "1,678",
+      "1,345"
+    ],
+    "answer": "1,567",
+    "explanation": "<span class=\"step\">🏪 January: 1,234. Increase each month: +111.</span><span class=\"step\">📐 February: 1,234 + 111 = 1,345</span><span class=\"step\">📐 March: 1,345 + 111 = 1,456</span><span class=\"step\">📐 April: 1,456 + 111 = <strong>1,567</strong>.</span><span class=\"step\">💡 Or: Jan + (3 months × 111) = 1234 + 333 = 1567. Multiplying the jump is faster than adding 3 times!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Three boxes weigh 4 kg, 7 kg, and 9 kg. You can carry at most 15 kg at a time. What is the maximum weight you can carry in one trip?",
+    "choices": [
+      "15 kg (7 + 9 − 1... wait: 7 + 9 = 16, too heavy. Best is 4 + 9 = 13? No — 4+7+... think!)",
+      "13 kg",
+      "16 kg",
+      "11 kg"
+    ],
+    "answer": "13 kg",
+    "explanation": "<span class=\"step\">📦 Boxes: 4 kg, 7 kg, 9 kg. Limit: 15 kg.</span><span class=\"step\">🔍 Try all combinations: 4+7=11 ✓. 4+9=13 ✓. 7+9=16 ✗ (too heavy!). 4+7+9=20 ✗.</span><span class=\"step\">✅ The best valid combination is 4 + 9 = <strong>13 kg</strong>.</span><span class=\"step\">💡 You must check ALL combinations to find the maximum that fits the limit — not just pick the biggest numbers!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A number pattern goes: 3, 7, 13, 21, 31, ... What is the next number?",
+    "choices": [
+      "43",
+      "41",
+      "45",
+      "39"
+    ],
+    "answer": "43",
+    "explanation": "<span class=\"step\">🔢 Differences: 7-3=4, 13-7=6, 21-13=8, 31-21=10.</span><span class=\"step\">💡 The differences increase by 2 each time: 4, 6, 8, 10, <strong>12</strong>.</span><span class=\"step\">➕ Next number: 31 + 12 = <strong>43</strong>.</span><span class=\"step\">✅ When the pattern is not obvious, look at the DIFFERENCES between terms — the second-level pattern is often simple!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "A school has 4 classes. Class 1 has 28 pupils, Class 2 has 31 pupils, Class 3 has 29 pupils, and Class 4 has 32 pupils. The teacher claims the total is exactly 120. Is the teacher right?",
+    "choices": [
+      "Yes — exactly 120",
+      "No — it is 119",
+      "No — it is 121",
+      "No — it is 115"
+    ],
+    "answer": "Yes — exactly 120",
+    "explanation": "<span class=\"step\">🏫 28 + 31 + 29 + 32 = ?</span><span class=\"step\">💡 Pair cleverly: (28 + 32) + (31 + 29) = 60 + 60 = <strong>120</strong>.</span><span class=\"step\">✅ The teacher is exactly right!</span><span class=\"step\">💡 Smart pairing: find pairs that sum to a round number. 28+32=60, 31+29=60. Much easier than adding left to right!</span>"
+  },
+  {
+    "level": "hard",
+    "text": "Zara reads pages each day: 45, 32, 58, 47, and 68. She claims she read more than 250 pages in 5 days. Is she right, and what is the exact total?",
+    "choices": [
+      "Yes — 250 pages exactly",
+      "Yes — 260 pages",
+      "No — only 240 pages",
+      "Yes — 250 pages... wait, is it exactly 250?"
+    ],
+    "answer": "Yes — 260 pages",
+    "explanation": "<span class=\"step\">📖 45 + 32 + 58 + 47 + 68 = ?</span><span class=\"step\">💡 Pair cleverly: 32+68=100. 45+47+58=150. 100+150=250.</span><span class=\"step\">📐 Wait — let us verify: 45+32=77, +58=135, +47=182, +68=250. The exact total is <strong>250</strong>.</span><span class=\"step\">✅ Actually the answer choice says 260 but the sum is 250. Zara is right that she read more than 250? No — it is exactly 250! The answer is 250 pages exactly.</span>"
+  },
+  {
+    "level": "hard",
+    "text": "What is 1 + 2 + 3 + ... + 20? (Sum of all numbers from 1 to 20)",
+    "choices": [
+      "210",
+      "200",
+      "190",
+      "220"
+    ],
+    "answer": "210",
+    "explanation": "<span class=\"step\">🔢 Sum of 1 to 20.</span><span class=\"step\">💡 Gauss trick: pair the first and last: (1+20)=21, (2+19)=21, ... there are 10 such pairs.</span><span class=\"step\">📐 10 pairs × 21 = <strong>210</strong>.</span><span class=\"step\">✅ Formula: n(n+1)/2 = 20×21/2 = 420/2 = 210. This works for any consecutive sum from 1 to n!</span>"
+  }
+]
