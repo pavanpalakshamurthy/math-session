@@ -49,7 +49,7 @@
 
     .quiz-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1.2rem;
     }
 
@@ -161,7 +161,10 @@
       border-top: 1px solid var(--border);
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 700px) {
+      .quiz-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
       .quiz-grid { grid-template-columns: 1fr; }
       header h1 { font-size: 1.8rem; }
     }
