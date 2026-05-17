@@ -191,14 +191,31 @@
     .feedback.retry   { background: #fef3c7; color: #92400e; }
 
     .explanation {
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.55;
+      margin-top: 0.9rem;
       display: none;
-      padding: 0 0.2rem;
+      background: #fffbeb;
+      border: 2px solid #fde68a;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
     }
     .explanation.show { display: block; }
+    .explanation-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #92400e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+    }
+    .explanation-body {
+      font-size: 0.9rem;
+      color: #1e293b;
+      line-height: 1.65;
+    }
+    .explanation-body .step {
+      display: block;
+      padding: 0.1rem 0;
+    }
 
     .next-btn {
       display: none;
@@ -292,7 +309,7 @@ const questions = [
     hint: 'Think: pieces eaten out of total pieces.',
     choices: ['1/4', '1/2', '3/4', '2/4'],
     answer: '1/4',
-    explanation: '1 piece out of 4 equal pieces = 1/4.'
+    explanation: `<span class="step">🍫 The bar is broken into <strong>4 equal pieces</strong>.</span><span class="step">🍽️ Maya ate <strong>1 piece</strong>.</span><span class="step">📐 A fraction means: <strong>pieces eaten ÷ total pieces</strong> = 1 ÷ 4 = <strong>1/4</strong>.</span><span class="step">💡 Think of it as: "1 out of 4 pieces." That's one-quarter!</span>`
   },
   {
     level: 'easy',
@@ -300,7 +317,7 @@ const questions = [
     hint: 'Count the slices Leo ate vs. total slices.',
     choices: ['2/8', '1/4', '3/8', '1/2'],
     answer: '2/8',
-    explanation: '2 out of 8 slices = 2/8 (also equal to 1/4, but 2/8 is the direct fraction).'
+    explanation: `<span class="step">🍕 The pizza has <strong>8 slices</strong> in total.</span><span class="step">😋 Leo ate <strong>2 slices</strong>.</span><span class="step">📐 Fraction = slices eaten ÷ total slices = 2 ÷ 8 = <strong>2/8</strong>.</span><span class="step">💡 Bonus: 2/8 is the same as 1/4 because 2 goes into 8 four times. Cool, right?</span>`
   },
   {
     level: 'easy',
@@ -308,7 +325,7 @@ const questions = [
     hint: 'How many parts are red? How many parts in all?',
     choices: ['1/3', '2/3', '1/2', '3/1'],
     answer: '1/3',
-    explanation: '1 red part out of 3 equal parts = 1/3.'
+    explanation: `<span class="step">🎀 The ribbon is cut into <strong>3 equal parts</strong>.</span><span class="step">🖍️ Sam colored <strong>1 part</strong> red.</span><span class="step">📐 Fraction = colored parts ÷ total parts = 1 ÷ 3 = <strong>1/3</strong>.</span><span class="step">💡 Imagine cutting a sandwich into 3 equal pieces and eating one — you ate 1/3!</span>`
   },
   {
     level: 'easy',
@@ -316,7 +333,7 @@ const questions = [
     hint: 'Grapes given ÷ total grapes.',
     choices: ['1/2', '1/3', '2/3', '3/6'],
     answer: '1/2',
-    explanation: '3 out of 6 = 3/6 = 1/2.'
+    explanation: `<span class="step">🍇 Zara started with <strong>6 grapes</strong>.</span><span class="step">🤝 She gave away <strong>3 grapes</strong>.</span><span class="step">📐 Fraction = grapes given ÷ total = 3 ÷ 6 = <strong>3/6</strong>.</span><span class="step">💡 3 is exactly <strong>half</strong> of 6, so 3/6 = <strong>1/2</strong>. She gave away half her grapes!</span>`
   },
   {
     level: 'easy',
@@ -324,7 +341,7 @@ const questions = [
     hint: 'Rows with flowers out of total rows.',
     choices: ['2/5', '3/5', '1/5', '2/3'],
     answer: '2/5',
-    explanation: '2 flower rows out of 5 total rows = 2/5.'
+    explanation: `<span class="step">🌷 The garden has <strong>5 rows</strong> in total.</span><span class="step">🌸 Flowers grow in <strong>2 of those rows</strong>.</span><span class="step">📐 Fraction = flower rows ÷ total rows = 2 ÷ 5 = <strong>2/5</strong>.</span><span class="step">💡 Think of 5 lines on your notebook — color 2 of them. That colored part is 2/5!</span>`
   },
 
   // ── MEDIUM (6–15) ─────────────────────────────────────────────────────────
@@ -334,7 +351,7 @@ const questions = [
     hint: 'Add the two fractions — they have the same denominator.',
     choices: ['2/3', '1/3', '2/6', '1/6'],
     answer: '2/3',
-    explanation: '1/3 + 1/3 = 2/3.'
+    explanation: `<span class="step">📖 Monday: Emma read <strong>1/3</strong> of the book.</span><span class="step">📖 Tuesday: Emma read another <strong>1/3</strong>.</span><span class="step">➕ When the bottom numbers (denominators) are the <strong>same</strong>, just add the top numbers: 1 + 1 = 2. Keep the 3 on the bottom.</span><span class="step">✅ Total read = <strong>2/3</strong> of the book!</span>`
   },
   {
     level: 'medium',
@@ -342,7 +359,7 @@ const questions = [
     hint: 'Subtract: how much was used?',
     choices: ['2/4', '1/4', '3/4', '1/2'],
     answer: '2/4',
-    explanation: '3/4 − 1/4 = 2/4 (which equals 1/2).'
+    explanation: `<span class="step">💧 Tank starts: <strong>3/4</strong> full.</span><span class="step">💧 Tank after using water: <strong>1/4</strong> full.</span><span class="step">➖ To find how much was used, subtract: 3/4 − 1/4. Bottom numbers are the same, so subtract the tops: 3 − 1 = 2. Keep the 4.</span><span class="step">✅ Water used = <strong>2/4</strong> (same as 1/2 — half the tank was used!).</span>`
   },
   {
     level: 'medium',
@@ -350,7 +367,7 @@ const questions = [
     hint: 'Find the LCM of 2 and 3.',
     choices: ['6 days', '3 days', '2 days', '5 days'],
     answer: '6 days',
-    explanation: 'LCM(2, 3) = 6. They will jog together again after 6 days.'
+    explanation: `<span class="step">🏃 Ben jogs every 2 days: Day <strong>2, 4, 6</strong>, 8, 10...</span><span class="step">🏃 Lily jogs every 3 days: Day <strong>3, 6</strong>, 9, 12...</span><span class="step">🔍 Look for the <strong>first day that appears in BOTH lists</strong>: that's Day <strong>6</strong>!</span><span class="step">💡 This is called the <strong>LCM (Least Common Multiple)</strong>. LCM(2, 3) = 6.</span>`
   },
   {
     level: 'medium',
@@ -358,7 +375,7 @@ const questions = [
     hint: 'LCM of 4 and 6.',
     choices: ['8:12 AM', '8:10 AM', '8:24 AM', '8:06 AM'],
     answer: '8:12 AM',
-    explanation: 'LCM(4, 6) = 12 minutes. Next time = 8:00 + 12 min = 8:12 AM.'
+    explanation: `<span class="step">🚌 Bus A leaves every 4 min: minute <strong>4, 8, 12</strong>, 16...</span><span class="step">🚌 Bus B leaves every 6 min: minute <strong>6, 12</strong>, 18...</span><span class="step">🔍 First minute in <strong>both</strong> lists = <strong>12 minutes</strong>. That's LCM(4, 6) = 12.</span><span class="step">🕗 8:00 AM + 12 minutes = <strong>8:12 AM</strong>. See you then!</span>`
   },
   {
     level: 'medium',
@@ -366,7 +383,7 @@ const questions = [
     hint: 'Multiply the fraction by 3.',
     choices: ['1 1/2 cups', '2 cups', '1 cup', '3/2 cups'],
     answer: '1 1/2 cups',
-    explanation: '1/2 × 3 = 3/2 = 1 1/2 cups.'
+    explanation: `<span class="step">🍪 1 batch needs <strong>1/2 cup</strong> of sugar.</span><span class="step">✖️ 3 batches need: 1/2 × 3 = <strong>3/2 cups</strong>.</span><span class="step">💡 3/2 means "3 halves." 2 halves = 1 whole cup, plus 1 more half = <strong>1 and 1/2 cups</strong>.</span><span class="step">🥄 Imagine 3 half-cup scoops poured in — that's one and a half cups!</span>`
   },
   {
     level: 'medium',
@@ -374,7 +391,7 @@ const questions = [
     hint: 'Find 1/4 of 20.',
     choices: ['5 students', '4 students', '10 students', '8 students'],
     answer: '5 students',
-    explanation: '20 × 1/4 = 5 students.'
+    explanation: `<span class="step">🎒 There are <strong>20 students</strong> in the class.</span><span class="step">📐 "1/4 of 20" means: split 20 into <strong>4 equal groups</strong>.</span><span class="step">➗ 20 ÷ 4 = <strong>5</strong>.</span><span class="step">🥪 So <strong>5 students</strong> brought lunch from home. (Imagine 4 groups of 5 kids — one group has their lunch box!)</span>`
   },
   {
     level: 'medium',
@@ -382,7 +399,7 @@ const questions = [
     hint: 'Compare and subtract — same denominator.',
     choices: ['2nd quiz by 1/5', '1st quiz by 1/5', '2nd quiz by 2/5', 'They scored the same'],
     answer: '2nd quiz by 1/5',
-    explanation: '4/5 − 3/5 = 1/5. Jake did better on the 2nd quiz by 1/5.'
+    explanation: `<span class="step">📝 Quiz 1: Jake scored <strong>3/5</strong>.</span><span class="step">📝 Quiz 2: Jake scored <strong>4/5</strong>.</span><span class="step">🔍 Same bottom number (5), so compare the tops: 4 > 3, so <strong>Quiz 2 is better</strong>.</span><span class="step">➖ How much better? 4/5 − 3/5 = <strong>1/5</strong>. Jake improved by one-fifth!</span>`
   },
   {
     level: 'medium',
@@ -390,7 +407,7 @@ const questions = [
     hint: 'LCM of 3 and 5.',
     choices: ['15 seconds', '8 seconds', '10 seconds', '30 seconds'],
     answer: '15 seconds',
-    explanation: 'LCM(3, 5) = 15. They will go off together after 15 seconds.'
+    explanation: `<span class="step">💡 Lamp flashes at: <strong>3, 6, 9, 12, 15</strong> seconds...</span><span class="step">🔔 Bell rings at: <strong>5, 10, 15</strong> seconds...</span><span class="step">🔍 First second in <strong>both</strong> lists = <strong>15 seconds</strong>! That's LCM(3, 5) = 15.</span><span class="step">💡 Tip: LCM means the <strong>smallest number</strong> that both numbers divide into evenly.</span>`
   },
   {
     level: 'medium',
@@ -398,7 +415,7 @@ const questions = [
     hint: 'Add what was eaten, then subtract from 1 whole.',
     choices: ['1/4', '2/4', '3/4', '0'],
     answer: '1/4',
-    explanation: '1/4 + 2/4 = 3/4 eaten. 1 − 3/4 = 1/4 left.'
+    explanation: `<span class="step">🥧 Nora ate <strong>1/4</strong> of the pie. Brother ate <strong>2/4</strong>.</span><span class="step">➕ Total eaten: 1/4 + 2/4 = <strong>3/4</strong> (same denominators, add the tops: 1+2=3).</span><span class="step">➖ Whole pie = <strong>4/4</strong>. Left over = 4/4 − 3/4 = <strong>1/4</strong>.</span><span class="step">💡 Picture a pie cut into 4 slices: Nora takes 1, brother takes 2. Only 1 slice left!</span>`
   },
   {
     level: 'medium',
@@ -406,7 +423,7 @@ const questions = [
     hint: "Find each friend's share, then halve it.",
     choices: ['1/6', '1/4', '1/12', '1/3'],
     answer: '1/6',
-    explanation: 'Each friend gets 1/3. One friend splits her 1/3 in half → 1/6 for the sister.'
+    explanation: `<span class="step">🍪 12 cookies shared equally among <strong>3 friends</strong>: 12 ÷ 3 = <strong>4 cookies each</strong> (that's 1/3 of the bag).</span><span class="step">👧 One friend shares her <strong>4 cookies</strong> equally with her little sister: 4 ÷ 2 = <strong>2 cookies</strong> for the sister.</span><span class="step">📐 Sister's fraction = 2 out of 12 total = 2/12 = <strong>1/6</strong>.</span><span class="step">💡 Splitting a third in half always gives you a sixth: 1/3 ÷ 2 = 1/6!</span>`
   },
 
   // ── HARD (16–30) ──────────────────────────────────────────────────────────
@@ -416,7 +433,7 @@ const questions = [
     hint: 'LCM of 6 and 9.',
     choices: ['12:18 PM', '12:15 PM', '12:36 PM', '12:09 PM'],
     answer: '12:18 PM',
-    explanation: 'LCM(6, 9) = 18 minutes. Next simultaneous departure = 12:00 + 18 min = 12:18 PM.'
+    explanation: `<span class="step">🚆 Oak Station train leaves every 6 min: minute <strong>6, 12, 18</strong>, 24...</span><span class="step">🚆 Elm Station train leaves every 9 min: minute <strong>9, 18</strong>, 27...</span><span class="step">🔍 First minute in <strong>both</strong> lists = <strong>18 minutes</strong>. That's LCM(6, 9) = 18.</span><span class="step">🕛 12:00 noon + 18 minutes = <strong>12:18 PM</strong>. Both trains leave at the same time!</span>`
   },
   {
     level: 'hard',
@@ -424,7 +441,7 @@ const questions = [
     hint: "Add Mia's parts first, then compare.",
     choices: ['Tom by 0 — they ran the same', 'Mia by 1/8', 'Tom by 1/8', 'Mia by 2/8'],
     answer: 'Tom by 0 — they ran the same',
-    explanation: 'Mia: 3/8 + 2/8 = 5/8. Tom: 5/8. They ran exactly the same distance!'
+    explanation: `<span class="step">🏃 Mia ran <strong>3/8</strong> before lunch and <strong>2/8</strong> after lunch.</span><span class="step">➕ Add them: 3/8 + 2/8 = <strong>5/8</strong> (same denominators — just add the tops: 3+2=5).</span><span class="step">🏃 Tom ran <strong>5/8</strong>.</span><span class="step">⚖️ Mia's total = 5/8. Tom's total = 5/8. They are <strong>exactly equal — it's a tie!</strong> 🤝</span>`
   },
   {
     level: 'hard',
@@ -432,7 +449,7 @@ const questions = [
     hint: 'Add flowers, subtract from 1.',
     choices: ['1/6', '2/6', '5/6', '3/6'],
     answer: '1/6',
-    explanation: '2/6 + 3/6 = 5/6. Grass = 1 − 5/6 = 1/6.'
+    explanation: `<span class="step">🌻 Sunflowers: <strong>2/6</strong> of the field. 🌹 Roses: <strong>3/6</strong> of the field.</span><span class="step">➕ Total plants: 2/6 + 3/6 = <strong>5/6</strong> (same denominator — add the tops: 2+3=5).</span><span class="step">🌿 The <strong>whole field</strong> = 6/6. Grass = 6/6 − 5/6 = <strong>1/6</strong>.</span><span class="step">💡 Imagine 6 equal strips of field — 2 have sunflowers, 3 have roses, and only 1 has grass!</span>`
   },
   {
     level: 'hard',
@@ -440,7 +457,7 @@ const questions = [
     hint: 'Find LCM of 4, 6, and 8.',
     choices: ['9:24 AM', '9:12 AM', '9:48 AM', '9:16 AM'],
     answer: '9:24 AM',
-    explanation: 'LCM(4, 6, 8) = 24. Next time = 9:00 + 24 min = 9:24 AM.'
+    explanation: `<span class="step">🔔 Bell 1 rings every 4 min: <strong>4, 8, 12, 16, 20, 24</strong>...</span><span class="step">🔔 Bell 2 rings every 6 min: <strong>6, 12, 18, 24</strong>...</span><span class="step">🔔 Bell 3 rings every 8 min: <strong>8, 16, 24</strong>...</span><span class="step">🔍 First number in <strong>all three</strong> lists = <strong>24</strong>. LCM(4, 6, 8) = 24.</span><span class="step">🕘 9:00 AM + 24 minutes = <strong>9:24 AM</strong>. All three bells ring together again!</span>`
   },
   {
     level: 'hard',
@@ -448,7 +465,7 @@ const questions = [
     hint: 'Find a common denominator for 1/3 and 2/5, add them, subtract from 1, then multiply by 30.',
     choices: ['8 books', '10 books', '6 books', '12 books'],
     answer: '8 books',
-    explanation: '1/3 = 5/15, 2/5 = 6/15. Total = 11/15. Art = 1 − 11/15 = 4/15. 30 × 4/15 = 8 books.'
+    explanation: `<span class="step">📚 Science books: 1/3 of 30 = 30 ÷ 3 = <strong>10 books</strong>.</span><span class="step">📖 Story books: 2/5 of 30 = 30 ÷ 5 × 2 = <strong>12 books</strong>.</span><span class="step">➕ Science + Stories = 10 + 12 = <strong>22 books</strong>.</span><span class="step">➖ Art books = 30 − 22 = <strong>8 books</strong>.</span><span class="step">💡 No need for tricky fractions here — just find each group's count and subtract!</span>`
   },
   {
     level: 'hard',
@@ -456,7 +473,7 @@ const questions = [
     hint: "You pour out 1/3 of the 3/4 that's there. Multiply, then subtract.",
     choices: ['1/2', '2/3', '5/12', '7/12'],
     answer: '1/2',
-    explanation: 'Amount poured = 1/3 × 3/4 = 3/12 = 1/4. Left = 3/4 − 1/4 = 2/4 = 1/2.'
+    explanation: `<span class="step">🫙 The jar has <strong>3/4</strong> of juice inside it.</span><span class="step">💧 We pour out <strong>1/3 of the 3/4</strong> that's there — multiply: 1/3 × 3/4 = 3/12 = <strong>1/4</strong> poured out.</span><span class="step">➖ Juice left = 3/4 − 1/4 = <strong>2/4 = 1/2</strong>.</span><span class="step">💡 When you take a fraction OF a fraction, you multiply them. "Of" means multiply!</span>`
   },
   {
     level: 'hard',
@@ -464,7 +481,7 @@ const questions = [
     hint: 'LCM of 2 and 3 helps add the fractions. Then subtract from 1.',
     choices: ['5 students', '10 students', '15 students', '6 students'],
     answer: '5 students',
-    explanation: '1/2 + 1/3 = 3/6 + 2/6 = 5/6. Tennis = 1 − 5/6 = 1/6. 30 × 1/6 = 5 students.'
+    explanation: `<span class="step">⚽ Soccer: 1/2 of class. 🏀 Basketball: 1/3 of class.</span><span class="step">➕ To add 1/2 + 1/3, we need the <strong>same denominator</strong>. LCM(2,3) = 6. So: 1/2 = 3/6 and 1/3 = 2/6.</span><span class="step">➕ 3/6 + 2/6 = <strong>5/6</strong> like soccer or basketball.</span><span class="step">🎾 Tennis fans = 1 − 5/6 = <strong>1/6</strong> of the class. 1/6 of 30 = 30 ÷ 6 = <strong>5 students</strong>!</span>`
   },
   {
     level: 'hard',
@@ -472,7 +489,7 @@ const questions = [
     hint: 'Add the three fractions using LCM of 3, 4, 6, then subtract from 1.',
     choices: ['1/4', '3/4', '1/12', '5/12'],
     answer: '1/4',
-    explanation: 'LCM(3,4,6)=12. 4/12 + 3/12 + 2/12 = 9/12. Left = 3/12 = 1/4.'
+    explanation: `<span class="step">🍕 We need to add 1/3 + 1/4 + 1/6. Different bottoms — we need a <strong>common denominator</strong>.</span><span class="step">🔢 LCM(3, 4, 6) = <strong>12</strong>. Convert: 1/3 = 4/12, 1/4 = 3/12, 1/6 = 2/12.</span><span class="step">➕ Total eaten: 4/12 + 3/12 + 2/12 = <strong>9/12</strong>.</span><span class="step">➖ Left = 12/12 − 9/12 = <strong>3/12 = 1/4</strong>. One quarter of the pizza remains!</span>`
   },
   {
     level: 'hard',
@@ -480,7 +497,7 @@ const questions = [
     hint: 'LCM of 5, 8, and 10.',
     choices: ['40 seconds', '80 seconds', '20 seconds', '400 seconds'],
     answer: '40 seconds',
-    explanation: 'LCM(5, 8, 10) = 40 seconds.'
+    explanation: `<span class="step">🐸 Frog jumps at: <strong>5, 10, 15, 20, 25, 30, 35, 40</strong>...</span><span class="step">🦗 Cricket chirps at: <strong>8, 16, 24, 32, 40</strong>...</span><span class="step">✨ Firefly blinks at: <strong>10, 20, 30, 40</strong>...</span><span class="step">🔍 First second in <strong>all three</strong> lists = <strong>40 seconds</strong>. LCM(5, 8, 10) = 40!</span>`
   },
   {
     level: 'hard',
@@ -488,7 +505,7 @@ const questions = [
     hint: 'Add A + B + C and subtract from 1.',
     choices: ['1/8', '2/8', '3/8', '4/8'],
     answer: '1/8',
-    explanation: '2/8 + 3/8 + 2/8 = 7/8. Section D = 1 − 7/8 = 1/8.'
+    explanation: `<span class="step">🌱 Sections A, B, C: 2/8 + 3/8 + 2/8. Same denominator — add the tops: 2+3+2 = <strong>7</strong>.</span><span class="step">➕ Sections A+B+C = <strong>7/8</strong> of the garden.</span><span class="step">➖ The whole garden = <strong>8/8</strong>. Section D = 8/8 − 7/8 = <strong>1/8</strong>.</span><span class="step">💡 Think of 8 equal garden squares: A gets 2, B gets 3, C gets 2 — only 1 square is left for D!</span>`
   },
   {
     level: 'hard',
@@ -496,7 +513,7 @@ const questions = [
     hint: 'LCM(8,12) tells you when they meet. Divide by each lap time.',
     choices: ['A: 3 laps, B: 2 laps', 'A: 2 laps, B: 3 laps', 'A: 4 laps, B: 3 laps', 'A: 6 laps, B: 4 laps'],
     answer: 'A: 3 laps, B: 2 laps',
-    explanation: 'LCM(8,12)=24. A: 24÷8=3 laps. B: 24÷12=2 laps.'
+    explanation: `<span class="step">🚴 Cyclist A finishes every 8 min: minute <strong>8, 16, 24</strong>...</span><span class="step">🚴 Cyclist B finishes every 12 min: minute <strong>12, 24</strong>...</span><span class="step">🔍 First minute in both = <strong>24 minutes</strong>. LCM(8, 12) = 24.</span><span class="step">🏁 At 24 minutes: A did 24÷8 = <strong>3 laps</strong>. B did 24÷12 = <strong>2 laps</strong>. They meet at the start!</span>`
   },
   {
     level: 'hard',
@@ -504,7 +521,7 @@ const questions = [
     hint: 'LCM of 3 and 4 helps add 1/3 and 1/4. Find how many she gave away.',
     choices: ['10 stickers', '8 stickers', '6 stickers', '14 stickers'],
     answer: '10 stickers',
-    explanation: '1/3 of 24 = 8. 1/4 of 24 = 6. Total given = 14. Left = 24 − 14 = 10 stickers.'
+    explanation: `<span class="step">🌟 Lily has <strong>24 stickers</strong>.</span><span class="step">👧 Gives 1/3 to sister: 24 ÷ 3 = <strong>8 stickers</strong>.</span><span class="step">👦 Gives 1/4 to cousin: 24 ÷ 4 = <strong>6 stickers</strong>.</span><span class="step">➖ Total given = 8 + 6 = 14. Lily keeps: 24 − 14 = <strong>10 stickers</strong>!</span>`
   },
   {
     level: 'hard',
@@ -512,7 +529,7 @@ const questions = [
     hint: 'Find LCM of 8, 6, and 4.',
     choices: ['24 of each', '48 of each', '12 of each', '16 of each'],
     answer: '24 of each',
-    explanation: 'LCM(8, 6, 4) = 24.'
+    explanation: `<span class="step">🍪 Cookies come in batches of 8: <strong>8, 16, 24</strong>...</span><span class="step">🧁 Muffins come in batches of 6: <strong>6, 12, 18, 24</strong>...</span><span class="step">🍫 Brownies come in batches of 4: <strong>4, 8, 12, 16, 20, 24</strong>...</span><span class="step">🔍 First number in <strong>all three</strong> lists = <strong>24</strong>. LCM(8, 6, 4) = 24. The baker needs <strong>24 of each</strong>!</span>`
   },
   {
     level: 'hard',
@@ -520,7 +537,7 @@ const questions = [
     hint: 'Add morning + afternoon, subtract leak. Use LCM(5,4,10)=20 to add fractions.',
     choices: ['Yes, by 1/20 more than half', 'No, it is exactly half', 'Yes, by 3/20 more than half', 'No, it is 1/20 short of half'],
     answer: 'Yes, by 1/20 more than half',
-    explanation: '2/5=8/20, 1/4=5/20, leak=2/20. Total=8/20+5/20−2/20=11/20. Half=10/20. 11/20 > 10/20 by 1/20.'
+    explanation: `<span class="step">🔢 Use <strong>20 as the common denominator</strong> (LCM of 5, 4, 10 = 20).</span><span class="step">🌅 Morning fill: 2/5 = <strong>8/20</strong>. 🌇 Afternoon fill: 1/4 = <strong>5/20</strong>.</span><span class="step">💧 Leak: 1/10 = <strong>2/20</strong>.</span><span class="step">🧮 Total = 8/20 + 5/20 − 2/20 = <strong>11/20</strong>. Half the tank = 10/20.</span><span class="step">✅ Since 11 > 10, the tank is <strong>more than half full — by 1/20</strong>!</span>`
   },
   {
     level: 'hard',
@@ -533,7 +550,7 @@ const questions = [
       'After 36 min — Amir:6, Beni:3, Cora:4, Dana:2'
     ],
     answer: 'After 36 min — Amir:6, Beni:4, Cora:3, Dana:2',
-    explanation: 'LCM(6,9,12,18)=36. Amir:36÷6=6, Beni:36÷9=4, Cora:36÷12=3, Dana:36÷18=2.'
+    explanation: `<span class="step">🔢 Find LCM(6, 9, 12, 18): multiples of 18 = <strong>18, 36</strong>. Does 36 work for all? 36÷6=6 ✅ 36÷9=4 ✅ 36÷12=3 ✅ 36÷18=2 ✅</span><span class="step">⏱️ They all meet again after <strong>36 minutes</strong>.</span><span class="step">🏃 Amir: 36÷6 = <strong>6 laps</strong>. Beni: 36÷9 = <strong>4 laps</strong>.</span><span class="step">🏃 Cora: 36÷12 = <strong>3 laps</strong>. Dana: 36÷18 = <strong>2 laps</strong>. Everyone arrives together!</span>`
   }
 ];
 
@@ -608,8 +625,7 @@ function handleChoice(btnIdx) {
     disableAll();
     feedback.textContent = '🎉 Correct! Fantastic work!';
     feedback.className   = 'feedback show correct';
-    explEl.textContent   = '📝 ' + q.explanation;
-    explEl.className     = 'explanation show';
+    showExplanation(explEl, q.explanation);
     nextBtn.classList.add('show');
     scoreCorrect++;
     scoreDone++;
@@ -621,8 +637,7 @@ function handleChoice(btnIdx) {
     revealCorrect(q.answer);
     feedback.textContent = `❌ The correct answer is: ${q.answer}`;
     feedback.className   = 'feedback show wrong';
-    explEl.textContent   = '📝 ' + q.explanation;
-    explEl.className     = 'explanation show';
+    showExplanation(explEl, q.explanation);
     nextBtn.classList.add('show');
     scoreWrong++;
     scoreDone++;
@@ -634,6 +649,11 @@ function handleChoice(btnIdx) {
     feedback.textContent = '🤔 Not quite — you have 1 more try!';
     feedback.className   = 'feedback show retry';
   }
+}
+
+function showExplanation(el, html) {
+  el.innerHTML = `<div class="explanation-title">🧮 Here's how to solve it!</div><div class="explanation-body">${html}</div>`;
+  el.className = 'explanation show';
 }
 
 function updatePip(pipIdx, state) {
