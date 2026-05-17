@@ -276,6 +276,50 @@
     }
     .restart-btn:hover { background: #4338ca; }
 
+    /* ── Championship screen ── */
+    #fireworks-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 50;
+    }
+    .championship-wrap {
+      position: relative;
+      z-index: 60;
+    }
+    .trophy-cup {
+      font-size: 6rem;
+      display: block;
+      margin-bottom: 0.3rem;
+      animation: trophy-rock 0.7s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 18px #f59e0b) drop-shadow(0 0 36px #fbbf24);
+    }
+    @keyframes trophy-rock {
+      from { transform: scale(1)   rotate(-4deg); }
+      to   { transform: scale(1.1) rotate( 4deg); }
+    }
+    .champion-title {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: champ-pulse 1s ease-in-out infinite alternate;
+      margin-bottom: 0.4rem;
+    }
+    @keyframes champ-pulse {
+      from { opacity: 0.85; transform: scale(1);    }
+      to   { opacity: 1;    transform: scale(1.04); }
+    }
+    .champion-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
     @media (max-width: 500px) {
       .choices { grid-template-columns: 1fr; }
       header h1 { font-size: 1.4rem; }
@@ -689,33 +733,137 @@ function goNext() {
 function showFinalScreen() {
   document.getElementById('progress-label').textContent = 'All done!';
   const pct = Math.round((scoreCorrect / 30) * 100);
-  let emoji = pct >= 90 ? '🏆' : pct >= 70 ? '⭐' : pct >= 50 ? '👍' : '💪';
-  let msg   = pct >= 90 ? 'Outstanding! You are a Math Champion!'
-            : pct >= 70 ? 'Great job! Keep practicing!'
-            : pct >= 50 ? 'Good effort! You can do even better!'
-            : 'Keep going — practice makes perfect!';
+  const isChampion = pct >= 90;
 
-  document.getElementById('main').innerHTML = `
-    <div class="final-screen">
-      <h2>${emoji} Quiz Complete!</h2>
-      <p>${msg}</p>
-      <div class="final-tally">
-        <div class="tally-box green">
-          <div class="num">${scoreCorrect}</div>
-          <div class="lbl">Correct</div>
+  if (isChampion) {
+    document.getElementById('main').innerHTML = `
+      <div class="final-screen championship-wrap">
+        <span class="trophy-cup">🏆</span>
+        <div class="champion-title">MATH CHAMPION!</div>
+        <div class="champion-subtitle">Incredible — you got ${scoreCorrect} out of 30 correct!</div>
+        <div class="final-tally">
+          <div class="tally-box green">
+            <div class="num">${scoreCorrect}</div>
+            <div class="lbl">Correct</div>
+          </div>
+          <div class="tally-box red">
+            <div class="num">${scoreWrong}</div>
+            <div class="lbl">Wrong</div>
+          </div>
+          <div class="tally-box">
+            <div class="num">${pct}%</div>
+            <div class="lbl">Score</div>
+          </div>
         </div>
-        <div class="tally-box red">
-          <div class="num">${scoreWrong}</div>
-          <div class="lbl">Wrong</div>
-        </div>
-        <div class="tally-box">
-          <div class="num">${pct}%</div>
-          <div class="lbl">Score</div>
-        </div>
+        <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
       </div>
-      <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
-    </div>
-  `;
+    `;
+    launchFireworks();
+  } else {
+    let emoji = pct >= 70 ? '⭐' : pct >= 50 ? '👍' : '💪';
+    let msg   = pct >= 70 ? 'Great job! Keep practicing!'
+              : pct >= 50 ? 'Good effort! You can do even better!'
+              : 'Keep going — practice makes perfect!';
+    document.getElementById('main').innerHTML = `
+      <div class="final-screen">
+        <h2>${emoji} Quiz Complete!</h2>
+        <p>${msg}</p>
+        <div class="final-tally">
+          <div class="tally-box green">
+            <div class="num">${scoreCorrect}</div>
+            <div class="lbl">Correct</div>
+          </div>
+          <div class="tally-box red">
+            <div class="num">${scoreWrong}</div>
+            <div class="lbl">Wrong</div>
+          </div>
+          <div class="tally-box">
+            <div class="num">${pct}%</div>
+            <div class="lbl">Score</div>
+          </div>
+        </div>
+        <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
+      </div>
+    `;
+  }
+}
+
+// ── Fireworks ─────────────────────────────────────────────────────────────────
+function launchFireworks() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'fireworks-canvas';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['#f59e0b','#ef4444','#8b5cf6','#3b82f6','#10b981','#f97316','#ec4899','#facc15'];
+  const particles = [];
+
+  function Particle(x, y) {
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 7 + 2;
+    return {
+      x, y, color,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      radius: Math.random() * 3 + 1.5,
+      alpha: 1,
+      decay: Math.random() * 0.018 + 0.008,
+      gravity: 0.12,
+      trail: []
+    };
+  }
+
+  function burst(x, y) {
+    for (let i = 0; i < 70; i++) particles.push(Particle(x, y));
+  }
+
+  // Schedule 14 bursts spread over 5 seconds
+  const positions = () => [
+    Math.random() * canvas.width  * 0.7 + canvas.width  * 0.15,
+    Math.random() * canvas.height * 0.55 + canvas.height * 0.05
+  ];
+  let fired = 0;
+  const schedule = [0, 300, 600, 900, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000, 4400, 4800];
+  schedule.forEach(delay => setTimeout(() => { const [x,y] = positions(); burst(x,y); fired++; }, delay));
+
+  let animId;
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.vy += p.gravity;
+      p.x  += p.vx;
+      p.y  += p.vy;
+      p.alpha -= p.decay;
+
+      if (p.alpha <= 0) { particles.splice(i, 1); continue; }
+
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle   = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur  = 6;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    if (fired < schedule.length || particles.length > 0) {
+      animId = requestAnimationFrame(animate);
+    } else {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+      canvas.remove();
+    }
+  }
+  animate();
 }
 
 // ── Restart ───────────────────────────────────────────────────────────────────
