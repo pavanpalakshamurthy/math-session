@@ -3,434 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Math Champions — Fractions &amp; LCM</title>
+  <title>Math Champions</title>
   <style>
     :root {
-      --primary: #4f46e5;
-      --easy: #16a34a;
-      --medium: #d97706;
-      --hard: #dc2626;
-      --bg: #f8fafc;
-      --card: #ffffff;
       --text: #1e293b;
       --muted: #64748b;
       --border: #e2e8f0;
-      --radius: 12px;
+      --bg: #f8fafc;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ── Header ── */
     header {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
       color: white;
-      padding: 1.5rem 1rem 1.2rem;
       text-align: center;
+      padding: 3rem 1rem 2.5rem;
     }
-    header h1 { font-size: 1.8rem; font-weight: 800; }
-    header p  { font-size: 0.9rem; opacity: 0.9; margin-top: 0.3rem; }
+    header h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.5px; }
+    header p  { font-size: 1.05rem; opacity: 0.88; margin-top: 0.5rem; }
 
-    .scoreboard {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.9rem;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50px;
-      padding: 0.5rem 1.8rem;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-      flex-wrap: wrap;
-    }
-    .scoreboard span { font-size: 0.9rem; font-weight: 600; }
-
-    .progress-wrap {
-      margin: 0.8rem auto 0;
-      max-width: 340px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50px;
-      height: 7px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: white;
-      border-radius: 50px;
-      transition: width 0.4s ease;
-      width: 0%;
-    }
-    .progress-label {
-      font-size: 0.75rem;
-      opacity: 0.85;
-      margin-top: 0.35rem;
-      text-align: center;
-    }
-
-    /* ── Question card ── */
     main {
-      max-width: 680px;
-      margin: 2rem auto;
+      flex: 1;
+      max-width: 780px;
+      margin: 2.5rem auto;
       padding: 0 1rem 4rem;
+      width: 100%;
     }
 
-    .card {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.6rem 1.4rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
       margin-bottom: 1rem;
     }
-    .q-counter { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
 
-    .badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.65rem;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .badge-easy   { background: #dcfce7; color: var(--easy); }
-    .badge-medium { background: #fef3c7; color: var(--medium); }
-    .badge-hard   { background: #fee2e2; color: var(--hard); }
-
-    .attempts-pips {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
-    .pip {
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      transition: background 0.2s;
-    }
-    .pip.used-wrong  { background: var(--hard); }
-    .pip.used-correct { background: var(--easy); }
-
-    .q-text {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .q-hint {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 1.1rem;
-    }
-
-    .choices {
+    .quiz-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.55rem;
-    }
-    .choice-btn {
-      background: #f1f5f9;
-      border: 2px solid transparent;
-      border-radius: 9px;
-      padding: 0.6rem 0.9rem;
-      font-size: 0.92rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.15s;
-      color: var(--text);
-      line-height: 1.4;
-    }
-    .choice-btn:hover:not(:disabled) {
-      background: #e0e7ff;
-      border-color: #818cf8;
-    }
-    .choice-btn.state-correct {
-      background: #dcfce7;
-      border-color: var(--easy);
-      color: var(--easy);
-      font-weight: 700;
-    }
-    .choice-btn.state-wrong {
-      background: #fee2e2;
-      border-color: var(--hard);
-      color: var(--hard);
-      opacity: 0.7;
-    }
-    .choice-btn.state-reveal {
-      background: #dcfce7;
-      border-color: var(--easy);
-      color: var(--easy);
-      font-weight: 700;
-    }
-    .choice-btn:disabled { cursor: default; }
-
-    .feedback {
-      margin-top: 1rem;
-      padding: 0.7rem 1rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      display: none;
-    }
-    .feedback.show { display: block; }
-    .feedback.correct { background: #dcfce7; color: var(--easy); }
-    .feedback.wrong   { background: #fee2e2; color: var(--hard); }
-    .feedback.retry   { background: #fef3c7; color: #92400e; }
-
-    .explanation {
-      margin-top: 0.9rem;
-      display: none;
-      background: #fffbeb;
-      border: 2px solid #fde68a;
-      border-radius: 10px;
-      padding: 0.9rem 1rem;
-    }
-    .explanation.show { display: block; }
-    .explanation-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #92400e;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.45rem;
-    }
-    .explanation-body {
-      font-size: 0.9rem;
-      color: #1e293b;
-      line-height: 1.65;
-    }
-    .explanation-body .step {
-      display: block;
-      padding: 0.1rem 0;
+      gap: 1.2rem;
     }
 
-    .next-btn {
-      display: none;
-      width: 100%;
-      margin-top: 1.2rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 9px;
-      padding: 0.8rem 1rem;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-      letter-spacing: 0.02em;
-    }
-    .next-btn.show { display: block; }
-    .next-btn:hover { background: #4338ca; }
-
-    /* ── Final screen ── */
-    .final-screen {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .final-screen h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .final-screen p  { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
-    .final-tally {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1.8rem;
-      flex-wrap: wrap;
-    }
-    .tally-box {
+    .quiz-card {
       background: white;
       border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem 1.5rem;
-      min-width: 110px;
-    }
-    .tally-box .num { font-size: 2rem; font-weight: 800; }
-    .tally-box .lbl { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
-    .tally-box.green { border-color: var(--easy); }
-    .tally-box.green .num { color: var(--easy); }
-    .tally-box.red   { border-color: var(--hard); }
-    .tally-box.red .num   { color: var(--hard); }
-
-    .restart-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 9px;
-      padding: 0.8rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .restart-btn:hover { background: #4338ca; }
-
-    /* ── Progress button in header ── */
-    .progress-btn {
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.35);
-      color: white;
-      border-radius: 50px;
-      padding: 0.35rem 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 0.6rem;
-      transition: background 0.15s;
-    }
-    .progress-btn:hover { background: rgba(255,255,255,0.3); }
-
-    /* ── Progress panel overlay ── */
-    .progress-panel {
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,0.55);
-      z-index: 200;
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem 1.4rem;
+      text-decoration: none;
+      color: var(--text);
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      animation: panel-fade 0.2s ease;
-    }
-    @keyframes panel-fade { from { opacity: 0; } to { opacity: 1; } }
-    .progress-panel-inner {
-      background: white;
-      border-radius: 20px 20px 0 0;
-      padding: 1.4rem 1.5rem 2rem;
-      width: 100%;
-      max-width: 680px;
-      max-height: 88vh;
-      overflow-y: auto;
-      animation: panel-up 0.25s ease;
-    }
-    @keyframes panel-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.1rem;
-    }
-    .panel-title { font-size: 1.15rem; font-weight: 800; }
-    .panel-close {
-      background: #f1f5f9; border: none; border-radius: 50%;
-      width: 32px; height: 32px; font-size: 1rem;
-      cursor: pointer; line-height: 32px; text-align: center;
-    }
-    .streak-card {
-      background: linear-gradient(135deg, #f97316, #ef4444);
-      color: white; border-radius: 12px;
-      padding: 0.9rem 1.1rem;
-      display: flex; align-items: center; gap: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .streak-fire { font-size: 2.2rem; line-height: 1; }
-    .streak-num  { font-size: 1.9rem; font-weight: 900; line-height: 1; }
-    .streak-lbl  { font-size: 0.78rem; opacity: 0.9; margin-top: 0.15rem; }
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
-      margin-bottom: 1.1rem;
-    }
-    .stat-card {
-      background: #f8fafc; border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.75rem 0.5rem; text-align: center;
-    }
-    .stat-card .s-num { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-    .stat-card .s-lbl { font-size: 0.68rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-top: 0.15rem; }
-    .panel-section-title {
-      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.55rem;
-    }
-    .bar-chart {
-      display: flex; align-items: flex-end; gap: 5px;
-      height: 90px; margin-bottom: 1.1rem;
-    }
-    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; justify-content: flex-end; }
-    .bar-fill {
-      width: 100%; border-radius: 4px 4px 0 0; min-height: 3px;
-      background: var(--primary);
-      transition: height 0.5s ease;
-    }
-    .bar-fill.bar-champion { background: var(--easy); }
-    .bar-pct-lbl { font-size: 0.58rem; color: var(--muted); }
-    .weak-list { list-style: none; }
-    .weak-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.55rem 0; border-bottom: 1px solid #f1f5f9;
-      font-size: 0.83rem; line-height: 1.4;
-    }
-    .weak-item:last-child { border-bottom: none; }
-    .miss-badge {
-      background: #fee2e2; color: var(--hard);
-      font-size: 0.7rem; font-weight: 700;
-      padding: 0.15rem 0.5rem; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
-    }
-    .level-bars { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.1rem; }
-    .level-row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.82rem; }
-    .level-row-label { width: 55px; font-weight: 600; flex-shrink: 0; }
-    .level-track { flex: 1; background: #f1f5f9; border-radius: 50px; height: 10px; overflow: hidden; }
-    .level-fill { height: 100%; border-radius: 50px; transition: width 0.5s ease; }
-    .level-pct { width: 32px; text-align: right; font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
-    .empty-state { text-align: center; color: var(--muted); padding: 2rem 0 1rem; font-size: 0.9rem; }
-
-    /* ── Championship screen ── */
-    #fireworks-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 50;
-    }
-    .championship-wrap {
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
       position: relative;
-      z-index: 60;
+      overflow: hidden;
     }
-    .trophy-cup {
-      font-size: 6rem;
-      display: block;
-      margin-bottom: 0.3rem;
-      animation: trophy-rock 0.7s ease-in-out infinite alternate;
-      filter: drop-shadow(0 0 18px #f59e0b) drop-shadow(0 0 36px #fbbf24);
+    .quiz-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 16px 16px 0 0;
     }
-    @keyframes trophy-rock {
-      from { transform: scale(1)   rotate(-4deg); }
-      to   { transform: scale(1.1) rotate( 4deg); }
+    .quiz-card.fractions::before { background: linear-gradient(90deg, #4f46e5, #7c3aed); }
+    .quiz-card.percentages::before { background: linear-gradient(90deg, #0ea5e9, #6366f1); }
+    .quiz-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
-    .champion-title {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: champ-pulse 1s ease-in-out infinite alternate;
-      margin-bottom: 0.4rem;
+    .quiz-card.fractions:hover   { border-color: #a5b4fc; }
+    .quiz-card.percentages:hover { border-color: #7dd3fc; }
+
+    .card-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.3rem; }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
     }
-    @keyframes champ-pulse {
-      from { opacity: 0.85; transform: scale(1);    }
-      to   { opacity: 1;    transform: scale(1.04); }
-    }
-    .champion-subtitle {
-      font-size: 1rem;
+    .card-subtitle {
+      font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .meta-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .tag-easy   { background: #dcfce7; color: #16a34a; }
+    .tag-medium { background: #fef3c7; color: #d97706; }
+    .tag-hard   { background: #fee2e2; color: #dc2626; }
+
+    .card-cta {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      align-self: flex-start;
+    }
+    .quiz-card.fractions   .card-cta { background: #4f46e5; }
+    .quiz-card.percentages .card-cta { background: #0ea5e9; }
+
+    .topics-list {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+    .topics-list li {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 0.15rem 0;
+    }
+    .topics-list li::before { content: '• '; }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 1.5rem 1rem;
+      border-top: 1px solid var(--border);
     }
 
-    @media (max-width: 500px) {
-      .choices { grid-template-columns: 1fr; }
-      header h1 { font-size: 1.4rem; }
+    @media (max-width: 540px) {
+      .quiz-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -438,711 +155,51 @@
 
 <header>
   <h1>🏆 Math Champions</h1>
-  <p>Fractions &amp; LCM Word Problems</p>
-  <div class="scoreboard">
-    <span>✅ Correct: <span id="score-correct">0</span></span>
-    <span>❌ Wrong: <span id="score-wrong">0</span></span>
-    <span>📋 Done: <span id="score-done">0</span> / 30</span>
-  </div>
-  <div class="progress-wrap">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-  <div class="progress-label" id="progress-label">Question 1 of 30</div>
-  <button class="progress-btn" onclick="showProgressPanel()">📊 My Progress</button>
+  <p>Word problem quizzes for smart kids — pick a topic and start!</p>
 </header>
 
-<main id="main"></main>
+<main>
+  <div class="section-label">Choose a Quiz</div>
+  <div class="quiz-grid">
 
-<script>
-const questions = [
-  // ── EASY (1–5) ────────────────────────────────────────────────────────────
-  {
-    level: 'easy',
-    text: `Maya has a chocolate bar broken into 4 equal pieces. She eats 1 piece. What fraction of the chocolate bar did she eat?`,
-    hint: 'Think: pieces eaten out of total pieces.',
-    choices: ['1/4', '1/2', '3/4', '2/4'],
-    answer: '1/4',
-    explanation: `<span class="step">🍫 The bar is broken into <strong>4 equal pieces</strong>.</span><span class="step">🍽️ Maya ate <strong>1 piece</strong>.</span><span class="step">📐 A fraction means: <strong>pieces eaten ÷ total pieces</strong> = 1 ÷ 4 = <strong>1/4</strong>.</span><span class="step">💡 Think of it as: "1 out of 4 pieces." That's one-quarter!</span>`
-  },
-  {
-    level: 'easy',
-    text: `A pizza is cut into 8 equal slices. Leo eats 2 slices. What fraction of the pizza did Leo eat?`,
-    hint: 'Count the slices Leo ate vs. total slices.',
-    choices: ['2/8', '1/4', '3/8', '1/2'],
-    answer: '2/8',
-    equivalents: ['1/4'],
-    explanation: `<span class="step">🍕 The pizza has <strong>8 slices</strong> in total.</span><span class="step">😋 Leo ate <strong>2 slices</strong>.</span><span class="step">📐 Fraction = slices eaten ÷ total slices = 2 ÷ 8 = <strong>2/8</strong>.</span><span class="step">💡 Bonus: 2/8 is the same as 1/4 because 2 goes into 8 four times. Cool, right?</span>`
-  },
-  {
-    level: 'easy',
-    text: `A ribbon is divided into 3 equal parts. Sam colors 1 part red. What fraction of the ribbon is red?`,
-    hint: 'How many parts are red? How many parts in all?',
-    choices: ['1/3', '2/3', '1/2', '3/1'],
-    answer: '1/3',
-    explanation: `<span class="step">🎀 The ribbon is cut into <strong>3 equal parts</strong>.</span><span class="step">🖍️ Sam colored <strong>1 part</strong> red.</span><span class="step">📐 Fraction = colored parts ÷ total parts = 1 ÷ 3 = <strong>1/3</strong>.</span><span class="step">💡 Imagine cutting a sandwich into 3 equal pieces and eating one — you ate 1/3!</span>`
-  },
-  {
-    level: 'easy',
-    text: `Zara has 6 grapes. She gives 3 grapes to her friend. What fraction of her grapes did she give away?`,
-    hint: 'Grapes given ÷ total grapes.',
-    choices: ['1/2', '1/3', '2/3', '3/6'],
-    answer: '1/2',
-    equivalents: ['3/6'],
-    explanation: `<span class="step">🍇 Zara started with <strong>6 grapes</strong>.</span><span class="step">🤝 She gave away <strong>3 grapes</strong>.</span><span class="step">📐 Fraction = grapes given ÷ total = 3 ÷ 6 = <strong>3/6</strong>.</span><span class="step">💡 3 is exactly <strong>half</strong> of 6, so 3/6 = <strong>1/2</strong>. She gave away half her grapes!</span>`
-  },
-  {
-    level: 'easy',
-    text: `A garden is split into 5 equal rows. Flowers grow in 2 rows. What fraction of the garden has flowers?`,
-    hint: 'Rows with flowers out of total rows.',
-    choices: ['2/5', '3/5', '1/5', '2/3'],
-    answer: '2/5',
-    explanation: `<span class="step">🌷 The garden has <strong>5 rows</strong> in total.</span><span class="step">🌸 Flowers grow in <strong>2 of those rows</strong>.</span><span class="step">📐 Fraction = flower rows ÷ total rows = 2 ÷ 5 = <strong>2/5</strong>.</span><span class="step">💡 Think of 5 lines on your notebook — color 2 of them. That colored part is 2/5!</span>`
-  },
-
-  // ── MEDIUM (6–15) ─────────────────────────────────────────────────────────
-  {
-    level: 'medium',
-    text: `Emma reads 1/3 of her book on Monday and 1/3 on Tuesday. What fraction of the book has she read in total?`,
-    hint: 'Add the two fractions — they have the same denominator.',
-    choices: ['2/3', '1/3', '2/6', '1/6'],
-    answer: '2/3',
-    explanation: `<span class="step">📖 Monday: Emma read <strong>1/3</strong> of the book.</span><span class="step">📖 Tuesday: Emma read another <strong>1/3</strong>.</span><span class="step">➕ When the bottom numbers (denominators) are the <strong>same</strong>, just add the top numbers: 1 + 1 = 2. Keep the 3 on the bottom.</span><span class="step">✅ Total read = <strong>2/3</strong> of the book!</span>`
-  },
-  {
-    level: 'medium',
-    text: `A water tank is 3/4 full. After some water is used, it is only 1/4 full. What fraction of the water was used?`,
-    hint: 'Subtract: how much was used?',
-    choices: ['2/4', '1/4', '3/4', '1/2'],
-    answer: '2/4',
-    equivalents: ['1/2'],
-    explanation: `<span class="step">💧 Tank starts: <strong>3/4</strong> full.</span><span class="step">💧 Tank after using water: <strong>1/4</strong> full.</span><span class="step">➖ To find how much was used, subtract: 3/4 − 1/4. Bottom numbers are the same, so subtract the tops: 3 − 1 = 2. Keep the 4.</span><span class="step">✅ Water used = <strong>2/4</strong> (same as 1/2 — half the tank was used!).</span>`
-  },
-  {
-    level: 'medium',
-    text: `Ben jogs every 2 days. Lily jogs every 3 days. If they both jogged today, after how many days will they jog together again?`,
-    hint: 'Find the LCM of 2 and 3.',
-    choices: ['6 days', '3 days', '2 days', '5 days'],
-    answer: '6 days',
-    explanation: `<span class="step">🏃 Ben jogs every 2 days: Day <strong>2, 4, 6</strong>, 8, 10...</span><span class="step">🏃 Lily jogs every 3 days: Day <strong>3, 6</strong>, 9, 12...</span><span class="step">🔍 Look for the <strong>first day that appears in BOTH lists</strong>: that's Day <strong>6</strong>!</span><span class="step">💡 This is called the <strong>LCM (Least Common Multiple)</strong>. LCM(2, 3) = 6.</span>`
-  },
-  {
-    level: 'medium',
-    text: `Two buses leave the same stop. Bus A comes every 4 minutes, Bus B every 6 minutes. If both left together at 8:00 AM, when will they next leave together?`,
-    hint: 'LCM of 4 and 6.',
-    choices: ['8:12 AM', '8:10 AM', '8:24 AM', '8:06 AM'],
-    answer: '8:12 AM',
-    explanation: `<span class="step">🚌 Bus A leaves every 4 min: minute <strong>4, 8, 12</strong>, 16...</span><span class="step">🚌 Bus B leaves every 6 min: minute <strong>6, 12</strong>, 18...</span><span class="step">🔍 First minute in <strong>both</strong> lists = <strong>12 minutes</strong>. That's LCM(4, 6) = 12.</span><span class="step">🕗 8:00 AM + 12 minutes = <strong>8:12 AM</strong>. See you then!</span>`
-  },
-  {
-    level: 'medium',
-    text: `A recipe needs 1/2 cup of sugar. Priya wants to make 3 batches. How much sugar does she need in total?`,
-    hint: 'Multiply the fraction by 3.',
-    choices: ['1 1/2 cups', '2 cups', '1 cup', '3/2 cups'],
-    answer: '1 1/2 cups',
-    equivalents: ['3/2 cups'],
-    explanation: `<span class="step">🍪 1 batch needs <strong>1/2 cup</strong> of sugar.</span><span class="step">✖️ 3 batches need: 1/2 × 3 = <strong>3/2 cups</strong>.</span><span class="step">💡 3/2 means "3 halves." 2 halves = 1 whole cup, plus 1 more half = <strong>1 and 1/2 cups</strong>.</span><span class="step">🥄 Imagine 3 half-cup scoops poured in — that's one and a half cups!</span>`
-  },
-  {
-    level: 'medium',
-    text: `A class has 20 students. 1/4 of them brought their lunch from home. How many students brought lunch from home?`,
-    hint: 'Find 1/4 of 20.',
-    choices: ['5 students', '4 students', '10 students', '8 students'],
-    answer: '5 students',
-    explanation: `<span class="step">🎒 There are <strong>20 students</strong> in the class.</span><span class="step">📐 "1/4 of 20" means: split 20 into <strong>4 equal groups</strong>.</span><span class="step">➗ 20 ÷ 4 = <strong>5</strong>.</span><span class="step">🥪 So <strong>5 students</strong> brought lunch from home. (Imagine 4 groups of 5 kids — one group has their lunch box!)</span>`
-  },
-  {
-    level: 'medium',
-    text: `Jake scores 3/5 on his first quiz and 4/5 on his second quiz. Which quiz did he do better on, and by how much?`,
-    hint: 'Compare and subtract — same denominator.',
-    choices: ['2nd quiz by 1/5', '1st quiz by 1/5', '2nd quiz by 2/5', 'They scored the same'],
-    answer: '2nd quiz by 1/5',
-    explanation: `<span class="step">📝 Quiz 1: Jake scored <strong>3/5</strong>.</span><span class="step">📝 Quiz 2: Jake scored <strong>4/5</strong>.</span><span class="step">🔍 Same bottom number (5), so compare the tops: 4 > 3, so <strong>Quiz 2 is better</strong>.</span><span class="step">➖ How much better? 4/5 − 3/5 = <strong>1/5</strong>. Jake improved by one-fifth!</span>`
-  },
-  {
-    level: 'medium',
-    text: `A lamp flashes every 3 seconds. A bell rings every 5 seconds. They go off together at the start. After how many seconds will they go off together again?`,
-    hint: 'LCM of 3 and 5.',
-    choices: ['15 seconds', '8 seconds', '10 seconds', '30 seconds'],
-    answer: '15 seconds',
-    explanation: `<span class="step">💡 Lamp flashes at: <strong>3, 6, 9, 12, 15</strong> seconds...</span><span class="step">🔔 Bell rings at: <strong>5, 10, 15</strong> seconds...</span><span class="step">🔍 First second in <strong>both</strong> lists = <strong>15 seconds</strong>! That's LCM(3, 5) = 15.</span><span class="step">💡 Tip: LCM means the <strong>smallest number</strong> that both numbers divide into evenly.</span>`
-  },
-  {
-    level: 'medium',
-    text: `Nora ate 1/4 of a pie. Her brother ate 2/4 of the same pie. What fraction of the pie is left?`,
-    hint: 'Add what was eaten, then subtract from 1 whole.',
-    choices: ['1/4', '2/4', '3/4', '0'],
-    answer: '1/4',
-    explanation: `<span class="step">🥧 Nora ate <strong>1/4</strong> of the pie. Brother ate <strong>2/4</strong>.</span><span class="step">➕ Total eaten: 1/4 + 2/4 = <strong>3/4</strong> (same denominators, add the tops: 1+2=3).</span><span class="step">➖ Whole pie = <strong>4/4</strong>. Left over = 4/4 − 3/4 = <strong>1/4</strong>.</span><span class="step">💡 Picture a pie cut into 4 slices: Nora takes 1, brother takes 2. Only 1 slice left!</span>`
-  },
-  {
-    level: 'medium',
-    text: `Three friends share a bag of 12 cookies equally. Then one friend shares her portion equally with her little sister. What fraction of the total cookies does the little sister get?`,
-    hint: "Find each friend's share, then halve it.",
-    choices: ['1/6', '1/4', '1/12', '1/3'],
-    answer: '1/6',
-    explanation: `<span class="step">🍪 12 cookies shared equally among <strong>3 friends</strong>: 12 ÷ 3 = <strong>4 cookies each</strong> (that's 1/3 of the bag).</span><span class="step">👧 One friend shares her <strong>4 cookies</strong> equally with her little sister: 4 ÷ 2 = <strong>2 cookies</strong> for the sister.</span><span class="step">📐 Sister's fraction = 2 out of 12 total = 2/12 = <strong>1/6</strong>.</span><span class="step">💡 Splitting a third in half always gives you a sixth: 1/3 ÷ 2 = 1/6!</span>`
-  },
-
-  // ── HARD (16–30) ──────────────────────────────────────────────────────────
-  {
-    level: 'hard',
-    text: `A train stops at Oak Station every 6 minutes and at Elm Station every 9 minutes. Both trains left at noon. At what time will they next leave their stations at the same moment?`,
-    hint: 'LCM of 6 and 9.',
-    choices: ['12:18 PM', '12:15 PM', '12:36 PM', '12:09 PM'],
-    answer: '12:18 PM',
-    explanation: `<span class="step">🚆 Oak Station train leaves every 6 min: minute <strong>6, 12, 18</strong>, 24...</span><span class="step">🚆 Elm Station train leaves every 9 min: minute <strong>9, 18</strong>, 27...</span><span class="step">🔍 First minute in <strong>both</strong> lists = <strong>18 minutes</strong>. That's LCM(6, 9) = 18.</span><span class="step">🕛 12:00 noon + 18 minutes = <strong>12:18 PM</strong>. Both trains leave at the same time!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Mia ran 3/8 of a race before lunch and 2/8 of the race after lunch. Tom ran 5/8 of the same race. Who ran more, and by what fraction?`,
-    hint: "Add Mia's parts first, then compare.",
-    choices: ['Tom by 0 — they ran the same', 'Mia by 1/8', 'Tom by 1/8', 'Mia by 2/8'],
-    answer: 'Tom by 0 — they ran the same',
-    explanation: `<span class="step">🏃 Mia ran <strong>3/8</strong> before lunch and <strong>2/8</strong> after lunch.</span><span class="step">➕ Add them: 3/8 + 2/8 = <strong>5/8</strong> (same denominators — just add the tops: 3+2=5).</span><span class="step">🏃 Tom ran <strong>5/8</strong>.</span><span class="step">⚖️ Mia's total = 5/8. Tom's total = 5/8. They are <strong>exactly equal — it's a tie!</strong> 🤝</span>`
-  },
-  {
-    level: 'hard',
-    text: `A farmer plants sunflowers in 2/6 of his field and roses in 3/6 of his field. The rest is grass. What fraction of the field is grass?`,
-    hint: 'Add flowers, subtract from 1.',
-    choices: ['1/6', '2/6', '5/6', '3/6'],
-    answer: '1/6',
-    explanation: `<span class="step">🌻 Sunflowers: <strong>2/6</strong> of the field. 🌹 Roses: <strong>3/6</strong> of the field.</span><span class="step">➕ Total plants: 2/6 + 3/6 = <strong>5/6</strong> (same denominator — add the tops: 2+3=5).</span><span class="step">🌿 The <strong>whole field</strong> = 6/6. Grass = 6/6 − 5/6 = <strong>1/6</strong>.</span><span class="step">💡 Imagine 6 equal strips of field — 2 have sunflowers, 3 have roses, and only 1 has grass!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Three school bells ring at intervals of 4, 6, and 8 minutes. All three rang together at 9:00 AM. What is the next time all three bells will ring together?`,
-    hint: 'Find LCM of 4, 6, and 8.',
-    choices: ['9:24 AM', '9:12 AM', '9:48 AM', '9:16 AM'],
-    answer: '9:24 AM',
-    explanation: `<span class="step">🔔 Bell 1 rings every 4 min: <strong>4, 8, 12, 16, 20, 24</strong>...</span><span class="step">🔔 Bell 2 rings every 6 min: <strong>6, 12, 18, 24</strong>...</span><span class="step">🔔 Bell 3 rings every 8 min: <strong>8, 16, 24</strong>...</span><span class="step">🔍 First number in <strong>all three</strong> lists = <strong>24</strong>. LCM(4, 6, 8) = 24.</span><span class="step">🕘 9:00 AM + 24 minutes = <strong>9:24 AM</strong>. All three bells ring together again!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A bookshelf has 30 books. 1/3 are science books, 2/5 are story books, and the rest are art books. How many art books are there?`,
-    hint: 'Find a common denominator for 1/3 and 2/5, add them, subtract from 1, then multiply by 30.',
-    choices: ['8 books', '10 books', '6 books', '12 books'],
-    answer: '8 books',
-    explanation: `<span class="step">📚 Science books: 1/3 of 30 = 30 ÷ 3 = <strong>10 books</strong>.</span><span class="step">📖 Story books: 2/5 of 30 = 30 ÷ 5 × 2 = <strong>12 books</strong>.</span><span class="step">➕ Science + Stories = 10 + 12 = <strong>22 books</strong>.</span><span class="step">➖ Art books = 30 − 22 = <strong>8 books</strong>.</span><span class="step">💡 No need for tricky fractions here — just find each group's count and subtract!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A jar is 3/4 full of juice. You pour out 1/3 of the juice in the jar. What fraction of a full jar is left?`,
-    hint: "You pour out 1/3 of the 3/4 that's there. Multiply, then subtract.",
-    choices: ['1/2', '2/3', '5/12', '7/12'],
-    answer: '1/2',
-    explanation: `<span class="step">🫙 The jar has <strong>3/4</strong> of juice inside it.</span><span class="step">💧 We pour out <strong>1/3 of the 3/4</strong> that's there — multiply: 1/3 × 3/4 = 3/12 = <strong>1/4</strong> poured out.</span><span class="step">➖ Juice left = 3/4 − 1/4 = <strong>2/4 = 1/2</strong>.</span><span class="step">💡 When you take a fraction OF a fraction, you multiply them. "Of" means multiply!</span>`
-  },
-  {
-    level: 'hard',
-    text: `In a class, 1/2 of the kids like soccer, 1/3 like basketball, and the rest like tennis. If there are 30 students, how many like tennis?`,
-    hint: 'LCM of 2 and 3 helps add the fractions. Then subtract from 1.',
-    choices: ['5 students', '10 students', '15 students', '6 students'],
-    answer: '5 students',
-    explanation: `<span class="step">⚽ Soccer: 1/2 of class. 🏀 Basketball: 1/3 of class.</span><span class="step">➕ To add 1/2 + 1/3, we need the <strong>same denominator</strong>. LCM(2,3) = 6. So: 1/2 = 3/6 and 1/3 = 2/6.</span><span class="step">➕ 3/6 + 2/6 = <strong>5/6</strong> like soccer or basketball.</span><span class="step">🎾 Tennis fans = 1 − 5/6 = <strong>1/6</strong> of the class. 1/6 of 30 = 30 ÷ 6 = <strong>5 students</strong>!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Three friends share a pizza. Ana eats 1/3, Bob eats 1/4, and Carol eats 1/6. What fraction of the pizza is left?`,
-    hint: 'Add the three fractions using LCM of 3, 4, 6, then subtract from 1.',
-    choices: ['1/4', '3/4', '1/12', '5/12'],
-    answer: '1/4',
-    explanation: `<span class="step">🍕 We need to add 1/3 + 1/4 + 1/6. Different bottoms — we need a <strong>common denominator</strong>.</span><span class="step">🔢 LCM(3, 4, 6) = <strong>12</strong>. Convert: 1/3 = 4/12, 1/4 = 3/12, 1/6 = 2/12.</span><span class="step">➕ Total eaten: 4/12 + 3/12 + 2/12 = <strong>9/12</strong>.</span><span class="step">➖ Left = 12/12 − 9/12 = <strong>3/12 = 1/4</strong>. One quarter of the pizza remains!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A frog jumps every 5 seconds. A cricket chirps every 8 seconds. A firefly blinks every 10 seconds. All happen at the same time at t=0. After how many seconds do all three happen at the same time again?`,
-    hint: 'LCM of 5, 8, and 10.',
-    choices: ['40 seconds', '80 seconds', '20 seconds', '400 seconds'],
-    answer: '40 seconds',
-    explanation: `<span class="step">🐸 Frog jumps at: <strong>5, 10, 15, 20, 25, 30, 35, 40</strong>...</span><span class="step">🦗 Cricket chirps at: <strong>8, 16, 24, 32, 40</strong>...</span><span class="step">✨ Firefly blinks at: <strong>10, 20, 30, 40</strong>...</span><span class="step">🔍 First second in <strong>all three</strong> lists = <strong>40 seconds</strong>. LCM(5, 8, 10) = 40!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A school garden has 4 sections. Section A takes up 2/8, section B takes 3/8, section C takes 2/8. What fraction does section D take up?`,
-    hint: 'Add A + B + C and subtract from 1.',
-    choices: ['1/8', '2/8', '3/8', '4/8'],
-    answer: '1/8',
-    explanation: `<span class="step">🌱 Sections A, B, C: 2/8 + 3/8 + 2/8. Same denominator — add the tops: 2+3+2 = <strong>7</strong>.</span><span class="step">➕ Sections A+B+C = <strong>7/8</strong> of the garden.</span><span class="step">➖ The whole garden = <strong>8/8</strong>. Section D = 8/8 − 7/8 = <strong>1/8</strong>.</span><span class="step">💡 Think of 8 equal garden squares: A gets 2, B gets 3, C gets 2 — only 1 square is left for D!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Two cyclists start at the same point. Cyclist A completes a lap every 8 minutes, Cyclist B every 12 minutes. How many laps will each have completed the first time they meet at the start?`,
-    hint: 'LCM(8,12) tells you when they meet. Divide by each lap time.',
-    choices: ['A: 3 laps, B: 2 laps', 'A: 2 laps, B: 3 laps', 'A: 4 laps, B: 3 laps', 'A: 6 laps, B: 4 laps'],
-    answer: 'A: 3 laps, B: 2 laps',
-    explanation: `<span class="step">🚴 Cyclist A finishes every 8 min: minute <strong>8, 16, 24</strong>...</span><span class="step">🚴 Cyclist B finishes every 12 min: minute <strong>12, 24</strong>...</span><span class="step">🔍 First minute in both = <strong>24 minutes</strong>. LCM(8, 12) = 24.</span><span class="step">🏁 At 24 minutes: A did 24÷8 = <strong>3 laps</strong>. B did 24÷12 = <strong>2 laps</strong>. They meet at the start!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Lily has 24 stickers. She gives 1/3 to her sister and 1/4 to her cousin. How many stickers does Lily have left?`,
-    hint: 'LCM of 3 and 4 helps add 1/3 and 1/4. Find how many she gave away.',
-    choices: ['10 stickers', '8 stickers', '6 stickers', '14 stickers'],
-    answer: '10 stickers',
-    explanation: `<span class="step">🌟 Lily has <strong>24 stickers</strong>.</span><span class="step">👧 Gives 1/3 to sister: 24 ÷ 3 = <strong>8 stickers</strong>.</span><span class="step">👦 Gives 1/4 to cousin: 24 ÷ 4 = <strong>6 stickers</strong>.</span><span class="step">➖ Total given = 8 + 6 = 14. Lily keeps: 24 − 14 = <strong>10 stickers</strong>!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A baker makes cookies in batches of 8, muffins in batches of 6, and brownies in batches of 4. He wants to bake the same number of each treat. What is the least number of each treat he should bake?`,
-    hint: 'Find LCM of 8, 6, and 4.',
-    choices: ['24 of each', '48 of each', '12 of each', '16 of each'],
-    answer: '24 of each',
-    explanation: `<span class="step">🍪 Cookies come in batches of 8: <strong>8, 16, 24</strong>...</span><span class="step">🧁 Muffins come in batches of 6: <strong>6, 12, 18, 24</strong>...</span><span class="step">🍫 Brownies come in batches of 4: <strong>4, 8, 12, 16, 20, 24</strong>...</span><span class="step">🔍 First number in <strong>all three</strong> lists = <strong>24</strong>. LCM(8, 6, 4) = 24. The baker needs <strong>24 of each</strong>!</span>`
-  },
-  {
-    level: 'hard',
-    text: `A water fountain fills 2/5 of a tank in the morning and 1/4 of the tank in the afternoon. A small crack leaks 1/10 of the tank per day. Will the tank be more than half full by end of day? By how much?`,
-    hint: 'Add morning + afternoon, subtract leak. Use LCM(5,4,10)=20 to add fractions.',
-    choices: ['Yes, by 1/20 more than half', 'No, it is exactly half', 'Yes, by 3/20 more than half', 'No, it is 1/20 short of half'],
-    answer: 'Yes, by 1/20 more than half',
-    explanation: `<span class="step">🔢 Use <strong>20 as the common denominator</strong> (LCM of 5, 4, 10 = 20).</span><span class="step">🌅 Morning fill: 2/5 = <strong>8/20</strong>. 🌇 Afternoon fill: 1/4 = <strong>5/20</strong>.</span><span class="step">💧 Leak: 1/10 = <strong>2/20</strong>.</span><span class="step">🧮 Total = 8/20 + 5/20 − 2/20 = <strong>11/20</strong>. Half the tank = 10/20.</span><span class="step">✅ Since 11 > 10, the tank is <strong>more than half full — by 1/20</strong>!</span>`
-  },
-  {
-    level: 'hard',
-    text: `Four friends run laps. Amir finishes a lap every 6 min, Beni every 9 min, Cora every 12 min, and Dana every 18 min. They all start together. What is the shortest time until all four are at the start together, and how many laps has each completed?`,
-    hint: 'LCM of 6, 9, 12, 18.',
-    choices: [
-      'After 36 min — Amir:6, Beni:4, Cora:3, Dana:2',
-      'After 36 min — Amir:4, Beni:3, Cora:2, Dana:1',
-      'After 18 min — Amir:3, Beni:2, Cora:1, Dana:1',
-      'After 36 min — Amir:6, Beni:3, Cora:4, Dana:2'
-    ],
-    answer: 'After 36 min — Amir:6, Beni:4, Cora:3, Dana:2',
-    explanation: `<span class="step">🔢 Find LCM(6, 9, 12, 18): multiples of 18 = <strong>18, 36</strong>. Does 36 work for all? 36÷6=6 ✅ 36÷9=4 ✅ 36÷12=3 ✅ 36÷18=2 ✅</span><span class="step">⏱️ They all meet again after <strong>36 minutes</strong>.</span><span class="step">🏃 Amir: 36÷6 = <strong>6 laps</strong>. Beni: 36÷9 = <strong>4 laps</strong>.</span><span class="step">🏃 Cora: 36÷12 = <strong>3 laps</strong>. Dana: 36÷18 = <strong>2 laps</strong>. Everyone arrives together!</span>`
-  }
-];
-
-// ── localStorage helpers ──────────────────────────────────────────────────────
-const STORAGE_KEY = 'mathChampions';
-const EMPTY_STATS = () => ({ attempts: [], questions: {}, streak: { current: 0, best: 0, lastDate: null } });
-
-function loadStats() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || EMPTY_STATS(); }
-  catch { return EMPTY_STATS(); }
-}
-function saveStats(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
-
-// ── State ─────────────────────────────────────────────────────────────────────
-let current = 0;
-let attempts = 0;
-let scoreCorrect = 0, scoreWrong = 0, scoreDone = 0;
-let shuffledChoices = [];
-let quizStartTime  = Date.now();
-let quizQResults   = new Array(30).fill(null); // 'first' | 'second' | 'missed'
-
-// ── Score UI ──────────────────────────────────────────────────────────────────
-function updateScore() {
-  document.getElementById('score-correct').textContent = scoreCorrect;
-  document.getElementById('score-wrong').textContent   = scoreWrong;
-  document.getElementById('score-done').textContent    = scoreDone;
-  document.getElementById('progress-bar').style.width  = (scoreDone / 30 * 100) + '%';
-  document.getElementById('progress-label').textContent =
-    current < 30 ? `Question ${current + 1} of 30` : 'All done!';
-}
-
-// ── Render one question ───────────────────────────────────────────────────────
-function renderQuestion(idx) {
-  attempts = 0;
-  const q = questions[idx];
-  shuffledChoices = [...q.choices].sort(() => Math.random() - 0.5);
-
-  document.getElementById('progress-label').textContent = `Question ${idx + 1} of 30`;
-
-  const main = document.getElementById('main');
-  main.innerHTML = `
-    <div class="card" id="q-card">
-      <div class="card-top">
-        <span class="q-counter">Question ${idx + 1} of 30</span>
-        <div style="display:flex;align-items:center;gap:0.6rem;">
-          <div class="attempts-pips">
-            <div class="pip" id="pip-0"></div>
-            <div class="pip" id="pip-1"></div>
-          </div>
-          <span class="badge badge-${q.level}">${q.level}</span>
-        </div>
+    <a class="quiz-card fractions" href="fractions.html">
+      <div class="card-icon">➗</div>
+      <div class="card-title">Fractions &amp; LCM</div>
+      <div class="card-subtitle">Sharing, comparing, and finding common ground with fractions.</div>
+      <ul class="topics-list">
+        <li>Parts of a whole</li>
+        <li>Adding &amp; subtracting fractions</li>
+        <li>Least Common Multiple</li>
+      </ul>
+      <div class="card-meta">
+        <span class="meta-tag tag-easy">5 Easy</span>
+        <span class="meta-tag tag-medium">10 Medium</span>
+        <span class="meta-tag tag-hard">15 Hard</span>
       </div>
-      <div class="q-text">${q.text}</div>
-      <div class="q-hint">💡 ${q.hint}</div>
-      <div class="choices" id="choices">
-        ${shuffledChoices.map((c, i) =>
-          `<button class="choice-btn" id="btn-${i}" onclick="handleChoice(${i})">${c}</button>`
-        ).join('')}
+      <span class="card-cta">Start Quiz →</span>
+    </a>
+
+    <a class="quiz-card percentages" href="percentages.html">
+      <div class="card-icon">💯</div>
+      <div class="card-title">Percentages</div>
+      <div class="card-subtitle">Discounts, scores, and real-world percentage problems.</div>
+      <ul class="topics-list">
+        <li>Finding percentages</li>
+        <li>Percentage increase &amp; decrease</li>
+        <li>Profit, commission &amp; reverse %</li>
+      </ul>
+      <div class="card-meta">
+        <span class="meta-tag tag-easy">5 Easy</span>
+        <span class="meta-tag tag-medium">10 Medium</span>
+        <span class="meta-tag tag-hard">15 Hard</span>
       </div>
-      <div class="feedback" id="feedback"></div>
-      <div class="explanation" id="explanation"></div>
-      <button class="next-btn" id="next-btn" onclick="goNext()">
-        ${idx + 1 < 30 ? 'Next Question →' : 'See My Results'}
-      </button>
-    </div>
-  `;
-}
+      <span class="card-cta">Start Quiz →</span>
+    </a>
 
-// ── Handle a choice click ─────────────────────────────────────────────────────
-function handleChoice(btnIdx) {
-  const q        = questions[current];
-  const chosen   = shuffledChoices[btnIdx];
-  const feedback = document.getElementById('feedback');
-  const explEl   = document.getElementById('explanation');
-  const nextBtn  = document.getElementById('next-btn');
-  const btn      = document.getElementById(`btn-${btnIdx}`);
+  </div>
+</main>
 
-  attempts++;
-  const isEquivalent = q.equivalents && q.equivalents.includes(chosen);
-  const isCorrect    = chosen === q.answer || isEquivalent;
-
-  updatePip(attempts - 1, isCorrect ? 'correct' : 'wrong');
-
-  if (isCorrect) {
-    // ── Correct ──
-    quizQResults[current] = attempts === 1 ? 'first' : 'second';
-    btn.classList.add('state-correct');
-    disableAll();
-    feedback.textContent = isEquivalent
-      ? `🎉 Correct! ${chosen} equals ${q.answer} — great thinking!`
-      : '🎉 Correct! Fantastic work!';
-    feedback.className   = 'feedback show correct';
-    showExplanation(explEl, q.explanation);
-    nextBtn.classList.add('show');
-    scoreCorrect++;
-    scoreDone++;
-    updateScore();
-  } else if (attempts >= 2) {
-    // ── 2nd wrong attempt — mark failed ──
-    quizQResults[current] = 'missed';
-    btn.classList.add('state-wrong');
-    disableAll();
-    revealCorrect(q.answer);
-    feedback.textContent = `❌ The correct answer is: ${q.answer}`;
-    feedback.className   = 'feedback show wrong';
-    showExplanation(explEl, q.explanation);
-    nextBtn.classList.add('show');
-    scoreWrong++;
-    scoreDone++;
-    updateScore();
-  } else {
-    // ── 1st wrong attempt — try again ──
-    btn.classList.add('state-wrong');
-    btn.disabled = true;
-    feedback.textContent = '🤔 Not quite — you have 1 more try!';
-    feedback.className   = 'feedback show retry';
-  }
-}
-
-function showExplanation(el, html) {
-  el.innerHTML = `<div class="explanation-title">🧮 Here's how to solve it!</div><div class="explanation-body">${html}</div>`;
-  el.className = 'explanation show';
-}
-
-function updatePip(pipIdx, state) {
-  const pip = document.getElementById(`pip-${pipIdx}`);
-  if (!pip) return;
-  pip.classList.remove('used-wrong', 'used-correct');
-  pip.classList.add(state === 'correct' ? 'used-correct' : 'used-wrong');
-}
-
-function disableAll() {
-  document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
-}
-
-function revealCorrect(answer) {
-  shuffledChoices.forEach((c, i) => {
-    if (c === answer) {
-      document.getElementById(`btn-${i}`).classList.add('state-reveal');
-    }
-  });
-}
-
-// ── Move to next question ─────────────────────────────────────────────────────
-function goNext() {
-  current++;
-  if (current >= questions.length) {
-    showFinalScreen();
-  } else {
-    renderQuestion(current);
-  }
-}
-
-// ── Final screen ──────────────────────────────────────────────────────────────
-function showFinalScreen() {
-  saveAttempt();
-  document.getElementById('progress-label').textContent = 'All done!';
-  const pct = Math.round((scoreCorrect / 30) * 100);
-  const isChampion = pct >= 90;
-
-  if (isChampion) {
-    document.getElementById('main').innerHTML = `
-      <div class="final-screen championship-wrap">
-        <span class="trophy-cup">🏆</span>
-        <div class="champion-title">MATH CHAMPION!</div>
-        <div class="champion-subtitle">Incredible — you got ${scoreCorrect} out of 30 correct!</div>
-        <div class="final-tally">
-          <div class="tally-box green">
-            <div class="num">${scoreCorrect}</div>
-            <div class="lbl">Correct</div>
-          </div>
-          <div class="tally-box red">
-            <div class="num">${scoreWrong}</div>
-            <div class="lbl">Wrong</div>
-          </div>
-          <div class="tally-box">
-            <div class="num">${pct}%</div>
-            <div class="lbl">Score</div>
-          </div>
-        </div>
-        <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
-      </div>
-    `;
-    launchFireworks();
-  } else {
-    let emoji = pct >= 70 ? '⭐' : pct >= 50 ? '👍' : '💪';
-    let msg   = pct >= 70 ? 'Great job! Keep practicing!'
-              : pct >= 50 ? 'Good effort! You can do even better!'
-              : 'Keep going — practice makes perfect!';
-    document.getElementById('main').innerHTML = `
-      <div class="final-screen">
-        <h2>${emoji} Quiz Complete!</h2>
-        <p>${msg}</p>
-        <div class="final-tally">
-          <div class="tally-box green">
-            <div class="num">${scoreCorrect}</div>
-            <div class="lbl">Correct</div>
-          </div>
-          <div class="tally-box red">
-            <div class="num">${scoreWrong}</div>
-            <div class="lbl">Wrong</div>
-          </div>
-          <div class="tally-box">
-            <div class="num">${pct}%</div>
-            <div class="lbl">Score</div>
-          </div>
-        </div>
-        <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
-      </div>
-    `;
-  }
-}
-
-// ── Fireworks ─────────────────────────────────────────────────────────────────
-function launchFireworks() {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'fireworks-canvas';
-  document.body.appendChild(canvas);
-
-  const ctx = canvas.getContext('2d');
-  const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-  resize();
-  window.addEventListener('resize', resize);
-
-  const COLORS = ['#f59e0b','#ef4444','#8b5cf6','#3b82f6','#10b981','#f97316','#ec4899','#facc15'];
-  const particles = [];
-
-  function Particle(x, y) {
-    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 7 + 2;
-    return {
-      x, y, color,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      radius: Math.random() * 3 + 1.5,
-      alpha: 1,
-      decay: Math.random() * 0.018 + 0.008,
-      gravity: 0.12,
-      trail: []
-    };
-  }
-
-  function burst(x, y) {
-    for (let i = 0; i < 70; i++) particles.push(Particle(x, y));
-  }
-
-  // Schedule 14 bursts spread over 5 seconds
-  const positions = () => [
-    Math.random() * canvas.width  * 0.7 + canvas.width  * 0.15,
-    Math.random() * canvas.height * 0.55 + canvas.height * 0.05
-  ];
-  let fired = 0;
-  const schedule = [0, 300, 600, 900, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000, 4400, 4800];
-  schedule.forEach(delay => setTimeout(() => { const [x,y] = positions(); burst(x,y); fired++; }, delay));
-
-  let animId;
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = particles.length - 1; i >= 0; i--) {
-      const p = particles[i];
-      p.vy += p.gravity;
-      p.x  += p.vx;
-      p.y  += p.vy;
-      p.alpha -= p.decay;
-
-      if (p.alpha <= 0) { particles.splice(i, 1); continue; }
-
-      ctx.save();
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle   = p.color;
-      ctx.shadowColor = p.color;
-      ctx.shadowBlur  = 6;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    if (fired < schedule.length || particles.length > 0) {
-      animId = requestAnimationFrame(animate);
-    } else {
-      cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
-      canvas.remove();
-    }
-  }
-  animate();
-}
-
-// ── Restart ───────────────────────────────────────────────────────────────────
-function restartQuiz() {
-  current      = 0;
-  attempts     = 0;
-  scoreCorrect = 0;
-  scoreWrong   = 0;
-  scoreDone    = 0;
-  quizQResults  = new Array(30).fill(null);
-  quizStartTime = Date.now();
-  updateScore();
-  renderQuestion(0);
-}
-
-// ── Save attempt to localStorage ─────────────────────────────────────────────
-function saveAttempt() {
-  const stats = loadStats();
-  const pct   = Math.round((scoreCorrect / 30) * 100);
-  const secs  = Math.round((Date.now() - quizStartTime) / 1000);
-
-  const byLevel = { easy: 0, medium: 0, hard: 0 };
-  quizQResults.forEach((r, i) => { if (r === 'first' || r === 'second') byLevel[questions[i].level]++; });
-
-  stats.attempts.push({ date: new Date().toISOString().slice(0, 10), score: scoreCorrect, pct, secs, byLevel });
-  if (stats.attempts.length > 50) stats.attempts = stats.attempts.slice(-50);
-
-  quizQResults.forEach((r, i) => {
-    if (!r) return;
-    const k = String(i);
-    if (!stats.questions[k]) stats.questions[k] = { seen: 0, firstTry: 0, missed: 0 };
-    stats.questions[k].seen++;
-    if (r === 'first')  stats.questions[k].firstTry++;
-    if (r === 'missed') stats.questions[k].missed++;
-  });
-
-  const today     = new Date().toISOString().slice(0, 10);
-  const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
-  if (stats.streak.lastDate === today) {
-    // already practiced today — no change
-  } else if (stats.streak.lastDate === yesterday) {
-    stats.streak.current++;
-  } else {
-    stats.streak.current = 1;
-  }
-  stats.streak.best     = Math.max(stats.streak.best, stats.streak.current);
-  stats.streak.lastDate = today;
-
-  saveStats(stats);
-}
-
-// ── Progress panel ────────────────────────────────────────────────────────────
-function showProgressPanel() {
-  const stats    = loadStats();
-  const attempts = stats.attempts;
-  const total    = attempts.length;
-  const bestPct  = total ? Math.max(...attempts.map(a => a.pct)) : 0;
-  const avgPct   = total ? Math.round(attempts.reduce((s, a) => s + a.pct, 0) / total) : 0;
-  const streak   = stats.streak;
-
-  // Bar chart — last 10 attempts
-  const recent = attempts.slice(-10);
-  const barsHtml = recent.map(a => `
-    <div class="bar-col">
-      <span class="bar-pct-lbl">${a.pct}%</span>
-      <div class="bar-fill ${a.pct >= 90 ? 'bar-champion' : ''}" style="height:${a.pct}%"></div>
-    </div>`).join('');
-
-  // Best by-level breakdown (from best attempt)
-  const best = total ? attempts.reduce((b, a) => a.pct > b.pct ? a : b) : null;
-  const levelHtml = best ? ['easy','medium','hard'].map(lvl => {
-    const max   = lvl === 'easy' ? 5 : lvl === 'medium' ? 10 : 15;
-    const got   = best.byLevel[lvl] || 0;
-    const pct   = Math.round(got / max * 100);
-    const color = lvl === 'easy' ? 'var(--easy)' : lvl === 'medium' ? 'var(--medium)' : 'var(--hard)';
-    return `<div class="level-row">
-      <span class="level-row-label" style="color:${color}">${lvl.charAt(0).toUpperCase()+lvl.slice(1)}</span>
-      <div class="level-track"><div class="level-fill" style="width:${pct}%;background:${color}"></div></div>
-      <span class="level-pct">${got}/${max}</span>
-    </div>`;
-  }).join('') : '';
-
-  // Weakest questions (min 2 attempts, sorted by miss rate)
-  const weakQ = Object.entries(stats.questions)
-    .filter(([, v]) => v.seen >= 2 && v.missed > 0)
-    .sort(([, a], [, b]) => (b.missed / b.seen) - (a.missed / a.seen))
-    .slice(0, 4);
-  const weakHtml = weakQ.length
-    ? weakQ.map(([idx, v]) => {
-        const q = questions[parseInt(idx)];
-        const short = q.text.length > 65 ? q.text.substring(0, 65) + '…' : q.text;
-        return `<li class="weak-item">
-          <span style="flex:1">${short}</span>
-          <span class="miss-badge">missed ${v.missed}/${v.seen}</span>
-        </li>`;
-      }).join('')
-    : '';
-
-  const overlay = document.createElement('div');
-  overlay.className = 'progress-panel';
-  overlay.id        = 'progress-panel-overlay';
-  overlay.innerHTML = `
-    <div class="progress-panel-inner">
-      <div class="panel-header">
-        <span class="panel-title">📊 My Progress</span>
-        <button class="panel-close" onclick="closeProgressPanel()">✕</button>
-      </div>
-
-      <div class="streak-card">
-        <span class="streak-fire">🔥</span>
-        <div>
-          <div class="streak-num">${streak.current} day${streak.current !== 1 ? 's' : ''}</div>
-          <div class="streak-lbl">Current streak &nbsp;·&nbsp; Best: ${streak.best} day${streak.best !== 1 ? 's' : ''}</div>
-        </div>
-      </div>
-
-      <div class="stat-grid">
-        <div class="stat-card"><div class="s-num">${total}</div><div class="s-lbl">Quizzes</div></div>
-        <div class="stat-card"><div class="s-num">${bestPct}%</div><div class="s-lbl">Best Score</div></div>
-        <div class="stat-card"><div class="s-num">${avgPct}%</div><div class="s-lbl">Average</div></div>
-      </div>
-
-      ${total === 0 ? '<div class="empty-state">Complete your first quiz to see stats here! 🎯</div>' : ''}
-
-      ${recent.length ? `<div class="panel-section-title">Recent Attempts</div>
-        <div class="bar-chart">${barsHtml}</div>` : ''}
-
-      ${best ? `<div class="panel-section-title">Best Attempt — By Difficulty</div>
-        <div class="level-bars">${levelHtml}</div>` : ''}
-
-      ${weakHtml ? `<div class="panel-section-title">Questions to Practise More</div>
-        <ul class="weak-list">${weakHtml}</ul>` : ''}
-    </div>`;
-
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeProgressPanel(); });
-  document.body.appendChild(overlay);
-}
-
-function closeProgressPanel() {
-  document.getElementById('progress-panel-overlay')?.remove();
-}
-
-// ── Boot ──────────────────────────────────────────────────────────────────────
-updateScore();
-renderQuestion(0);
-</script>
+<footer>Progress is saved in your browser — no account needed.</footer>
 
 </body>
 </html>
