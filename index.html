@@ -276,6 +276,114 @@
     }
     .restart-btn:hover { background: #4338ca; }
 
+    /* ── Progress button in header ── */
+    .progress-btn {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white;
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.6rem;
+      transition: background 0.15s;
+    }
+    .progress-btn:hover { background: rgba(255,255,255,0.3); }
+
+    /* ── Progress panel overlay ── */
+    .progress-panel {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.55);
+      z-index: 200;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      animation: panel-fade 0.2s ease;
+    }
+    @keyframes panel-fade { from { opacity: 0; } to { opacity: 1; } }
+    .progress-panel-inner {
+      background: white;
+      border-radius: 20px 20px 0 0;
+      padding: 1.4rem 1.5rem 2rem;
+      width: 100%;
+      max-width: 680px;
+      max-height: 88vh;
+      overflow-y: auto;
+      animation: panel-up 0.25s ease;
+    }
+    @keyframes panel-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+    .panel-title { font-size: 1.15rem; font-weight: 800; }
+    .panel-close {
+      background: #f1f5f9; border: none; border-radius: 50%;
+      width: 32px; height: 32px; font-size: 1rem;
+      cursor: pointer; line-height: 32px; text-align: center;
+    }
+    .streak-card {
+      background: linear-gradient(135deg, #f97316, #ef4444);
+      color: white; border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      display: flex; align-items: center; gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .streak-fire { font-size: 2.2rem; line-height: 1; }
+    .streak-num  { font-size: 1.9rem; font-weight: 900; line-height: 1; }
+    .streak-lbl  { font-size: 0.78rem; opacity: 0.9; margin-top: 0.15rem; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin-bottom: 1.1rem;
+    }
+    .stat-card {
+      background: #f8fafc; border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem 0.5rem; text-align: center;
+    }
+    .stat-card .s-num { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    .stat-card .s-lbl { font-size: 0.68rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-top: 0.15rem; }
+    .panel-section-title {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.55rem;
+    }
+    .bar-chart {
+      display: flex; align-items: flex-end; gap: 5px;
+      height: 90px; margin-bottom: 1.1rem;
+    }
+    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; justify-content: flex-end; }
+    .bar-fill {
+      width: 100%; border-radius: 4px 4px 0 0; min-height: 3px;
+      background: var(--primary);
+      transition: height 0.5s ease;
+    }
+    .bar-fill.bar-champion { background: var(--easy); }
+    .bar-pct-lbl { font-size: 0.58rem; color: var(--muted); }
+    .weak-list { list-style: none; }
+    .weak-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.55rem 0; border-bottom: 1px solid #f1f5f9;
+      font-size: 0.83rem; line-height: 1.4;
+    }
+    .weak-item:last-child { border-bottom: none; }
+    .miss-badge {
+      background: #fee2e2; color: var(--hard);
+      font-size: 0.7rem; font-weight: 700;
+      padding: 0.15rem 0.5rem; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+    }
+    .level-bars { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.1rem; }
+    .level-row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.82rem; }
+    .level-row-label { width: 55px; font-weight: 600; flex-shrink: 0; }
+    .level-track { flex: 1; background: #f1f5f9; border-radius: 50px; height: 10px; overflow: hidden; }
+    .level-fill { height: 100%; border-radius: 50px; transition: width 0.5s ease; }
+    .level-pct { width: 32px; text-align: right; font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
+    .empty-state { text-align: center; color: var(--muted); padding: 2rem 0 1rem; font-size: 0.9rem; }
+
     /* ── Championship screen ── */
     #fireworks-canvas {
       position: fixed;
@@ -340,6 +448,7 @@
     <div class="progress-bar" id="progress-bar"></div>
   </div>
   <div class="progress-label" id="progress-label">Question 1 of 30</div>
+  <button class="progress-btn" onclick="showProgressPanel()">📊 My Progress</button>
 </header>
 
 <main id="main"></main>
@@ -602,11 +711,23 @@ const questions = [
   }
 ];
 
+// ── localStorage helpers ──────────────────────────────────────────────────────
+const STORAGE_KEY = 'mathChampions';
+const EMPTY_STATS = () => ({ attempts: [], questions: {}, streak: { current: 0, best: 0, lastDate: null } });
+
+function loadStats() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || EMPTY_STATS(); }
+  catch { return EMPTY_STATS(); }
+}
+function saveStats(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
 // ── State ─────────────────────────────────────────────────────────────────────
 let current = 0;
 let attempts = 0;
 let scoreCorrect = 0, scoreWrong = 0, scoreDone = 0;
 let shuffledChoices = [];
+let quizStartTime  = Date.now();
+let quizQResults   = new Array(30).fill(null); // 'first' | 'second' | 'missed'
 
 // ── Score UI ──────────────────────────────────────────────────────────────────
 function updateScore() {
@@ -672,6 +793,7 @@ function handleChoice(btnIdx) {
 
   if (isCorrect) {
     // ── Correct ──
+    quizQResults[current] = attempts === 1 ? 'first' : 'second';
     btn.classList.add('state-correct');
     disableAll();
     feedback.textContent = isEquivalent
@@ -685,6 +807,7 @@ function handleChoice(btnIdx) {
     updateScore();
   } else if (attempts >= 2) {
     // ── 2nd wrong attempt — mark failed ──
+    quizQResults[current] = 'missed';
     btn.classList.add('state-wrong');
     disableAll();
     revealCorrect(q.answer);
@@ -740,6 +863,7 @@ function goNext() {
 
 // ── Final screen ──────────────────────────────────────────────────────────────
 function showFinalScreen() {
+  saveAttempt();
   document.getElementById('progress-label').textContent = 'All done!';
   const pct = Math.round((scoreCorrect / 30) * 100);
   const isChampion = pct >= 90;
@@ -877,13 +1001,142 @@ function launchFireworks() {
 
 // ── Restart ───────────────────────────────────────────────────────────────────
 function restartQuiz() {
-  current = 0;
-  attempts = 0;
+  current      = 0;
+  attempts     = 0;
   scoreCorrect = 0;
-  scoreWrong = 0;
-  scoreDone = 0;
+  scoreWrong   = 0;
+  scoreDone    = 0;
+  quizQResults  = new Array(30).fill(null);
+  quizStartTime = Date.now();
   updateScore();
   renderQuestion(0);
+}
+
+// ── Save attempt to localStorage ─────────────────────────────────────────────
+function saveAttempt() {
+  const stats = loadStats();
+  const pct   = Math.round((scoreCorrect / 30) * 100);
+  const secs  = Math.round((Date.now() - quizStartTime) / 1000);
+
+  const byLevel = { easy: 0, medium: 0, hard: 0 };
+  quizQResults.forEach((r, i) => { if (r === 'first' || r === 'second') byLevel[questions[i].level]++; });
+
+  stats.attempts.push({ date: new Date().toISOString().slice(0, 10), score: scoreCorrect, pct, secs, byLevel });
+  if (stats.attempts.length > 50) stats.attempts = stats.attempts.slice(-50);
+
+  quizQResults.forEach((r, i) => {
+    if (!r) return;
+    const k = String(i);
+    if (!stats.questions[k]) stats.questions[k] = { seen: 0, firstTry: 0, missed: 0 };
+    stats.questions[k].seen++;
+    if (r === 'first')  stats.questions[k].firstTry++;
+    if (r === 'missed') stats.questions[k].missed++;
+  });
+
+  const today     = new Date().toISOString().slice(0, 10);
+  const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+  if (stats.streak.lastDate === today) {
+    // already practiced today — no change
+  } else if (stats.streak.lastDate === yesterday) {
+    stats.streak.current++;
+  } else {
+    stats.streak.current = 1;
+  }
+  stats.streak.best     = Math.max(stats.streak.best, stats.streak.current);
+  stats.streak.lastDate = today;
+
+  saveStats(stats);
+}
+
+// ── Progress panel ────────────────────────────────────────────────────────────
+function showProgressPanel() {
+  const stats    = loadStats();
+  const attempts = stats.attempts;
+  const total    = attempts.length;
+  const bestPct  = total ? Math.max(...attempts.map(a => a.pct)) : 0;
+  const avgPct   = total ? Math.round(attempts.reduce((s, a) => s + a.pct, 0) / total) : 0;
+  const streak   = stats.streak;
+
+  // Bar chart — last 10 attempts
+  const recent = attempts.slice(-10);
+  const barsHtml = recent.map(a => `
+    <div class="bar-col">
+      <span class="bar-pct-lbl">${a.pct}%</span>
+      <div class="bar-fill ${a.pct >= 90 ? 'bar-champion' : ''}" style="height:${a.pct}%"></div>
+    </div>`).join('');
+
+  // Best by-level breakdown (from best attempt)
+  const best = total ? attempts.reduce((b, a) => a.pct > b.pct ? a : b) : null;
+  const levelHtml = best ? ['easy','medium','hard'].map(lvl => {
+    const max   = lvl === 'easy' ? 5 : lvl === 'medium' ? 10 : 15;
+    const got   = best.byLevel[lvl] || 0;
+    const pct   = Math.round(got / max * 100);
+    const color = lvl === 'easy' ? 'var(--easy)' : lvl === 'medium' ? 'var(--medium)' : 'var(--hard)';
+    return `<div class="level-row">
+      <span class="level-row-label" style="color:${color}">${lvl.charAt(0).toUpperCase()+lvl.slice(1)}</span>
+      <div class="level-track"><div class="level-fill" style="width:${pct}%;background:${color}"></div></div>
+      <span class="level-pct">${got}/${max}</span>
+    </div>`;
+  }).join('') : '';
+
+  // Weakest questions (min 2 attempts, sorted by miss rate)
+  const weakQ = Object.entries(stats.questions)
+    .filter(([, v]) => v.seen >= 2 && v.missed > 0)
+    .sort(([, a], [, b]) => (b.missed / b.seen) - (a.missed / a.seen))
+    .slice(0, 4);
+  const weakHtml = weakQ.length
+    ? weakQ.map(([idx, v]) => {
+        const q = questions[parseInt(idx)];
+        const short = q.text.length > 65 ? q.text.substring(0, 65) + '…' : q.text;
+        return `<li class="weak-item">
+          <span style="flex:1">${short}</span>
+          <span class="miss-badge">missed ${v.missed}/${v.seen}</span>
+        </li>`;
+      }).join('')
+    : '';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'progress-panel';
+  overlay.id        = 'progress-panel-overlay';
+  overlay.innerHTML = `
+    <div class="progress-panel-inner">
+      <div class="panel-header">
+        <span class="panel-title">📊 My Progress</span>
+        <button class="panel-close" onclick="closeProgressPanel()">✕</button>
+      </div>
+
+      <div class="streak-card">
+        <span class="streak-fire">🔥</span>
+        <div>
+          <div class="streak-num">${streak.current} day${streak.current !== 1 ? 's' : ''}</div>
+          <div class="streak-lbl">Current streak &nbsp;·&nbsp; Best: ${streak.best} day${streak.best !== 1 ? 's' : ''}</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="s-num">${total}</div><div class="s-lbl">Quizzes</div></div>
+        <div class="stat-card"><div class="s-num">${bestPct}%</div><div class="s-lbl">Best Score</div></div>
+        <div class="stat-card"><div class="s-num">${avgPct}%</div><div class="s-lbl">Average</div></div>
+      </div>
+
+      ${total === 0 ? '<div class="empty-state">Complete your first quiz to see stats here! 🎯</div>' : ''}
+
+      ${recent.length ? `<div class="panel-section-title">Recent Attempts</div>
+        <div class="bar-chart">${barsHtml}</div>` : ''}
+
+      ${best ? `<div class="panel-section-title">Best Attempt — By Difficulty</div>
+        <div class="level-bars">${levelHtml}</div>` : ''}
+
+      ${weakHtml ? `<div class="panel-section-title">Questions to Practise More</div>
+        <ul class="weak-list">${weakHtml}</ul>` : ''}
+    </div>`;
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeProgressPanel(); });
+  document.body.appendChild(overlay);
+}
+
+function closeProgressPanel() {
+  document.getElementById('progress-panel-overlay')?.remove();
 }
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
