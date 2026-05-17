@@ -108,31 +108,19 @@
     .badge-medium { background: #fef3c7; color: var(--medium); }
     .badge-hard   { background: #fee2e2; color: var(--hard); }
 
-    .attempts-pips {
-      display: flex;
-      gap: 5px;
-      align-items: center;
+    .timer-display {
+      font-size: 0.95rem;
+      font-weight: 700;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
     }
-    .pip {
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      transition: background 0.2s;
-    }
-    .pip.used-wrong  { background: var(--hard); }
-    .pip.used-correct { background: var(--easy); }
 
     .q-text {
-      font-size: 1rem;
+      font-size: 1.12rem;
       line-height: 1.65;
       color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .q-hint {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .choices {
@@ -144,8 +132,8 @@
       background: #f1f5f9;
       border: 2px solid transparent;
       border-radius: 9px;
-      padding: 0.6rem 0.9rem;
-      font-size: 0.92rem;
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
       text-align: left;
@@ -181,14 +169,13 @@
       margin-top: 1rem;
       padding: 0.7rem 1rem;
       border-radius: 8px;
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       font-weight: 600;
       display: none;
     }
     .feedback.show { display: block; }
     .feedback.correct { background: #dcfce7; color: var(--easy); }
     .feedback.wrong   { background: #fee2e2; color: var(--hard); }
-    .feedback.retry   { background: #fef3c7; color: #92400e; }
 
     .explanation {
       margin-top: 0.9rem;
@@ -208,7 +195,7 @@
       margin-bottom: 0.45rem;
     }
     .explanation-body {
-      font-size: 0.9rem;
+      font-size: 0.97rem;
       color: #1e293b;
       line-height: 1.65;
     }
@@ -459,6 +446,7 @@
     <div class="progress-bar" id="progress-bar"></div>
   </div>
   <div class="progress-label" id="progress-label">Question 1 of 30</div>
+  <div class="timer-display" id="timer">⏱ 0:00</div>
   <button class="progress-btn" onclick="showProgressPanel()">📊 My Progress</button>
 </header>
 
@@ -763,16 +751,9 @@ function renderQuestion(idx) {
     <div class="card" id="q-card">
       <div class="card-top">
         <span class="q-counter">Question ${idx + 1} of 30</span>
-        <div style="display:flex;align-items:center;gap:0.6rem;">
-          <div class="attempts-pips">
-            <div class="pip" id="pip-0"></div>
-            <div class="pip" id="pip-1"></div>
-          </div>
-          <span class="badge badge-${q.level}">${q.level}</span>
-        </div>
+        <span class="badge badge-${q.level}">${q.level}</span>
       </div>
       <div class="q-text">${q.text}</div>
-      <div class="q-hint">💡 ${q.hint}</div>
       <div class="choices" id="choices">
         ${shuffledChoices.map((c, i) =>
           `<button class="choice-btn" id="btn-${i}" onclick="handleChoice(${i})">${c}</button>`
@@ -800,54 +781,37 @@ function handleChoice(btnIdx) {
   const isEquivalent = q.equivalents && q.equivalents.includes(chosen);
   const isCorrect    = chosen === q.answer || isEquivalent;
 
-  updatePip(attempts - 1, isCorrect ? 'correct' : 'wrong');
-
   if (isCorrect) {
-    // ── Correct ──
-    quizQResults[current] = attempts === 1 ? 'first' : 'second';
+    quizQResults[current] = 'first';
     btn.classList.add('state-correct');
     disableAll();
     feedback.textContent = isEquivalent
       ? `🎉 Correct! ${chosen} equals ${q.answer} — great thinking!`
       : '🎉 Correct! Fantastic work!';
-    feedback.className   = 'feedback show correct';
+    feedback.className = 'feedback show correct';
     showExplanation(explEl, q.explanation);
     nextBtn.classList.add('show');
     scoreCorrect++;
     scoreDone++;
     updateScore();
-  } else if (attempts >= 2) {
-    // ── 2nd wrong attempt — mark failed ──
+  } else {
     quizQResults[current] = 'missed';
     btn.classList.add('state-wrong');
     disableAll();
     revealCorrect(q.answer);
     feedback.textContent = `❌ The correct answer is: ${q.answer}`;
-    feedback.className   = 'feedback show wrong';
+    feedback.className = 'feedback show wrong';
     showExplanation(explEl, q.explanation);
     nextBtn.classList.add('show');
     scoreWrong++;
     scoreDone++;
     updateScore();
-  } else {
-    // ── 1st wrong attempt — try again ──
-    btn.classList.add('state-wrong');
-    btn.disabled = true;
-    feedback.textContent = '🤔 Not quite — you have 1 more try!';
-    feedback.className   = 'feedback show retry';
   }
 }
 
 function showExplanation(el, html) {
   el.innerHTML = `<div class="explanation-title">🧮 Here's how to solve it!</div><div class="explanation-body">${html}</div>`;
   el.className = 'explanation show';
-}
-
-function updatePip(pipIdx, state) {
-  const pip = document.getElementById(`pip-${pipIdx}`);
-  if (!pip) return;
-  pip.classList.remove('used-wrong', 'used-correct');
-  pip.classList.add(state === 'correct' ? 'used-correct' : 'used-wrong');
 }
 
 function disableAll() {
@@ -874,10 +838,14 @@ function goNext() {
 
 // ── Final screen ──────────────────────────────────────────────────────────────
 function showFinalScreen() {
+  stopTimer();
   saveAttempt();
   document.getElementById('progress-label').textContent = 'All done!';
-  const pct = Math.round((scoreCorrect / 30) * 100);
+  const pct      = Math.round((scoreCorrect / 30) * 100);
+  const timeStr  = formatTime(timerSeconds);
   const isChampion = pct >= 90;
+
+  const tallyTime = `<div class="tally-box"><div class="num">${timeStr}</div><div class="lbl">Time</div></div>`;
 
   if (isChampion) {
     document.getElementById('main').innerHTML = `
@@ -886,49 +854,31 @@ function showFinalScreen() {
         <div class="champion-title">MATH CHAMPION!</div>
         <div class="champion-subtitle">Incredible — you got ${scoreCorrect} out of 30 correct!</div>
         <div class="final-tally">
-          <div class="tally-box green">
-            <div class="num">${scoreCorrect}</div>
-            <div class="lbl">Correct</div>
-          </div>
-          <div class="tally-box red">
-            <div class="num">${scoreWrong}</div>
-            <div class="lbl">Wrong</div>
-          </div>
-          <div class="tally-box">
-            <div class="num">${pct}%</div>
-            <div class="lbl">Score</div>
-          </div>
+          <div class="tally-box green"><div class="num">${scoreCorrect}</div><div class="lbl">Correct</div></div>
+          <div class="tally-box red"><div class="num">${scoreWrong}</div><div class="lbl">Wrong</div></div>
+          <div class="tally-box"><div class="num">${pct}%</div><div class="lbl">Score</div></div>
+          ${tallyTime}
         </div>
         <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
-      </div>
-    `;
+      </div>`;
     launchFireworks();
   } else {
-    let emoji = pct >= 70 ? '⭐' : pct >= 50 ? '👍' : '💪';
-    let msg   = pct >= 70 ? 'Great job! Keep practicing!'
-              : pct >= 50 ? 'Good effort! You can do even better!'
-              : 'Keep going — practice makes perfect!';
+    const emoji = pct >= 70 ? '⭐' : pct >= 50 ? '👍' : '💪';
+    const msg   = pct >= 70 ? 'Great job! Keep practicing!'
+                : pct >= 50 ? 'Good effort! You can do even better!'
+                : 'Keep going — practice makes perfect!';
     document.getElementById('main').innerHTML = `
       <div class="final-screen">
         <h2>${emoji} Quiz Complete!</h2>
         <p>${msg}</p>
         <div class="final-tally">
-          <div class="tally-box green">
-            <div class="num">${scoreCorrect}</div>
-            <div class="lbl">Correct</div>
-          </div>
-          <div class="tally-box red">
-            <div class="num">${scoreWrong}</div>
-            <div class="lbl">Wrong</div>
-          </div>
-          <div class="tally-box">
-            <div class="num">${pct}%</div>
-            <div class="lbl">Score</div>
-          </div>
+          <div class="tally-box green"><div class="num">${scoreCorrect}</div><div class="lbl">Correct</div></div>
+          <div class="tally-box red"><div class="num">${scoreWrong}</div><div class="lbl">Wrong</div></div>
+          <div class="tally-box"><div class="num">${pct}%</div><div class="lbl">Score</div></div>
+          ${tallyTime}
         </div>
         <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
-      </div>
-    `;
+      </div>`;
   }
 }
 
@@ -1011,6 +961,26 @@ function launchFireworks() {
 }
 
 // ── Restart ───────────────────────────────────────────────────────────────────
+// ── Timer ─────────────────────────────────────────────────────────────────────
+let timerInterval = null;
+let timerSeconds  = 0;
+
+function startTimer() {
+  timerSeconds = 0;
+  clearInterval(timerInterval);
+  document.getElementById('timer').textContent = '⏱ 0:00';
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    document.getElementById('timer').textContent = '⏱ ' + formatTime(timerSeconds);
+  }, 1000);
+}
+
+function stopTimer() { clearInterval(timerInterval); }
+
+function formatTime(s) {
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
 function restartQuiz() {
   current      = 0;
   attempts     = 0;
@@ -1020,6 +990,7 @@ function restartQuiz() {
   quizQResults  = new Array(30).fill(null);
   quizStartTime = Date.now();
   updateScore();
+  startTimer();
   renderQuestion(0);
 }
 
@@ -1152,6 +1123,7 @@ function closeProgressPanel() {
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 updateScore();
+startTimer();
 renderQuestion(0);
 </script>
 
