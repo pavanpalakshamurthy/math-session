@@ -361,6 +361,7 @@ const questions = [
     hint: 'Count the slices Leo ate vs. total slices.',
     choices: ['2/8', '1/4', '3/8', '1/2'],
     answer: '2/8',
+    equivalents: ['1/4'],
     explanation: `<span class="step">🍕 The pizza has <strong>8 slices</strong> in total.</span><span class="step">😋 Leo ate <strong>2 slices</strong>.</span><span class="step">📐 Fraction = slices eaten ÷ total slices = 2 ÷ 8 = <strong>2/8</strong>.</span><span class="step">💡 Bonus: 2/8 is the same as 1/4 because 2 goes into 8 four times. Cool, right?</span>`
   },
   {
@@ -377,6 +378,7 @@ const questions = [
     hint: 'Grapes given ÷ total grapes.',
     choices: ['1/2', '1/3', '2/3', '3/6'],
     answer: '1/2',
+    equivalents: ['3/6'],
     explanation: `<span class="step">🍇 Zara started with <strong>6 grapes</strong>.</span><span class="step">🤝 She gave away <strong>3 grapes</strong>.</span><span class="step">📐 Fraction = grapes given ÷ total = 3 ÷ 6 = <strong>3/6</strong>.</span><span class="step">💡 3 is exactly <strong>half</strong> of 6, so 3/6 = <strong>1/2</strong>. She gave away half her grapes!</span>`
   },
   {
@@ -403,6 +405,7 @@ const questions = [
     hint: 'Subtract: how much was used?',
     choices: ['2/4', '1/4', '3/4', '1/2'],
     answer: '2/4',
+    equivalents: ['1/2'],
     explanation: `<span class="step">💧 Tank starts: <strong>3/4</strong> full.</span><span class="step">💧 Tank after using water: <strong>1/4</strong> full.</span><span class="step">➖ To find how much was used, subtract: 3/4 − 1/4. Bottom numbers are the same, so subtract the tops: 3 − 1 = 2. Keep the 4.</span><span class="step">✅ Water used = <strong>2/4</strong> (same as 1/2 — half the tank was used!).</span>`
   },
   {
@@ -427,6 +430,7 @@ const questions = [
     hint: 'Multiply the fraction by 3.',
     choices: ['1 1/2 cups', '2 cups', '1 cup', '3/2 cups'],
     answer: '1 1/2 cups',
+    equivalents: ['3/2 cups'],
     explanation: `<span class="step">🍪 1 batch needs <strong>1/2 cup</strong> of sugar.</span><span class="step">✖️ 3 batches need: 1/2 × 3 = <strong>3/2 cups</strong>.</span><span class="step">💡 3/2 means "3 halves." 2 halves = 1 whole cup, plus 1 more half = <strong>1 and 1/2 cups</strong>.</span><span class="step">🥄 Imagine 3 half-cup scoops poured in — that's one and a half cups!</span>`
   },
   {
@@ -661,13 +665,18 @@ function handleChoice(btnIdx) {
   const btn      = document.getElementById(`btn-${btnIdx}`);
 
   attempts++;
-  updatePip(attempts - 1, chosen === q.answer ? 'correct' : 'wrong');
+  const isEquivalent = q.equivalents && q.equivalents.includes(chosen);
+  const isCorrect    = chosen === q.answer || isEquivalent;
 
-  if (chosen === q.answer) {
+  updatePip(attempts - 1, isCorrect ? 'correct' : 'wrong');
+
+  if (isCorrect) {
     // ── Correct ──
     btn.classList.add('state-correct');
     disableAll();
-    feedback.textContent = '🎉 Correct! Fantastic work!';
+    feedback.textContent = isEquivalent
+      ? `🎉 Correct! ${chosen} equals ${q.answer} — great thinking!`
+      : '🎉 Correct! Fantastic work!';
     feedback.className   = 'feedback show correct';
     showExplanation(explEl, q.explanation);
     nextBtn.classList.add('show');
