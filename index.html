@@ -25,10 +25,49 @@
       background: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
       color: white;
       text-align: center;
-      padding: 3rem 1rem 2.5rem;
+      padding: 2.8rem 1rem 2.4rem;
+      overflow: hidden;
+      position: relative;
     }
-    header h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.5px; }
-    header p  { font-size: 1.05rem; opacity: 0.88; margin-top: 0.5rem; }
+    header h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.5px; position: relative; z-index: 1; }
+    header p  { font-size: 1.05rem; opacity: 0.88; margin-top: 0.5rem; position: relative; z-index: 1; }
+
+    .symbol-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.1rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .sym {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      width: 2.6rem;
+      height: 2.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: sym-float 3s ease-in-out infinite;
+      backdrop-filter: blur(2px);
+    }
+    .sym:nth-child(1) { animation-delay: 0s; }
+    .sym:nth-child(2) { animation-delay: 0.3s; }
+    .sym:nth-child(3) { animation-delay: 0.6s; }
+    .sym:nth-child(4) { animation-delay: 0.9s; }
+    .sym:nth-child(5) { animation-delay: 1.2s; }
+    .sym:nth-child(6) { animation-delay: 1.5s; }
+    .sym:nth-child(7) { animation-delay: 1.8s; }
+    .sym:nth-child(8) { animation-delay: 2.1s; }
+    .sym:nth-child(9) { animation-delay: 2.4s; }
+    @keyframes sym-float {
+      0%, 100% { transform: translateY(0);   opacity: 0.75; }
+      50%       { transform: translateY(-5px); opacity: 1; }
+    }
 
     main {
       flex: 1;
@@ -175,6 +214,17 @@
 <header>
   <h1>🏆 Math Champions</h1>
   <p>Word problem quizzes for smart kids — pick a topic and start!</p>
+  <div class="symbol-row">
+    <div class="sym">+</div>
+    <div class="sym">−</div>
+    <div class="sym">×</div>
+    <div class="sym">÷</div>
+    <div class="sym">=</div>
+    <div class="sym">½</div>
+    <div class="sym">%</div>
+    <div class="sym">π</div>
+    <div class="sym">∑</div>
+  </div>
 </header>
 
 <main>
