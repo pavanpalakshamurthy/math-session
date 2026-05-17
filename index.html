@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Champions — Fractions &amp; LCM</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #818cf8;
+      --easy: #16a34a;
+      --medium: #d97706;
+      --hard: #dc2626;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --correct: #dcfce7;
+      --correct-border: #16a34a;
+      --wrong: #fee2e2;
+      --wrong-border: #dc2626;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+      color: white;
+      padding: 2rem 1rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+    header p  { margin-top: 0.4rem; font-size: 1rem; opacity: 0.9; }
+
+    .scoreboard {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.6rem 2rem;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .scoreboard span { font-size: 0.95rem; font-weight: 600; }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-easy   { background: #4ade80; }
+    .dot-medium { background: #fbbf24; }
+    .dot-hard   { background: #f87171; }
+
+    main {
+      max-width: 820px;
+      margin: 2rem auto;
+      padding: 0 1rem 4rem;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin: 2rem 0 1rem;
+    }
+    .section-label h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-easy   { background: #dcfce7; color: var(--easy); }
+    .badge-medium { background: #fef3c7; color: var(--medium); }
+    .badge-hard   { background: #fee2e2; color: var(--hard); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .card.answered-correct { border-color: var(--correct-border); background: var(--correct); }
+    .card.answered-wrong   { border-color: var(--wrong-border);   background: var(--wrong); }
+
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.85rem;
+    }
+    .q-num {
+      min-width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .q-num.easy-num   { background: var(--easy); }
+    .q-num.medium-num { background: var(--medium); }
+    .q-num.hard-num   { background: var(--hard); }
+
+    .q-text {
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .q-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .choice-btn {
+      background: #f1f5f9;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      color: var(--text);
+    }
+    .choice-btn:hover:not(:disabled) {
+      background: #e0e7ff;
+      border-color: var(--primary-light);
+    }
+    .choice-btn.selected-correct {
+      background: #dcfce7;
+      border-color: var(--correct-border);
+      color: var(--easy);
+      font-weight: 700;
+    }
+    .choice-btn.selected-wrong {
+      background: #fee2e2;
+      border-color: var(--wrong-border);
+      color: var(--hard);
+    }
+    .choice-btn.reveal-correct {
+      background: #dcfce7;
+      border-color: var(--correct-border);
+      color: var(--easy);
+      font-weight: 700;
+    }
+    .choice-btn:disabled { cursor: default; }
+
+    .feedback {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none;
+    }
+    .feedback.show { display: block; }
+    .feedback.correct { color: var(--easy); }
+    .feedback.wrong   { color: var(--hard); }
+
+    .explanation {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: none;
+      line-height: 1.55;
+    }
+    .explanation.show { display: block; }
+
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.2);
+      border-radius: 50px;
+      height: 6px;
+      margin-top: 1rem;
+      overflow: hidden;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 50px;
+      transition: width 0.4s;
+      width: 0%;
+    }
+
+    .reset-btn {
+      display: block;
+      margin: 2rem auto 0;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .reset-btn:hover { background: #4338ca; }
+
+    @media (max-width: 520px) {
+      .choices { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🏆 Math Champions</h1>
+  <p>Fractions &amp; LCM Word Problems — Grade 2 &amp; Beyond</p>
+  <div class="legend">
+    <span class="legend-item"><span class="dot dot-easy"></span> Easy (Q1–5)</span>
+    <span class="legend-item"><span class="dot dot-medium"></span> Medium (Q6–15)</span>
+    <span class="legend-item"><span class="dot dot-hard"></span> Hard (Q16–30)</span>
+  </div>
+  <div class="scoreboard">
+    <span>✅ Correct: <span id="score-correct">0</span></span>
+    <span>❌ Wrong: <span id="score-wrong">0</span></span>
+    <span>📋 Done: <span id="score-done">0</span>/30</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+</header>
+
+<main id="quiz-container"></main>
+
+<script>
+const questions = [
+  // ── EASY (1–5) ────────────────────────────────────────────────────────────
+  {
+    level: 'easy',
+    text: `Maya has a chocolate bar broken into 4 equal pieces. She eats 1 piece. What fraction of the chocolate bar did she eat?`,
+    hint: 'Think: pieces eaten out of total pieces.',
+    choices: ['1/4', '1/2', '3/4', '2/4'],
+    answer: '1/4',
+    explanation: '1 piece out of 4 equal pieces = 1/4.'
+  },
+  {
+    level: 'easy',
+    text: `A pizza is cut into 8 equal slices. Leo eats 2 slices. What fraction of the pizza did Leo eat?`,
+    hint: 'Count the slices Leo ate vs. total slices.',
+    choices: ['2/8', '1/4', '3/8', '1/2'],
+    answer: '2/8',
+    explanation: '2 out of 8 slices = 2/8 (also equal to 1/4, but 2/8 is the direct fraction).'
+  },
+  {
+    level: 'easy',
+    text: `A ribbon is divided into 3 equal parts. Sam colors 1 part red. What fraction of the ribbon is red?`,
+    hint: 'How many parts are red? How many parts in all?',
+    choices: ['1/3', '2/3', '1/2', '3/1'],
+    answer: '1/3',
+    explanation: '1 red part out of 3 equal parts = 1/3.'
+  },
+  {
+    level: 'easy',
+    text: `Zara has 6 grapes. She gives 3 grapes to her friend. What fraction of her grapes did she give away?`,
+    hint: 'Grapes given ÷ total grapes.',
+    choices: ['1/2', '1/3', '2/3', '3/6'],
+    answer: '1/2',
+    explanation: '3 out of 6 = 3/6 = 1/2.'
+  },
+  {
+    level: 'easy',
+    text: `A garden is split into 5 equal rows. Flowers grow in 2 rows. What fraction of the garden has flowers?`,
+    hint: 'Rows with flowers out of total rows.',
+    choices: ['2/5', '3/5', '1/5', '2/3'],
+    answer: '2/5',
+    explanation: '2 flower rows out of 5 total rows = 2/5.'
+  },
+
+  // ── MEDIUM (6–15) ─────────────────────────────────────────────────────────
+  {
+    level: 'medium',
+    text: `Emma reads 1/3 of her book on Monday and 1/3 on Tuesday. What fraction of the book has she read in total?`,
+    hint: 'Add the two fractions — they have the same denominator.',
+    choices: ['2/3', '1/3', '2/6', '1/6'],
+    answer: '2/3',
+    explanation: '1/3 + 1/3 = 2/3.'
+  },
+  {
+    level: 'medium',
+    text: `A water tank is 3/4 full. After some water is used, it is only 1/4 full. What fraction of the water was used?`,
+    hint: 'Subtract: how much was used?',
+    choices: ['2/4', '1/4', '3/4', '1/2'],
+    answer: '2/4',
+    explanation: '3/4 − 1/4 = 2/4 (which equals 1/2).'
+  },
+  {
+    level: 'medium',
+    text: `Ben jogs every 2 days. Lily jogs every 3 days. If they both jogged today, after how many days will they jog together again?`,
+    hint: 'Find the LCM of 2 and 3.',
+    choices: ['6 days', '3 days', '2 days', '5 days'],
+    answer: '6 days',
+    explanation: 'LCM(2, 3) = 6. They will jog together again after 6 days.'
+  },
+  {
+    level: 'medium',
+    text: `Two buses leave the same stop. Bus A comes every 4 minutes, Bus B every 6 minutes. If both left together at 8:00 AM, when will they next leave together?`,
+    hint: 'LCM of 4 and 6.',
+    choices: ['8:12 AM', '8:10 AM', '8:24 AM', '8:06 AM'],
+    answer: '8:12 AM',
+    explanation: 'LCM(4, 6) = 12 minutes. Next time = 8:00 + 12 min = 8:12 AM.'
+  },
+  {
+    level: 'medium',
+    text: `A recipe needs 1/2 cup of sugar. Priya wants to make 3 batches. How much sugar does she need in total?`,
+    hint: 'Multiply the fraction by 3.',
+    choices: ['1 1/2 cups', '2 cups', '1 cup', '3/2 cups'],
+    answer: '1 1/2 cups',
+    explanation: '1/2 × 3 = 3/2 = 1 1/2 cups.'
+  },
+  {
+    level: 'medium',
+    text: `A class has 20 students. 1/4 of them brought their lunch from home. How many students brought lunch from home?`,
+    hint: 'Find 1/4 of 20.',
+    choices: ['5 students', '4 students', '10 students', '8 students'],
+    answer: '5 students',
+    explanation: '20 × 1/4 = 5 students.'
+  },
+  {
+    level: 'medium',
+    text: `Jake scores 3/5 on his first quiz and 4/5 on his second quiz. Which quiz did he do better on, and by how much?`,
+    hint: 'Compare and subtract — same denominator.',
+    choices: ['2nd quiz by 1/5', '1st quiz by 1/5', '2nd quiz by 2/5', 'They scored the same'],
+    answer: '2nd quiz by 1/5',
+    explanation: '4/5 − 3/5 = 1/5. Jake did better on the 2nd quiz by 1/5.'
+  },
+  {
+    level: 'medium',
+    text: `A lamp flashes every 3 seconds. A bell rings every 5 seconds. They go off together at the start. After how many seconds will they go off together again?`,
+    hint: 'LCM of 3 and 5.',
+    choices: ['15 seconds', '8 seconds', '10 seconds', '30 seconds'],
+    answer: '15 seconds',
+    explanation: 'LCM(3, 5) = 15. They will go off together after 15 seconds.'
+  },
+  {
+    level: 'medium',
+    text: `Nora ate 1/4 of a pie. Her brother ate 2/4 of the same pie. What fraction of the pie is left?`,
+    hint: 'Add what was eaten, then subtract from 1 whole.',
+    choices: ['1/4', '2/4', '3/4', '0'],
+    answer: '1/4',
+    explanation: '1/4 + 2/4 = 3/4 eaten. 1 − 3/4 = 1/4 left.'
+  },
+  {
+    level: 'medium',
+    text: `Three friends share a bag of 12 cookies equally. Then one friend shares her portion equally with her little sister. What fraction of the total cookies does the little sister get?`,
+    hint: 'Find each friend's share, then halve it.',
+    choices: ['1/6', '1/4', '1/12', '1/3'],
+    answer: '1/6',
+    explanation: 'Each friend gets 1/3. One friend splits her 1/3 in half → 1/6 for the sister.'
+  },
+
+  // ── HARD (16–30) ──────────────────────────────────────────────────────────
+  {
+    level: 'hard',
+    text: `A train stops at Oak Station every 6 minutes and at Elm Station every 9 minutes. Both trains left at noon. At what time will they next leave their stations at the same moment?`,
+    hint: 'LCM of 6 and 9.',
+    choices: ['12:18 PM', '12:15 PM', '12:36 PM', '12:09 PM'],
+    answer: '12:18 PM',
+    explanation: 'LCM(6, 9) = 18 minutes. Next simultaneous departure = 12:00 + 18 min = 12:18 PM.'
+  },
+  {
+    level: 'hard',
+    text: `Mia ran 3/8 of a race before lunch and 2/8 of the race after lunch. Tom ran 5/8 of the same race. Who ran more, and by what fraction?`,
+    hint: 'Add Mia's parts first, then compare.',
+    choices: ['Tom by 0 — they ran the same', 'Mia by 1/8', 'Tom by 1/8', 'Mia by 2/8'],
+    answer: 'Tom by 0 — they ran the same',
+    explanation: 'Mia: 3/8 + 2/8 = 5/8. Tom: 5/8. They ran exactly the same distance!'
+  },
+  {
+    level: 'hard',
+    text: `A farmer plants sunflowers in 2/6 of his field and roses in 3/6 of his field. The rest is grass. What fraction of the field is grass?`,
+    hint: 'Add flowers, subtract from 1.',
+    choices: ['1/6', '2/6', '5/6', '3/6'],
+    answer: '1/6',
+    explanation: '2/6 + 3/6 = 5/6. Grass = 1 − 5/6 = 1/6.'
+  },
+  {
+    level: 'hard',
+    text: `Three school bells ring at intervals of 4, 6, and 8 minutes. All three rang together at 9:00 AM. What is the next time all three bells will ring together?`,
+    hint: 'Find LCM of 4, 6, and 8.',
+    choices: ['9:24 AM', '9:12 AM', '9:48 AM', '9:16 AM'],
+    answer: '9:24 AM',
+    explanation: 'LCM(4, 6, 8) = 24. Next time = 9:00 + 24 min = 9:24 AM.'
+  },
+  {
+    level: 'hard',
+    text: `A bookshelf has 30 books. 1/3 are science books, 2/5 are story books, and the rest are art books. How many art books are there?`,
+    hint: 'Find a common denominator for 1/3 and 2/5, add them, subtract from 1, then multiply by 30.',
+    choices: ['8 books', '10 books', '6 books', '12 books'],
+    answer: '8 books',
+    explanation: '1/3 = 5/15, 2/5 = 6/15. Total = 11/15. Art = 1 − 11/15 = 4/15. 30 × 4/15 = 8 books.'
+  },
+  {
+    level: 'hard',
+    text: `A jar is 3/4 full of juice. You pour out 1/3 of the juice in the jar. What fraction of a full jar is left?`,
+    hint: 'You pour out 1/3 of the 3/4 that's there. Multiply, then subtract.',
+    choices: ['1/2', '2/3', '5/12', '7/12'],
+    answer: '1/2',
+    explanation: 'Amount poured = 1/3 × 3/4 = 3/12 = 1/4. Left = 3/4 − 1/4 = 2/4 = 1/2.'
+  },
+  {
+    level: 'hard',
+    text: `In a class, 1/2 of the kids like soccer, 1/3 like basketball, and the rest like tennis. If there are 30 students, how many like tennis?`,
+    hint: 'LCM of 2 and 3 helps add the fractions. Then subtract from 1.',
+    choices: ['5 students', '10 students', '15 students', '6 students'],
+    answer: '5 students',
+    explanation: '1/2 + 1/3 = 3/6 + 2/6 = 5/6. Tennis = 1 − 5/6 = 1/6. 30 × 1/6 = 5 students.'
+  },
+  {
+    level: 'hard',
+    text: `Three friends share a pizza. Ana eats 1/3, Bob eats 1/4, and Carol eats 1/6. What fraction of the pizza is left?`,
+    hint: 'Add the three fractions using LCM of 3, 4, 6, then subtract from 1.',
+    choices: ['1/4', '3/4', '1/12', '5/12'],
+    answer: '1/4',
+    explanation: 'LCM(3,4,6)=12. 4/12 + 3/12 + 2/12 = 9/12. Left = 3/12 = 1/4.'
+  },
+  {
+    level: 'hard',
+    text: `A frog jumps every 5 seconds. A cricket chirps every 8 seconds. A firefly blinks every 10 seconds. All happen at the same time at t=0. After how many seconds do all three happen at the same time again?`,
+    hint: 'LCM of 5, 8, and 10.',
+    choices: ['40 seconds', '80 seconds', '20 seconds', '400 seconds'],
+    answer: '40 seconds',
+    explanation: 'LCM(5, 8, 10) = 40 seconds.'
+  },
+  {
+    level: 'hard',
+    text: `A school garden has 4 sections. Section A takes up 2/8, section B takes 3/8, section C takes 2/8. What fraction does section D take up?`,
+    hint: 'Add A + B + C and subtract from 1.',
+    choices: ['1/8', '2/8', '3/8', '4/8'],
+    answer: '1/8',
+    explanation: '2/8 + 3/8 + 2/8 = 7/8. Section D = 1 − 7/8 = 1/8.'
+  },
+  {
+    level: 'hard',
+    text: `Two cyclists start at the same point. Cyclist A completes a lap every 8 minutes, Cyclist B every 12 minutes. How many laps will each have completed the first time they meet at the start?`,
+    hint: 'LCM(8,12) tells you when they meet. Divide by each lap time.',
+    choices: ['A: 3 laps, B: 2 laps', 'A: 2 laps, B: 3 laps', 'A: 4 laps, B: 3 laps', 'A: 6 laps, B: 4 laps'],
+    answer: 'A: 3 laps, B: 2 laps',
+    explanation: 'LCM(8,12)=24. A: 24÷8=3 laps. B: 24÷12=2 laps.'
+  },
+  {
+    level: 'hard',
+    text: `Lily has 24 stickers. She gives 1/3 to her sister and 1/4 to her cousin. How many stickers does Lily have left?`,
+    hint: 'LCM of 3 and 4 helps add 1/3 and 1/4. Find how many she gave away.',
+    choices: ['10 stickers', '8 stickers', '6 stickers', '14 stickers'],
+    answer: '10 stickers',
+    explanation: '1/3 of 24 = 8. 1/4 of 24 = 6. Total given = 14. Left = 24 − 14 = 10 stickers.'
+  },
+  {
+    level: 'hard',
+    text: `A baker makes cookies in batches of 8, muffins in batches of 6, and brownies in batches of 4. He wants to bake the same number of each treat. What is the least number of each treat he should bake?`,
+    hint: 'Find LCM of 8, 6, and 4.',
+    choices: ['24 of each', '48 of each', '12 of each', '16 of each'],
+    answer: '24 of each',
+    explanation: 'LCM(8, 6, 4) = 24.'
+  },
+  {
+    level: 'hard',
+    text: `A water fountain fills 2/5 of a tank in the morning and 1/4 of the tank in the afternoon. A small crack leaks 1/10 of the tank per day. Will the tank be more than half full by end of day? By how much?`,
+    hint: 'Add morning + afternoon, subtract leak. Use LCM(5,4,10)=20 to add fractions.',
+    choices: ['Yes, by 1/20 more than half', 'No, it is exactly half', 'Yes, by 3/20 more than half', 'No, it is 1/20 short of half'],
+    answer: 'Yes, by 1/20 more than half',
+    explanation: '2/5=8/20, 1/4=5/20, leak=2/20. Total=8/20+5/20−2/20=11/20. Half=10/20. 11/20 > 10/20 by 1/20.'
+  },
+  {
+    level: 'hard',
+    text: `Four friends run laps. Amir finishes a lap every 6 min, Beni every 9 min, Cora every 12 min, and Dana every 18 min. They all start together. What is the shortest time until all four are at the start together, and how many laps has each completed?`,
+    hint: 'LCM of 6, 9, 12, 18.',
+    choices: [
+      'After 36 min — Amir:6, Beni:4, Cora:3, Dana:2',
+      'After 36 min — Amir:4, Beni:3, Cora:2, Dana:1',
+      'After 18 min — Amir:3, Beni:2, Cora:1, Dana:1',
+      'After 36 min — Amir:6, Beni:3, Cora:4, Dana:2'
+    ],
+    answer: 'After 36 min — Amir:6, Beni:4, Cora:3, Dana:2',
+    explanation: 'LCM(6,9,12,18)=36. Amir:36÷6=6, Beni:36÷9=4, Cora:36÷12=3, Dana:36÷18=2.'
+  }
+];
+
+// ── State ────────────────────────────────────────────────────────────────────
+let correct = 0, wrong = 0, done = 0;
+
+function updateScore() {
+  document.getElementById('score-correct').textContent = correct;
+  document.getElementById('score-wrong').textContent   = wrong;
+  document.getElementById('score-done').textContent    = done;
+  document.getElementById('progress-bar').style.width  = (done / 30 * 100) + '%';
+}
+
+// ── Build UI ──────────────────────────────────────────────────────────────────
+function buildQuiz() {
+  correct = 0; wrong = 0; done = 0;
+  updateScore();
+
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+
+  let currentLevel = null;
+  const sectionTitles = { easy: 'Easy Warm-Up', medium: 'Medium Challenge', hard: 'Hard Brain-Busters' };
+
+  questions.forEach((q, i) => {
+    const num = i + 1;
+
+    if (q.level !== currentLevel) {
+      currentLevel = q.level;
+      const sec = document.createElement('div');
+      sec.className = 'section-label';
+      sec.innerHTML = `
+        <div class="dot dot-${q.level}" style="width:14px;height:14px;flex-shrink:0;"></div>
+        <h2>${sectionTitles[q.level]}</h2>
+        <span class="badge badge-${q.level}">${q.level}</span>
+      `;
+      container.appendChild(sec);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = `card-${num}`;
+
+    const shuffled = [...q.choices].sort(() => Math.random() - 0.5);
+
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num ${q.level}-num">${num}</div>
+        <div>
+          <div class="q-text">${q.text}</div>
+          <div class="q-hint">💡 Hint: ${q.hint}</div>
+        </div>
+      </div>
+      <div class="choices" id="choices-${num}">
+        ${shuffled.map(c => `<button class="choice-btn" onclick="handleAnswer(${num}, this, '${escQ(c)}', '${escQ(q.answer)}', '${escQ(q.explanation)}')">${c}</button>`).join('')}
+      </div>
+      <div class="feedback" id="feedback-${num}"></div>
+      <div class="explanation" id="explanation-${num}"></div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  const btn = document.createElement('button');
+  btn.className = 'reset-btn';
+  btn.textContent = '🔄 Start Over';
+  btn.onclick = buildQuiz;
+  container.appendChild(btn);
+}
+
+function escQ(s) {
+  return s.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+function handleAnswer(num, btn, chosen, answer, explanation) {
+  const choicesDiv = document.getElementById(`choices-${num}`);
+  const feedbackEl = document.getElementById(`feedback-${num}`);
+  const explEl     = document.getElementById(`explanation-${num}`);
+  const card       = document.getElementById(`card-${num}`);
+
+  // Disable all buttons
+  choicesDiv.querySelectorAll('.choice-btn').forEach(b => {
+    b.disabled = true;
+    if (b.textContent === answer) b.classList.add('reveal-correct');
+  });
+
+  const isCorrect = chosen === answer;
+
+  if (isCorrect) {
+    btn.classList.add('selected-correct');
+    feedbackEl.textContent = '🎉 Correct! Great work!';
+    feedbackEl.className = 'feedback show correct';
+    card.classList.add('answered-correct');
+    correct++;
+  } else {
+    btn.classList.add('selected-wrong');
+    feedbackEl.textContent = `❌ Not quite! The answer is: ${answer}`;
+    feedbackEl.className = 'feedback show wrong';
+    card.classList.add('answered-wrong');
+    wrong++;
+  }
+
+  explEl.textContent = '📝 ' + explanation;
+  explEl.className = 'explanation show';
+
+  done++;
+  updateScore();
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
