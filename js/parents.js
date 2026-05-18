@@ -1,5 +1,5 @@
 /**
- * Math Champions — Parent Dashboard Logic
+ * Math For Fun — Parent Dashboard Logic
  * Extracted from parents.html inline script.
  */
 

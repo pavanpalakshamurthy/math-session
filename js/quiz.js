@@ -1,5 +1,5 @@
 /**
- * Math Champions — Quiz Engine
+ * Math For Fun — Quiz Engine
  *
  * Reads ?subject=<id> from the URL, fetches data/<id>.json,
  * applies per-subject theming, and runs the quiz.
@@ -43,7 +43,7 @@ if (quizHeader) {
 // ── Inject subject label into header ──────────────────────────
 const titleEl    = document.getElementById('quiz-title');
 const subtitleEl = document.getElementById('quiz-subtitle');
-if (titleEl)    titleEl.textContent    = '🏆 Math Champions';
+if (titleEl)    titleEl.textContent    = '🎉 Math For Fun';
 if (subtitleEl) subtitleEl.textContent = `${meta.label} — ${meta.subtitle}`;
 
 // ── Quiz state ─────────────────────────────────────────────────
