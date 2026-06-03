@@ -22,6 +22,7 @@ const SUBJECT_META = {
   fractions:      { label: 'Fractions & LCM',subtitle: 'Find the Common Ground!',        primaryColor: '#4f46e5', gradientEnd: '#7c3aed', storageKey: 'mathChampions'     },
   decimals:       { label: 'Decimals',       subtitle: 'Decimals Word Problems',          primaryColor: '#059669', gradientEnd: '#0891b2', storageKey: 'mathChampions_dec' },
   percentages:    { label: 'Percentages',    subtitle: 'Percentages Word Problems',       primaryColor: '#0ea5e9', gradientEnd: '#6366f1', storageKey: 'mathChampions_pct' },
+  logic:          { label: 'Logic Puzzles',  subtitle: 'Think Carefully — Every Clue Counts!', primaryColor: '#0f766e', gradientEnd: '#7c3aed', storageKey: 'mathChampions_lgc' },
 };
 
 // ── Parse subject from URL ─────────────────────────────────────

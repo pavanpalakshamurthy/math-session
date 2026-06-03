@@ -145,6 +145,7 @@ body.landing {
 .quiz-card.fractions::before      { background: linear-gradient(90deg, #4f46e5, #7c3aed); }
 .quiz-card.decimals::before       { background: linear-gradient(90deg, #059669, #0891b2); }
 .quiz-card.percentages::before    { background: linear-gradient(90deg, #0ea5e9, #6366f1); }
+.quiz-card.logic::before          { background: linear-gradient(90deg, #0f766e, #7c3aed); }
 
 .quiz-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
 .quiz-card.addition:hover       { border-color: #fdba74; }
@@ -154,6 +155,7 @@ body.landing {
 .quiz-card.fractions:hover      { border-color: #a5b4fc; }
 .quiz-card.decimals:hover       { border-color: #6ee7b7; }
 .quiz-card.percentages:hover    { border-color: #7dd3fc; }
+.quiz-card.logic:hover          { border-color: #5eead4; }
 
 .card-icon     { font-size: 2.2rem; line-height: 1; margin-bottom: 0.3rem; }
 .card-title    { font-size: 1.15rem; font-weight: 800; }
@@ -191,6 +193,7 @@ body.landing {
 .quiz-card.fractions      .card-cta { background: #4f46e5; }
 .quiz-card.decimals       .card-cta { background: #059669; }
 .quiz-card.percentages    .card-cta { background: #0ea5e9; }
+.quiz-card.logic          .card-cta { background: #0f766e; }
 
 .topics-list { list-style: none; margin-top: 0.4rem; }
 .topics-list li { font-size: 0.78rem; color: var(--muted); padding: 0.15rem 0; }

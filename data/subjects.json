@@ -166,5 +166,29 @@
       "medium": 10,
       "hard": 15
     }
+  },
+  {
+    "id": "logic",
+    "label": "Logic Puzzles",
+    "icon": "🧩",
+    "primaryColor": "#0f766e",
+    "gradient": [
+      "#0f766e",
+      "#7c3aed"
+    ],
+    "hoverBorder": "#5eead4",
+    "storageKey": "mathChampions_lgc",
+    "ctaColor": "#0f766e",
+    "subtitle": "Deduction, patterns, and tricky scenarios that reward careful thinking.",
+    "topics": [
+      "Deduction & elimination",
+      "Patterns, codes & sequences",
+      "Strategy & classic puzzles"
+    ],
+    "counts": {
+      "easy": 5,
+      "medium": 15,
+      "hard": 10
+    }
   }
 ]
