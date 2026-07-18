@@ -62,6 +62,7 @@
     .scoreboard .right  { color: var(--correct); }
     .scoreboard .wrong  { color: var(--wrong); }
     .scoreboard .left   { color: #475569; }
+    .scoreboard .time   { color: var(--ink); }
 
     #generateBtn {
       font-family: 'Comic Sans MS', system-ui, sans-serif;
@@ -203,9 +204,9 @@
     }
 
     .mark {
-      font-size: 1.6rem;
+      font-size: 1.15rem;
       line-height: 1.1;
-      min-width: 1.2em;
+      white-space: nowrap;
       align-self: center;
     }
     .mark.correct { color: var(--correct); }
@@ -240,6 +241,18 @@
     }
     .done-banner.show { display: block; }
 
+    /* fireworks celebration overlay */
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+      display: none;
+    }
+    #fireworks.show { display: block; }
+
     @media (max-width: 640px) {
       .grid { grid-template-columns: repeat(2, 1fr); gap: 1.3rem 0.8rem; }
       .paper { padding: 1.6rem 1rem 2rem 2.6rem; }
@@ -252,8 +265,9 @@
     <a class="home" href="index.html">← Home</a>
     <button id="generateBtn" type="button">🎲 Generate</button>
     <div class="scoreboard">
-      <span class="pill right">✓ <span id="scoreRight">0</span></span>
-      <span class="pill wrong">✗ <span id="scoreWrong">0</span></span>
+      <span class="pill time">⏱ <span id="timer">0:00</span></span>
+      <span class="pill right">😊 <span id="scoreRight">0</span></span>
+      <span class="pill wrong">😢 <span id="scoreWrong">0</span></span>
       <span class="pill left"><span id="scoreLeft">16</span> left</span>
     </div>
   </div>
@@ -261,12 +275,13 @@
   <div class="paper">
     <div class="paper-title">
       My Math Worksheet
-      <span class="sub">Solve each problem and type your answer. ✓ = correct, ✗ = try to see!</span>
+      <span class="sub">Solve each problem and type your answer. 😊 = correct, 😢 = try again!</span>
     </div>
     <div class="grid" id="grid"></div>
   </div>
 
   <div class="done-banner" id="doneBanner"></div>
+  <canvas id="fireworks"></canvas>
 
   <script>
     const TOTAL = 16;
@@ -278,6 +293,11 @@
     const scoreWrong  = document.getElementById('scoreWrong');
     const scoreLeft   = document.getElementById('scoreLeft');
     const doneBanner  = document.getElementById('doneBanner');
+    const timerEl     = document.getElementById('timer');
+    const fwCanvas    = document.getElementById('fireworks');
+
+    const HAPPY = '✓ 😊';
+    const SAD   = '✗ 😢';
 
     function randInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -382,7 +402,7 @@
       const isCorrect = Number.isFinite(val) && val === p.answer;
       p.result = isCorrect ? 'right' : 'wrong';
       cell.classList.add('solved');
-      mark.textContent = isCorrect ? '✓' : '✗';
+      mark.textContent = isCorrect ? HAPPY : SAD;
       mark.className = 'mark ' + (isCorrect ? 'correct' : 'wrong');
       updateScore();
     }
@@ -402,19 +422,108 @@
       genBtn.disabled = !allCorrect;
 
       if (allCorrect) {
-        doneBanner.textContent = 'Perfect — all 16 correct! 🏆  Click Generate for a fresh sheet.';
+        stopTimer();
+        if (!celebrated) { celebrated = true; launchFireworks(); }
+        doneBanner.textContent = `Perfect — all 16 correct in ${formatTime(seconds)}! 🏆  Click Generate for a fresh sheet.`;
         doneBanner.classList.add('show');
       } else if (wrong > 0 && answered === TOTAL) {
-        doneBanner.textContent = `${right} of ${TOTAL} correct — fix the ✗ answers to unlock Generate. 💪`;
+        doneBanner.textContent = `${right} of ${TOTAL} correct — fix the 😢 answers to unlock Generate. 💪`;
         doneBanner.classList.add('show');
       } else {
         doneBanner.classList.remove('show');
       }
     }
 
+    // ── Timer ───────────────────────────────────────────
+    let seconds = 0, timerId = null;
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60);
+      return m + ':' + String(s % 60).padStart(2, '0');
+    }
+    function startTimer() {
+      seconds = 0;
+      timerEl.textContent = formatTime(seconds);
+      clearInterval(timerId);
+      timerId = setInterval(() => {
+        seconds++;
+        timerEl.textContent = formatTime(seconds);
+      }, 1000);
+    }
+    function stopTimer() { clearInterval(timerId); timerId = null; }
+
+    // ── Fireworks celebration ───────────────────────────
+    function launchFireworks() {
+      const ctx = fwCanvas.getContext('2d');
+      const W = fwCanvas.width  = window.innerWidth;
+      const H = fwCanvas.height = window.innerHeight;
+      fwCanvas.classList.add('show');
+
+      const colors = ['#ff5252', '#ffd740', '#69f0ae', '#40c4ff', '#e040fb', '#ffab40'];
+      let particles = [];
+      const endTime = Date.now() + 5000;   // run for 5 seconds
+
+      function burst(x, y) {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const count = 40 + Math.floor(Math.random() * 25);
+        for (let i = 0; i < count; i++) {
+          const angle = (Math.PI * 2 * i) / count;
+          const speed = 2 + Math.random() * 4;
+          particles.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 1, color,
+            size: 2 + Math.random() * 2
+          });
+        }
+      }
+
+      let lastBurst = 0;
+      function frame() {
+        const now = Date.now();
+        ctx.clearRect(0, 0, W, H);
+
+        if (now < endTime && now - lastBurst > 350) {
+          lastBurst = now;
+          burst(W * (0.15 + Math.random() * 0.7), H * (0.15 + Math.random() * 0.45));
+        }
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.05;          // gravity
+          p.vx *= 0.99;
+          p.life -= 0.012;
+          if (p.life > 0) {
+            ctx.globalAlpha = Math.max(p.life, 0);
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        ctx.globalAlpha = 1;
+        particles = particles.filter(p => p.life > 0);
+
+        if (now < endTime || particles.length) {
+          requestAnimationFrame(frame);
+        } else {
+          fwCanvas.classList.remove('show');
+          ctx.clearRect(0, 0, W, H);
+        }
+      }
+      frame();
+    }
+
+    let celebrated = false;
+
     function generate() {
+      celebrated = false;
+      fwCanvas.classList.remove('show');
       problems = buildSet();
       render();
+      startTimer();
     }
 
     genBtn.addEventListener('click', generate);
