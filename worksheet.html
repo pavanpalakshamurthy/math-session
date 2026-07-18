@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Worksheet — Math For Fun</title>
+  <style>
+    :root {
+      --ink:      #1d3a8a;   /* pencil/pen blue */
+      --paper:    #fffdf5;
+      --line:     #cfe3f2;   /* ruled lines */
+      --margin:   #f4a8b0;   /* red margin line */
+      --correct:  #16a34a;
+      --wrong:    #dc2626;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Comic Sans MS', 'Segoe Print', 'Bradley Hand', system-ui, sans-serif;
+      background: #6b7f99;
+      background-image:
+        radial-gradient(circle at 20% 10%, #8296b0 0%, #6b7f99 40%),
+        linear-gradient(160deg, #7688a1, #5d6f88);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    /* ── Top control bar ─────────────────────────────── */
+    .toolbar {
+      max-width: 900px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .toolbar .home {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .toolbar .home:hover { opacity: 1; }
+
+    .scoreboard {
+      display: flex;
+      gap: 0.6rem;
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .scoreboard .pill {
+      background: rgba(255,255,255,0.92);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .scoreboard .right  { color: var(--correct); }
+    .scoreboard .wrong  { color: var(--wrong); }
+    .scoreboard .left   { color: #475569; }
+
+    #generateBtn {
+      font-family: 'Comic Sans MS', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #16a34a, #0ea5e9);
+      border: none;
+      border-radius: 14px;
+      padding: 0.7rem 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #0b7d55, 0 6px 12px rgba(0,0,0,0.25);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    #generateBtn:active:not(:disabled) {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #0b7d55, 0 3px 6px rgba(0,0,0,0.25);
+    }
+    #generateBtn:disabled {
+      background: #b6bfcb;
+      box-shadow: 0 4px 0 #97a2b0;
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    /* ── The paper ───────────────────────────────────── */
+    .paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--paper);
+      /* ruled horizontal lines */
+      background-image: repeating-linear-gradient(
+        var(--paper) 0px,
+        var(--paper) 33px,
+        var(--line) 34px
+      );
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      padding: 2.2rem 2rem 2.6rem 3.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    /* red margin line */
+    .paper::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 2.2rem;
+      width: 2px;
+      background: var(--margin);
+      opacity: 0.7;
+    }
+    /* punch holes */
+    .paper::after {
+      content: "";
+      position: absolute;
+      left: 0.7rem; top: 0; bottom: 0;
+      width: 14px;
+      background-image: radial-gradient(circle, #d7dbe0 45%, transparent 46%);
+      background-size: 14px 150px;
+      background-repeat: repeat-y;
+      background-position: center 60px;
+    }
+
+    .paper-title {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+    .paper-title .sub {
+      display: block;
+      font-family: system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #7c8aa5;
+      margin-top: 0.2rem;
+    }
+
+    /* ── Problem grid: 4 per row ──────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.6rem 1.2rem;
+    }
+
+    .problem {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .problem .num-col {
+      font-size: 1.9rem;
+      line-height: 1.15;
+      text-align: right;
+      min-width: 3.2ch;
+    }
+    .problem .op-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.3rem;
+    }
+    .problem .op { padding-right: 0.15rem; }
+    .rule {
+      border-bottom: 3px solid var(--ink);
+      margin: 0.25rem 0 0.35rem;
+    }
+    .problem input {
+      font-family: 'Comic Sans MS', system-ui, sans-serif;
+      font-size: 1.6rem;
+      color: var(--wrong);            /* pencil answers in red-ish, like a kid's pen */
+      width: 100%;
+      max-width: 4.2ch;
+      text-align: right;
+      border: none;
+      background: transparent;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+    .problem input::-webkit-outer-spin-button,
+    .problem input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+    .index-badge {
+      font-family: system-ui, sans-serif;
+      font-size: 0.7rem;
+      color: #9aa7bd;
+      font-weight: 700;
+      align-self: flex-start;
+      margin-top: 0.2rem;
+    }
+
+    .mark {
+      font-size: 1.6rem;
+      line-height: 1.1;
+      min-width: 1.2em;
+      align-self: center;
+    }
+    .mark.correct { color: var(--correct); }
+    .mark.wrong   { color: var(--wrong); }
+
+    .problem.solved input { color: #64748b; }
+
+    /* difficulty tint dot */
+    .diff-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-left: 3px;
+      vertical-align: middle;
+    }
+    .diff-easy   { background: #16a34a; }
+    .diff-medium { background: #d97706; }
+    .diff-hard   { background: #dc2626; }
+
+    .done-banner {
+      max-width: 900px;
+      margin: 1.2rem auto 0;
+      text-align: center;
+      background: rgba(255,255,255,0.95);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      color: #1e293b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+    }
+    .done-banner.show { display: block; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 1.3rem 0.8rem; }
+      .paper { padding: 1.6rem 1rem 2rem 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="home" href="index.html">← Home</a>
+    <button id="generateBtn" type="button">🎲 Generate</button>
+    <div class="scoreboard">
+      <span class="pill right">✓ <span id="scoreRight">0</span></span>
+      <span class="pill wrong">✗ <span id="scoreWrong">0</span></span>
+      <span class="pill left"><span id="scoreLeft">16</span> left</span>
+    </div>
+  </div>
+
+  <div class="paper">
+    <div class="paper-title">
+      My Math Worksheet
+      <span class="sub">Solve each problem and type your answer. ✓ = correct, ✗ = try to see!</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="done-banner" id="doneBanner"></div>
+
+  <script>
+    const TOTAL = 16;
+    let problems = [];
+
+    const grid        = document.getElementById('grid');
+    const genBtn      = document.getElementById('generateBtn');
+    const scoreRight  = document.getElementById('scoreRight');
+    const scoreWrong  = document.getElementById('scoreWrong');
+    const scoreLeft   = document.getElementById('scoreLeft');
+    const doneBanner  = document.getElementById('doneBanner');
+
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Build one problem for a given operator + difficulty.
+    function makeProblem(op, diff) {
+      let a, b;
+      if (op === '+') {
+        if (diff === 'easy')       { a = randInt(1, 9);    b = randInt(1, 9); }
+        else if (diff === 'medium'){ a = randInt(10, 49);  b = randInt(10, 49); }
+        else                       { a = randInt(50, 199); b = randInt(50, 299); }
+        return { a, b, op, answer: a + b, diff };
+      }
+      if (op === '-') {
+        if (diff === 'easy')       { a = randInt(5, 18);   b = randInt(1, a); }
+        else if (diff === 'medium'){ a = randInt(20, 80);  b = randInt(1, a); }
+        else                       { a = randInt(100, 500);b = randInt(1, a); }
+        return { a, b, op, answer: a - b, diff };
+      }
+      if (op === '×') {
+        if (diff === 'easy')       { a = randInt(2, 5);    b = randInt(2, 5); }
+        else if (diff === 'medium'){ a = randInt(3, 9);    b = randInt(3, 9); }
+        else                       { a = randInt(6, 12);   b = randInt(4, 15); }
+        return { a, b, op, answer: a * b, diff };
+      }
+      // division — build from a clean product so answers are whole numbers
+      let divisor, quotient;
+      if (diff === 'easy')       { divisor = randInt(2, 5);  quotient = randInt(1, 5); }
+      else if (diff === 'medium'){ divisor = randInt(2, 9);  quotient = randInt(2, 9); }
+      else                       { divisor = randInt(3, 12); quotient = randInt(4, 12); }
+      return { a: divisor * quotient, b: divisor, op: '÷', answer: quotient, diff };
+    }
+
+    // Generate a balanced, shuffled set of 16 problems.
+    function buildSet() {
+      const ops   = ['+', '-', '×', '÷'];
+      const diffs = ['easy', 'easy', 'easy', 'easy',
+                     'medium', 'medium', 'medium', 'medium', 'medium', 'medium',
+                     'hard', 'hard', 'hard', 'hard', 'hard', 'hard'];
+      const set = [];
+      for (let i = 0; i < TOTAL; i++) {
+        const op = ops[i % 4];               // 4 of each operator
+        set.push(makeProblem(op, diffs[i]));
+      }
+      // Fisher–Yates shuffle so operators/difficulties interleave
+      for (let i = set.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [set[i], set[j]] = [set[j], set[i]];
+      }
+      return set;
+    }
+
+    function render() {
+      grid.innerHTML = '';
+      problems.forEach((p, i) => {
+        const cell = document.createElement('div');
+        cell.className = 'problem';
+        cell.dataset.index = i;
+        cell.innerHTML = `
+          <span class="index-badge">${i + 1}<span class="diff-dot diff-${p.diff}" title="${p.diff}"></span></span>
+          <div class="num-col">
+            <div class="top">${p.a}</div>
+            <div class="op-row"><span class="op">${p.op}</span><span>${p.b}</span></div>
+            <div class="rule"></div>
+            <input type="number" inputmode="numeric" aria-label="answer for problem ${i + 1}" />
+          </div>
+          <span class="mark" data-mark></span>
+        `;
+        grid.appendChild(cell);
+
+        const input = cell.querySelector('input');
+        const check = () => grade(i, cell, input);
+        input.addEventListener('blur', check);
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') { check(); focusNext(i); }
+        });
+      });
+      updateScore();
+    }
+
+    function focusNext(i) {
+      const next = grid.querySelector(`.problem[data-index="${i + 1}"] input`);
+      if (next) next.focus();
+    }
+
+    function grade(i, cell, input) {
+      const raw = input.value.trim();
+      const mark = cell.querySelector('[data-mark]');
+      const p = problems[i];
+
+      if (raw === '') {                 // cleared → un-answer it
+        p.result = undefined;
+        mark.textContent = '';
+        mark.className = 'mark';
+        cell.classList.remove('solved');
+        updateScore();
+        return;
+      }
+
+      const val = Number(raw);
+      const isCorrect = Number.isFinite(val) && val === p.answer;
+      p.result = isCorrect ? 'right' : 'wrong';
+      cell.classList.add('solved');
+      mark.textContent = isCorrect ? '✓' : '✗';
+      mark.className = 'mark ' + (isCorrect ? 'correct' : 'wrong');
+      updateScore();
+    }
+
+    function updateScore() {
+      let right = 0, wrong = 0, answered = 0;
+      problems.forEach(p => {
+        if (p.result === 'right') { right++; answered++; }
+        else if (p.result === 'wrong') { wrong++; answered++; }
+      });
+      scoreRight.textContent = right;
+      scoreWrong.textContent = wrong;
+      scoreLeft.textContent  = TOTAL - right;
+
+      // Generate unlocks only when every problem is answered correctly.
+      const allCorrect = right === TOTAL;
+      genBtn.disabled = !allCorrect;
+
+      if (allCorrect) {
+        doneBanner.textContent = 'Perfect — all 16 correct! 🏆  Click Generate for a fresh sheet.';
+        doneBanner.classList.add('show');
+      } else if (wrong > 0 && answered === TOTAL) {
+        doneBanner.textContent = `${right} of ${TOTAL} correct — fix the ✗ answers to unlock Generate. 💪`;
+        doneBanner.classList.add('show');
+      } else {
+        doneBanner.classList.remove('show');
+      }
+    }
+
+    function generate() {
+      problems = buildSet();
+      render();
+    }
+
+    genBtn.addEventListener('click', generate);
+
+    // First sheet on load.
+    generate();
+  </script>
+
+</body>
+</html>
